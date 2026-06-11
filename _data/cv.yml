@@ -1,121 +1,184 @@
-- title: General Information
-  type: map
-  contents:
-    - name: Full Name
-      value: Giacomo Frisoni
-    - name: Date of Birth
-      value: 18th November 1995
-    - name: Languages
-      value: Italian, English
+cv:
+  name: Giacomo Frisoni
+  label: Postdoctoral Researcher in Natural Language Processing
+  email: giacomo.frisoni@unibo.it
+  location: Cesena (FC), Italy
+  website: https://www.unibo.it/sitoweb/giacomo.frisoni/en
+  summary: >
+    Giacomo Frisoni, Ph.D., is a postdoctoral researcher in Computer Science and Engineering at the
+    University of Bologna. His research interests lie in Natural Language Processing, Large Language
+    Models, and Graph Neural Networks, particularly for medical applications. He has co-authored over
+    30 papers in prestigious conferences and journals, including ACL, NAACL, EMNLP, and AAAI, receiving
+    best paper and reviewer awards. He has actively contributed to the research community by serving in
+    various scientific roles, including editorial board member, program committee member, area chair,
+    and workshop organizer for many international venues. He has collaborated with esteemed academic and
+    industrial institutions, including the University of Glasgow, IBM Research, EURECOM, and the
+    University of Edinburgh. He served as an adjunct professor and tutor for multiple AI courses at the
+    University of Bologna, co-supervising over 55 theses.
 
-- title: Education
-  type: time_table
-  contents:
-    - title: Ph.D., Computer Science and Engineering
-      institution: Department of Computer Science and Engineering, University of Bologna, Cesena, Italy
-      year: 10/2020 — 10/2023
-      description:
-        - Ministerial scholarship
-        - "Supervisor: Gianluca Moro"
-        - "Tutor: Antonella Carbonaro"
-        - "Area of study: Knowledge Extraction and Injection for Natural Language Understanding"
+  sections:
+    Education:
+      - institution: University of Bologna
+        location: Cesena, Italy
+        url: https://www.unibo.it/
+        area: Computer Science and Engineering
+        studyType: Ph.D.
+        start_date: 2020
+        end_date: 2024
+        highlights:
+          - "Ministerial scholarship; ranked first out of 132 candidates in the competitive call."
+          - "Supervisor: Gianluca Moro; tutors: Antonella Carbonaro and Ilaria Bartolini."
+          - "Thesis: *Knowledge-Enhanced Natural Language Processing*. Graduation score: 5/5 (Excellent)."
+          - "Areas of study: large language models, graph neural networks, retrieval-augmented generation, information extraction, semantic parsing."
 
-    - title: M.S., Computer Science and Engineering
-      institution: University of Bologna, Cesena, Italy
-      year: 09/2017 — 03/2020
-      description:
-        - "Graduation score: 110/110 cum laude"
-        - "Graduation class: Computer Engineering"
-        - "Thesis topic: A new unsupervised methodology of descriptive text mining for knowledge graph learning"
-        - "Supervisor: Gianluca Moro"
-        - "Co-Supervisor: Antonella Carbonaro"
-        - "Area of study: Text Mining"
+      - institution: University of Bologna
+        location: Cesena, Italy
+        area: Computer Science and Engineering
+        studyType: M.S.
+        start_date: 2017
+        end_date: 2020
+        highlights:
+          - "Graduation score: 110/110 cum Laude; cumulative GPA: 4.0."
+          - "Thesis: *A New Unsupervised Methodology of Descriptive Text Mining for Knowledge Graph Learning* (supervisor: Gianluca Moro)."
 
-    - title: B.S., Computer Science and Engineering
-      institution: University of Bologna, Cesena, Italy
-      year: 09/2014 — 10/2017
-      description:
-        - "Graduation score: 110/110 cum laude"
-        - "Graduation class: Computer Engineering"
-        - "Thesis topic: Design and development of a software system for studying and researching rare diseases"
-        - "Supervisor: Dario Maio"
-        - "Area of study: Databases"
+      - institution: University of Bologna
+        location: Cesena, Italy
+        area: Computer Science and Engineering
+        studyType: B.S.
+        start_date: 2014
+        end_date: 2017
+        highlights:
+          - "Graduation score: 110/110 cum Laude; cumulative GPA: 4.0."
+          - "Thesis: *Design and development of a software system for studying and researching rare diseases* (supervisor: Dario Maio)."
 
-    - title: Scientific High School
-      institution: ITIS Leonardo Da Vinci, Rimini, Italy
-      year: 09/2009 — 07/2014
-      description:
-        - "Final score: 100/100 cum laude"
-        - Member of the National Register of Excellence
-        - Focus on Cryptography (Bletchley Park Visitor)
+    Experience:
+      - company: University of Bologna, Department of Computer Science and Engineering
+        position: Postdoctoral Research Fellow
+        location: Cesena, Italy
+        start_date: 2024-02
+        end_date: 2027-01
+        summary: >
+          Research on representational and generative AI—including language models and graph neural
+          networks—for clinical and biomedical applications, within the DARE project (National Plan
+          for Complementary Investments to the PNRR; total budget €124M). Supervisor: Claudio Sartori.
+          Research group: UniboNLP.
 
-- title: Experience
-  type: time_table
-  contents:
-    - title: Postgraduate Visiting Researcher
-      institution: Terrier Team, Information, Data & Analysis Section, School of Computing Science, University of Glasgow
-      year: 09/2022 — 12/2022
-      description:
-        - "Supervisor: Zaiqiao Meng"
-        - "Area of study: Dense Subgraph Retrieval for Open-Domain Biomedical Question Answering"
-    
-    - title: Pre-doctoral Researcher
-      institution: Department of Computer Science and Engineering, University of Bologna, Cesena, Italy
-      year: 03/2020 — 10/2020
-      description:
-        - "Supervisors: Gianluca Moro, Antonella Carbonaro"
-        - "Area of study: Unsupervised Corpus-Level Phenomena Explanation and Knowledge Graph Learning"
+      - company: University of Glasgow, School of Computing Science (TerrierTeam)
+        position: Postgraduate Visiting Researcher
+        location: Glasgow, Scotland
+        start_date: 2022-09
+        end_date: 2022-12
+        summary: >
+          Combining language models and structured knowledge for natural language processing and
+          understanding in biomedical domains. Supervisor: Zaiqiao Meng.
 
-    - title: Program Attendee at The Cornell, Maryland, Max-Planck Pre-doctoral Research School
-      institution: Max Planck Institute for Software Systems
-      year: 08/2020 — 08/2020
+    "Research Projects":
+      - bullet: >
+          **AI Analysis for Risk Assessment of Empty Lymph Nodes in Endometrial Cancer Surgery**
+          (2024–2026) — Co-Principal Investigator (scientific responsibility). Funded by Fondazione
+          CARISBO ("Ricerca Scientifica e Alta Tecnologia 2024", €20K), with the University Hospital
+          of Bologna IRCCS, Sant'Orsola Polyclinic.
+      - bullet: >
+          **Artificial Intelligence for Public Administrations Connected** (2023–2026) — Development of
+          training and test-before-invest services focused on retrieval-augmented chatbots in
+          low-resource regimes. Funded by the Ministry of Enterprises and Made in Italy
+          (NextGenerationEU, Seal of Excellence; ~€5.8M) with SDA Bocconi, Maggioli Group, University
+          of Milano-Bicocca, IFEL, and Tempo S.r.l.
+      - bullet: >
+          **DARE — Digital Lifelong Prevention** (2022–2026) — Research on language models and graph
+          neural networks for health promotion and lifelong prevention. Funded by the Italian Ministry
+          of University and Research under the National Plan for Complementary Investments to the PNRR
+          (€124M).
 
-- title: Honors and Awards
-  type: time_table
-  contents:
-    - year: 07/2022
-      items: 
-        - Best Student Paper Award @ DATA 2022 (20% acceptance rate)
-    - year: 02/2021
-      items: 
-        - Con.Scienze 2020 Award; national award—with only one nomination per university department—for having written one of the ten best scientific research works during the master's thesis
-    - year: 07/2020
-      items: 
-        - PhD Call First Position out of 132 participants
-    - year: 03/2020
-      items: 
-        - Best Paper Award @ DATA 2020 (14% acceptance rate)
-    
-- title: Volunteering
-  type: time_table
-  contents:
-    - year: 2019 — Today
-      items: 
-        - AMAE — National Association for Esophageal Achalasia. Member of the board of directors. Representative of the IT sector. Data Scientist.
-    - year: 12/2022 — Today
-      items: 
-        - Streamlit. I was selected as a member of the first Streamlit Student Ambassador cohort, Education Program (<50 students worldwide).
-    - year: 06/2022 — 12/2022
-      items: 
-        - HuggingFace. I was selected as a member of the first HuggingFace Student Ambassador program (<100 students worldwide, from all kinds of backgrounds).
+    "Research Collaborations":
+      - bullet: "**UniboNLP**, University of Bologna (2020–today) — primary research group, coordinated by Gianluca Moro; main expert on medical NLP and graph neural networks; co-management of the SLURM cluster infrastructure."
+      - bullet: "**TerrierTeam**, University of Glasgow (2022–today) — knowledge injection into language models for biomedical question answering, with Zaiqiao Meng; co-organization of the KEIR workshop series at ECIR."
+      - bullet: "**IBM Research Europe**, Dublin (2023–today) — zero-shot information extraction and multimodal fact checking, with Marcos Martínez Galindo, Alessandra Pascale, Javier Carnerero Cano, and James Barry."
+      - bullet: "**EURECOM**, Data Science Department (2023–today) — multimodal fact checking, large language models, and databases, with Paolo Papotti."
+      - bullet: "**Universidad Técnica Federico Santa María**, Chile (2024–today) — representation learning and natural language processing, with Ricardo Ñanculef."
+      - bullet: "**University of Edinburgh**, School of Informatics (2026–today) — large language model reasoning, knowledge distillation, and board games, with Pasquale Minervini."
 
-- title: Academic Interests
-  type: nested_list
-  contents:
-    - title: Natural Language Processing
-    - title: Natural Language Understanding
-    - title: Natural Language Generation
-    - title: Semantic Parsing
-    - title: Knowledge Graphs
-    - title: Knowledge Representation and Reasoning
-    - title: Graph Neural Networks
-    - title: Knowledge Injection
-    - title: Deep Representation Learning
-    - title: Neuro-Symbolic AI
-    - title: Explainable AI
-    - title: AI for Health Informatics
+    "Scientific Service":
+      - bullet: "**Guest Editor**, Sensors (Q1) — Special Issue *Role and Challenges of Healthcare Cognitive Computing: From Extraction to Data Analysis Techniques* (2025–2026)."
+      - bullet: "**Workshop Co-Chair**, 2nd Workshop on Knowledge-Enhanced Information Retrieval (KEIR-25) @ ECIR-25, Lucca, Italy — proceedings published by Springer in LNCS, vol. 16086."
+      - bullet: "**Workshop Publicity Chair**, 1st Workshop on Knowledge-Enhanced Information Retrieval (KEIR-24) @ ECIR-24, Glasgow, Scotland."
+      - bullet: "**Session Chair** at AAAI-26 (Singapore, NLP 15), ECAI-25 (Bologna, NLP 7), and DATA-22 (Lisbon, Neural Network Applications)."
+      - bullet: "**Area Chair / Action Editor**, ACL Rolling Review (Oct 2025, Jan 2026, May 2026) — 21 meta-reviews."
+      - bullet: "**Reviewer** for international conferences (79 reviews), including NeurIPS, ICML, ICLR, AAAI, ACL ARR, EACL, AAMAS, ECAI, ECIR, ISWC, and ESWC."
+      - bullet: "**Reviewer** for international journals (7 reviews), including Engineering Applications of Artificial Intelligence, Semantic Web Journal, and Expert Systems."
 
-- title: Other Interests
-  type: list
-  contents:
-    - <u>Hobbies:</u> Board Games, Movies, Graphic Design
+    Awards:
+      - title: Gold Reviewer Award
+        date: 2026
+        awarder: The 43rd International Conference on Machine Learning (ICML-26)
+        summary: Awarded to 4,439 reviewers out of 17,749 (top 25%) for review quality as assessed by area chairs.
+
+      - title: Outstanding Reviewer Award
+        date: 2025
+        awarder: The 30th Conference on Empirical Methods in Natural Language Processing (EMNLP-25)
+        summary: Awarded to 51 reviewers out of 13,048 (top ~0.4%) for analytical depth, constructiveness, and timeliness.
+
+      - title: Best Student Paper Award
+        date: 2022
+        awarder: The 11th International Conference on Data Science, Technology and Applications (DATA-22)
+        summary: For "Enhancing Biomedical Scientific Reviews Summarization with Graph-Based Factual Evidence Extracted from Papers", selected out of 62 accepted submissions.
+
+      - title: Best Paper Award
+        date: 2020
+        awarder: The 9th International Conference on Data Science, Technology and Applications (DATA-20)
+        summary: For "Learning Interpretable and Statistically Significant Knowledge from Unlabeled Corpora of Social Text Messages" (first authored publication), selected out of 35 accepted submissions.
+
+      - title: Best Master's Thesis Award (Con.Scienze Prize)
+        date: 2020
+        awarder: National Conference of Presidents and Directors of University Structures in Sciences and Technologies (Con.Scienze), Italy
+        summary: National prize awarded to the 10 best Master's research theses in scientific disciplines.
+
+    "Invited Talks":
+      - bullet: "*LLM Evaluation: From Best Practices to Legal Domain Benchmarks* — ALMA-AI Workshop Series, Alma Mater Research Institute for Human-Centered Artificial Intelligence (2026)."
+      - bullet: "*LLM Training and Evaluation* — FutureData4EU, international doctoral programme funded under the European Marie Skłodowska-Curie COFUND (2026)."
+      - bullet: "*NLP Methods Based on Small and Large Language Models in Low-Resource Regimes* — ALMA-AI Workshop Series (2025)."
+      - bullet: "*Knowledge-Enhanced NLP: From Retrieval Augmentation to Generative Augmentation in Medical Domains* — EURECOM, France (2024)."
+      - bullet: "*Retrieval-Enhanced Language Models and Semantic-Driven Summarization for Biomedical Domains* — TerrierTeam, University of Glasgow, Scotland (2022)."
+
+    Volunteer:
+      - company: AMAE Onlus, Italian Nonprofit Association for Esophageal Achalasia Patients (Rare Disease)
+        position: Member of the Board of Directors
+        location: Italy
+        start_date: 2019
+        end_date:
+        summary: >
+          As both a researcher and a patient, I contribute to the association by applying NLP and IT
+          expertise to patient-centered initiatives, supporting research advancement and the development
+          of AI-based tools for rare disease communities.
+
+      - company: Streamlit
+        position: Student Ambassador
+        start_date: 2022
+        end_date: 2023
+        summary: Selected among fewer than 50 students worldwide for the inaugural cohort of Streamlit's Student Ambassador Education Program.
+
+      - company: Hugging Face
+        position: Student Ambassador
+        start_date: 2022
+        end_date: 2022
+        summary: Selected among fewer than 100 students worldwide for the inaugural cohort of Hugging Face's Student Ambassador Program.
+
+    Languages:
+      - name: Italian
+        summary: Mother language
+      - name: English
+        summary: C1 level
+
+    Certificates:
+      - name: AI Agents Fundamentals
+        date: 2025
+        issuer: Hugging Face
+        icon: fa-solid fa-robot
+      - name: Generative AI with Large Language Models
+        date: 2023
+        issuer: Coursera
+        icon: fa-solid fa-brain
+      - name: Natural Language Processing Specialization
+        date: 2020
+        issuer: Coursera
+        icon: fa-solid fa-language

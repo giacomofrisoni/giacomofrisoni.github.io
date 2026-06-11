@@ -1,0 +1,116 @@
+{% comment %}
+  Local override of al_folio_cv's experience.liquid with two fixes:
+  1. A page-wide style reset removing default list bullets/padding on CV
+     list-groups (the theme ships with Tailwind preflight disabled, so
+     native <ul> disc markers leak through and misalign the date badges).
+  2. Location/date captures are stripped of whitespace, so the location
+     pin icon is no longer rendered for entries without a location.
+{% endcomment %}
+
+<style>
+  .cv .list-group {
+    list-style: none;
+    padding-left: 0;
+    margin-left: 0;
+  }
+  .cv .list-group-item {
+    list-style: none;
+  }
+  .cv ul.items {
+    list-style: disc;
+    padding-left: 1.25rem;
+  }
+  .cv ul.items li {
+    list-style: disc;
+  }
+</style>
+
+<ul class="card-text font-weight-light list-group list-group-flush">
+  {% for entry in entries %}
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col-xs-2 col-sm-2 col-md-2 text-center date-column">
+          {% capture start_date_raw %}
+            {% if entry.start_date %}{{ entry.start_date }}{% elsif entry.startDate %}{{ entry.startDate }}{% endif %}
+          {% endcapture %}
+          {% capture end_date_raw %}
+            {% if entry.end_date %}{{ entry.end_date }}{% elsif entry.endDate %}{{ entry.endDate }}{% endif %}
+          {% endcapture %}
+          {% assign start_date = start_date_raw | strip %}
+          {% assign end_date = end_date_raw | strip %}
+
+          {% if start_date != '' %}
+            {% assign startDate = start_date | split: '-' | first %}
+            {% if end_date != '' %}
+              {% assign endDate = end_date | split: '-' | first %}
+            {% else %}
+              {% assign endDate = 'Present' %}
+            {% endif %}
+            {% assign date = startDate | append: ' - ' | append: endDate %}
+          {% else %}
+            {% assign date = '' %}
+          {% endif %}
+
+          <table class="table-cv">
+            <tbody>
+              <tr>
+                <td>
+                  <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle" style="min-width: 75px">{{ date }}</span>
+                </td>
+              </tr>
+              {% assign location = entry.location | default: '' | strip %}
+              {% if location != '' %}
+                <tr>
+                  <td>
+                    <p class="location">
+                      <i class="fa-solid fa-location-dot iconlocation"></i>
+                      {{ location }}
+                    </p>
+                  </td>
+                </tr>
+              {% endif %}
+            </tbody>
+          </table>
+        </div>
+        <div class="col-xs-10 col-sm-10 col-md-10 mt-2 mt-md-0">
+          {% capture position_title_raw %}
+            {% if entry.position %}{{ entry.position }}{% endif %}
+          {% endcapture %}
+          {% assign position_title = position_title_raw | strip %}
+
+          {% if entry.url %}
+            <h6 class="title font-weight-bold ml-1 ml-md-4">
+              <a href="{{ entry.url }}">{{ position_title }}</a>
+            </h6>
+          {% elsif position_title != '' %}
+            <h6 class="title font-weight-bold ml-1 ml-md-4">{{ position_title }}</h6>
+          {% endif %}
+
+          {% capture company_name_raw %}
+            {% if entry.name %}{{ entry.name }}{% elsif entry.company %}{{ entry.company }}{% elsif entry.organization %}{{ entry.organization }}{% endif %}
+          {% endcapture %}
+          {% assign company_name = company_name_raw | strip %}
+          {% if company_name != '' %}
+            <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem">{{ company_name }}</h6>
+          {% endif %}
+
+          {% if entry.summary %}
+            <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem; font-style: italic">
+              {{ entry.summary | markdownify | remove: '<p>' | remove: '</p>' }}
+            </h6>
+          {% endif %}
+
+          {% if entry.highlights %}
+            <ul class="items">
+              {% for item in entry.highlights %}
+                <li>
+                  <span class="item">{{ item | markdownify | remove: '<p>' | remove: '</p>' }}</span>
+                </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+      </div>
+    </li>
+  {% endfor %}
+</ul>

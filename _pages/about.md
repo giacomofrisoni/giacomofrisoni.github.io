@@ -2,44 +2,41 @@
 layout: about
 title: about
 permalink: /
-subtitle: PhD Student @ <a href='https://www.unibo.it/sitoweb/giacomo.frisoni/en/'>University of Bologna</a> | Natural Language Understanding, Neuro-Symbolic AI
+subtitle: >
+  Postdoctoral Researcher in Natural Language Processing @ <a href='https://www.unibo.it/sitoweb/giacomo.frisoni/en'>University of Bologna</a>
 
 profile:
   align: right
-  image: giacomo_frisoni.png
+  image: prof_pic.jpg
   image_circular: false # crops the image to make it circular
-  address: >
-    <p>giacomo.frisoni[at]unibo.it</p>
-    <p>"Become Who You Are"<p>
+  more_info: >
+    <p>Department of Computer Science and Engineering</p>
+    <p>University of Bologna</p>
+    <p>Via dell'Università 50, 47522 Cesena (FC), Italy</p>
+    <p><a href="mailto:giacomo.frisoni@unibo.it">giacomo.frisoni@unibo.it</a></p>
 
-news: false  # includes a list of news items
-selected_papers: true # includes a list of papers marked as "selected={true}"
-social: true  # includes social icons at the bottom of the page
+selected_papers: false # includes a list of papers marked as "selected={true}"
+social: true # includes social icons at the bottom of the page
+
+announcements:
+  enabled: true # includes a list of news items
+  scrollable: true # adds a vertical scroll bar if there are more than 3 news items
+  limit: 5 # leave blank to include all the news in the `_news` folder
+
+latest_posts:
+  enabled: false
+  scrollable: true
+  limit: 3
 ---
 
-I'm a third-year PhD Student at the Department of Computer Science and Engineering (DISI), University of Bologna, Italy. 
+I am a postdoctoral researcher in Computer Science and Engineering at the [University of Bologna](https://www.unibo.it/sitoweb/giacomo.frisoni/en), Italy. My research interests lie in **Natural Language Processing**, **Large Language Models**, and **Graph Neural Networks**, particularly for clinical and biomedical applications.
 
-🎯 I investigate how to <b>combine language models and structured knowledge</b> for <b>Natural Language Processing and Understanding (NLP/NLU)</b>. My research interests comprise semantic parsing, graph representation and similarity learning, knowledge injection, retrieval-enhanced language modeling, and joint text-graph reasoning. I presented several original papers to international journals and peer-reviewed conferences—including top-tier venues like EMNLP, AAAI, and COLING, winning two Best Paper Awards. My contributions cover many real-world tasks, from open-domain question answering to document summarization.
+I have co-authored over 30 papers in prestigious conferences and journals—including ACL, NAACL, EMNLP, and AAAI—receiving best paper and reviewer awards. I actively contribute to the research community in various scientific roles, including editorial board member, program committee member, area chair, and workshop organizer for many international venues. I have collaborated with esteemed academic and industrial institutions, including the [University of Glasgow](https://www.gla.ac.uk/schools/computing/), [IBM Research Europe](https://research.ibm.com/labs/dublin), [EURECOM](https://www.eurecom.fr/en), and the [University of Edinburgh](https://informatics.ed.ac.uk/).
 
-🧬 In September 2016, I discovered to suffer from a rare disease called "Esophageal Achalasia." Since then, I have dedicated myself to merging my skills and patient-centered experience to build innovative data analysis solutions for research advancement in Health domains.
+I am a member of [**UniboNLP**](https://disi-unibo-nlp.github.io/), the NLP research group of the Department of Computer Science and Engineering coordinated by Prof. Gianluca Moro. You can find our open models and datasets on [Hugging Face](https://huggingface.co/disi-unibo-nlp). I currently work on the [DARE](https://www.fondazionedare.it/) project, advancing representational and generative AI for health.
 
-In 2020, I was among the worldwide selected program attendees at the Cornell, Maryland, Max Planck Pre-doctoral Research School. In the same year, I received the con.Scienze Award for writing one of the ten best Italian scientific research works during the master's thesis. In September—December 2022, I was a visiting postgraduate researcher at the University of Glasgow, School of Computing Science, Scotland. Since 2022, I have been an HuggingFace and Streamlit Student Ambassador.
-
-I belong to a research group led by <b>Prof. Gianluca Moro</b>. Together with my colleagues, we design and develop state-of-the-art NLP solutions pursuing a vision focused on concretizing the much-desired birth of a new generation of artificial understanding, learning, explicit knowledge representation, and reasoning.
+I serve as an adjunct professor and tutor for multiple AI courses at the University of Bologna, and I have co-supervised over 55 Bachelor's and Master's theses on NLP and deep learning.
 
 <blockquote>
-    While technology is important, it’s what we do with it that truly matters.
-	—Muhammad Yunus, Nobel Peace Prize Winner
-</blockquote>
-<blockquote>
-    Language is at the heart of human intelligence. It therefore is and must be at the heart of our efforts to build artificial intelligence. No sophisticated AI can exist without mastery of language.
-	—Rob Towes, Language Is The Next Great Frontier In AI, Forbes
-</blockquote>
-<blockquote>
-    The real voyage of discovery consists not in seeking new landscapes, but in having new eyes.
-	—Marcel Proust
-</blockquote>
-<blockquote>
-    The joy of discovery is certainly the liveliest that the mind of man can ever feel.
-	—Claude Bernard
+  "Language is the dress of thought" — Samuel Johnson
 </blockquote>

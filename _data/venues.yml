@@ -1,6 +1,78 @@
-"AJP":
-  url: https://aapt.scitation.org/journal/ajp
-  color: "#00369f"
+"AAAI":
+  url: https://aaai.org/conference/aaai/
+  color: "#1f4e8c"
 
-"PhysRev":
-  url: https://journals.aps.org/
+"ACL":
+  url: https://www.aclweb.org/
+  color: "#b31b1b"
+
+"NAACL":
+  url: https://naacl.org/
+  color: "#b31b1b"
+
+"EMNLP":
+  url: https://www.emnlp.org/
+  color: "#8c1515"
+
+"COLING":
+  url: https://www.coling.org/
+  color: "#5d4037"
+
+"ECAI":
+  url: https://www.eurai.org/activities/ECAI_conferences
+  color: "#00695c"
+
+"DATA":
+  url: https://data.scitevents.org/
+  color: "#546e7a"
+
+"KDIR":
+  url: https://kdir.scitevents.org/
+  color: "#546e7a"
+
+"KEIR":
+  url: https://keirworkshop.github.io/
+  color: "#6a1b9a"
+
+"SEBD":
+  color: "#6a1b9a"
+
+"arXiv":
+  url: https://arxiv.org/
+  color: "#b31b1b"
+
+"AIL":
+  url: https://link.springer.com/journal/10506
+  color: "#2e7d32"
+
+"ESWA":
+  url: https://www.sciencedirect.com/journal/expert-systems-with-applications
+  color: "#e65100"
+
+"NN":
+  url: https://www.sciencedirect.com/journal/neural-networks
+  color: "#e65100"
+
+"NEUCOM":
+  url: https://www.sciencedirect.com/journal/neurocomputing
+  color: "#e65100"
+
+"SNCS":
+  url: https://link.springer.com/journal/42979
+  color: "#2e7d32"
+
+"Sensors":
+  url: https://www.mdpi.com/journal/sensors
+  color: "#00796b"
+
+"Electronics":
+  url: https://www.mdpi.com/journal/electronics
+  color: "#00796b"
+
+"IEEE Access":
+  url: https://ieeeaccess.ieee.org/
+  color: "#00629b"
+
+"Springer":
+  url: https://link.springer.com/
+  color: "#2e7d32"
