@@ -13,6 +13,7 @@ Built with [Jekyll](https://jekyllrb.com/) and the [al-folio](https://github.com
 - `_projects/` — funded research projects
 - `_news/` — announcements shown on the home page
 - `_data/socials.yml` — contact and profile links
+- `_pages/terminal.html` — terminal mode (`/terminal/`), reachable from the home page; adapted from [Pinperepette's terminal](https://github.com/Pinperepette/pinperepette.github.io)
 
 ## Local development
 

@@ -40,3 +40,43 @@ I serve as an adjunct professor and tutor for multiple AI courses at the Univers
 <blockquote>
   "Language is the dress of thought" — Samuel Johnson
 </blockquote>
+
+<!-- Terminal mode entry point (see _pages/terminal.html) -->
+<style>
+  .terminal-entry {
+    display: block;
+    margin: 1.75rem 0 0.5rem;
+    padding: 0.7rem 1rem;
+    border-radius: 6px;
+    background: #0b0a08;
+    color: #f2b63d;
+    font-family: "JetBrains Mono", ui-monospace, "Cascadia Mono", "Fira Code", "Courier New", monospace;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    text-decoration: none !important;
+    border: 1px solid #3a2e12;
+    white-space: nowrap;
+    overflow-x: auto;
+  }
+  .terminal-entry:hover, .terminal-entry:focus { border-color: #f2b63d; color: #ffd579; }
+  .terminal-entry .te-prompt { color: #ffd579; font-weight: 700; }
+  .terminal-entry .te-hint { color: #9a7529; }
+  .terminal-entry .te-cursor { display: inline-block; width: 0.55em; height: 1em; background: #f2b63d; vertical-align: -0.15em; margin-left: 0.15em; animation: te-blink 1.1s steps(1) infinite; }
+  @keyframes te-blink { 50% { opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) { .terminal-entry .te-cursor { animation: none; } }
+</style>
+<div markdown="0">
+<a class="terminal-entry" href="{{ '/terminal/' | relative_url }}" title="Open the terminal mode of this site">
+  <span class="te-prompt">[frisoni@unibonlp-login ~]$</span> ./terminal<span class="te-cursor"></span>
+  <span class="te-hint"># prefer a shell? press ` to open the terminal mode</span>
+</a>
+</div>
+<script>
+  // Press the backtick key anywhere on the home page (outside form fields) to open the terminal mode.
+  document.addEventListener("keydown", function (e) {
+    if (e.key !== "`" || e.ctrlKey || e.metaKey || e.altKey) return;
+    var t = e.target && e.target.tagName;
+    if (t === "INPUT" || t === "TEXTAREA" || (e.target && e.target.isContentEditable)) return;
+    window.location.href = "{{ '/terminal/' | relative_url }}";
+  });
+</script>
