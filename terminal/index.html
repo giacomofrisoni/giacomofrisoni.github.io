@@ -1,0 +1,1717 @@
+<!DOCTYPE html> <html lang="en"> <head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <meta name="referrer" content="strict-origin-when-cross-origin"> <title>Giacomo Frisoni — terminal</title> <meta name="description" content="Interactive terminal view of Giacomo Frisoni's academic profile: publications, projects, teaching, service. Type help to start."> <meta property="og:type" content="website"> <meta property="og:title" content="Giacomo Frisoni — terminal"> <meta property="og:description" content="[frisoni@unibonlp-login ~]$ cat about.txt"> <meta property="og:url" content="https://giacomofrisoni.github.io/terminal/"> <meta name="theme-color" content="#0b0a08"> <link rel="icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;rect%20width=%22100%22%20height=%22100%22%20rx=%2212%22%20fill=%22%230b0a08%22/&gt;&lt;text%20y=%22.72em%22%20x=%2214%22%20font-size=%2260%22%20font-family=%22monospace%22%20font-weight=%22bold%22%20fill=%22%23f2b63d%22&gt;&gt;_&lt;/text&gt;&lt;/svg&gt;"> <link rel="preconnect" href="https://fonts.googleapis.com"> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"> <style>
+    /* ============================================
+       Amber-phosphor terminal theme
+       (layout adapted from Pinperepette's styles.css)
+       ============================================ */
+    :root {
+      --bg:      #0b0a08;
+      --bg-alt:  #14110c;
+      --fg:      #f2b63d;   /* amber phosphor */
+      --dim:     #9a7529;
+      --faint:   #4d3d18;
+      --bright:  #ffd579;
+      --accent:  #ffe4a3;
+      --error:   #ff6b5c;
+      --warn:    #ffb347;
+      --info:    #8ecae6;
+      --ok:      #9be36d;
+      --sel:     rgba(242, 182, 61, 0.28);
+      --mono:    'JetBrains Mono', ui-monospace, 'Cascadia Mono', 'Fira Code', 'Courier New', monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { font-size: 14px; }
+
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: var(--mono);
+      line-height: 1.4;
+      min-height: 100vh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection { background: var(--sel); }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--faint); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--dim); }
+
+    .skip-link {
+      position: absolute; left: -9999px; top: 0; z-index: 9999;
+      padding: 0.5em 1em; background: var(--fg); color: var(--bg);
+      font-weight: 700; text-decoration: none;
+    }
+    .skip-link:focus { left: 0; }
+
+    /* ---- Terminal ---- */
+    .terminal { padding: 16px 16px 40vh; min-height: 100vh; position: relative; }
+
+    /* soft CRT vignette + scanlines */
+    .terminal::before {
+      content: '';
+      position: fixed; inset: 0;
+      background:
+        radial-gradient(ellipse at center, rgba(242,182,61,0.03) 0%, transparent 70%),
+        repeating-linear-gradient(0deg, rgba(0,0,0,0.10) 0px, rgba(0,0,0,0.10) 1px, transparent 1px, transparent 3px);
+      pointer-events: none;
+      z-index: 9999;
+    }
+    @media (prefers-reduced-motion: reduce) { .terminal::before { background: none; } }
+
+    .terminal-output { white-space: pre-wrap; word-wrap: break-word; }
+    .terminal-line { min-height: 1.4em; color: var(--fg); }
+
+    .terminal-ascii {
+      color: var(--bright);
+      font-size: 0.6rem;
+      line-height: 1.1;
+      text-shadow: 0 0 10px rgba(255, 213, 121, 0.35);
+    }
+
+    .text-bright  { color: var(--bright); font-weight: 700; }
+    .text-dim     { color: var(--dim); }
+    .text-faint   { color: var(--faint); }
+    .text-accent  { color: var(--accent); font-weight: 700; }
+    .text-error   { color: var(--error); }
+    .text-warning { color: var(--warn); }
+    .text-info    { color: var(--info); }
+    .text-ok      { color: var(--ok); }
+
+    .terminal-link { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+    .terminal-link:hover, .terminal-link:focus { color: #fff3d1; }
+
+    /* ---- Input line ---- */
+    .input-line { display: flex; align-items: center; margin-top: 2px; }
+    .prompt, .prompt-echo { color: var(--bright); font-weight: 700; white-space: nowrap; flex-shrink: 0; }
+    .cmd-input {
+      background: transparent; border: none; outline: none;
+      color: var(--fg); font-family: var(--mono); font-size: 1rem;
+      flex: 1; caret-color: var(--fg); padding: 0; margin: 0;
+    }
+
+    /* ---- Top bar: way back to the graphical site ---- */
+    .topbar {
+      position: fixed; top: 0; right: 0; z-index: 10000;
+      display: flex; gap: 0.6em; padding: 6px 10px;
+      font-size: 0.85rem; color: var(--dim);
+      background: linear-gradient(to left, rgba(11,10,8,0.95), rgba(11,10,8,0));
+    }
+    .topbar a { color: var(--dim); text-decoration: none; }
+    .topbar a:hover, .topbar a:focus { color: var(--bright); text-decoration: underline; }
+
+    /* ---- bat (syntax-highlighted view) ---- */
+    .bat-container { margin: 0.3em 0; border: 1px solid var(--faint); border-radius: 4px; overflow: hidden; }
+    .bat-header {
+      background: var(--bg-alt); padding: 0.3em 1em; color: var(--dim);
+      border-bottom: 1px solid var(--faint); display: flex; justify-content: space-between;
+    }
+    .bat-header-file { color: var(--accent); font-weight: 700; }
+    .bat-line { display: flex; line-height: 1.5; }
+    .bat-line:hover { background: rgba(242,182,61,0.04); }
+    .bat-gutter {
+      color: var(--faint); text-align: right; padding: 0 0.8em 0 0.5em;
+      user-select: none; min-width: 3em; border-right: 1px solid var(--faint); flex-shrink: 0;
+    }
+    .bat-content { padding: 0 0.8em; flex: 1; white-space: pre-wrap; word-wrap: break-word; }
+
+    /* ---- Editors ---- */
+    .editor-block { margin: 0.4em 0; line-height: 1.4; white-space: normal; display: block; }
+    .editor-block .vim-content, .editor-block .nano-body { white-space: pre-wrap; }
+    .nano-titlebar, .nano-shortcuts, .vim-statusline {
+      background: #d9c08a; color: var(--bg); padding: 0 0.6em; font-weight: 700;
+      display: flex; justify-content: space-between;
+    }
+    .nano-titlebar .nano-file { flex: 1; text-align: center; }
+    .nano-titlebar .nano-mod { font-style: italic; }
+    .nano-body { padding: 0.2em 0.4em; color: #d9c08a; }
+    .nano-shortcuts { display: block; padding: 0 0.4em; }
+    .nano-shortcuts .key { background: var(--bg); color: #d9c08a; padding: 0 0.2em; margin-right: 0.2em; }
+    .vim-line { display: flex; line-height: 1.4; }
+    .vim-gutter { color: var(--dim); text-align: right; padding-right: 0.8em; user-select: none; min-width: 3em; flex-shrink: 0; }
+    .vim-content { flex: 1; white-space: pre-wrap; color: #d9c08a; }
+    .vim-tilde { color: var(--info); }
+    .vim-modeline { color: #d9c08a; padding: 0 0.4em; font-weight: 700; }
+    .vim-modeline .vim-mode-tag { background: var(--bright); color: var(--bg); padding: 0 0.4em; margin-right: 0.6em; }
+
+    /* ---- Syntax colours ---- */
+    .syn-keyword { color: var(--error); font-weight: 700; }
+    .syn-string  { color: var(--ok); }
+    .syn-comment { color: var(--faint); font-style: italic; }
+    .syn-number  { color: var(--warn); }
+    .syn-heading { color: var(--bright); font-weight: 700; }
+    .syn-bold    { color: var(--bright); font-weight: 700; }
+    .syn-link    { color: var(--info); text-decoration: underline; }
+    .syn-var     { color: var(--info); }
+    .syn-flag    { color: var(--warn); }
+
+    /* ---- Chess board ---- */
+    .chess-board { line-height: 1.15; font-size: 1.05rem; }
+    .chess-board .sq-w { color: var(--bright); }
+    .chess-board .sq-b { color: var(--dim); }
+
+    /* ---- Responsive ---- */
+    @media (max-width: 768px) {
+      html { font-size: 12px; }
+      .terminal { padding: 8px 8px 40vh; }
+      .terminal-ascii { font-size: 0.42rem; }
+    }
+    @media (max-width: 480px) {
+      html { font-size: 11px; }
+      .terminal-ascii { font-size: 0.32rem; }
+    }
+  </style> </head> <body> <a href="#main-content" class="skip-link">Skip to main content</a> <nav class="topbar" aria-label="Terminal navigation"> <a href="/" title="Back to the graphical site">[ gui ]</a> <a href="#" id="topbar-help" title="Show the command list">[ help ]</a> </nav> <main id="main-content" class="terminal" lang="en"> <div id="output" class="terminal-output" aria-live="polite" aria-atomic="false" role="log"></div> <div id="input-line" class="input-line" style="display:none;"> <span class="prompt">[frisoni@unibonlp-login ~]$ </span> <input type="text" id="cmd-input" class="cmd-input" aria-label="Terminal command input" autofocus autocomplete="off" autocapitalize="off" spellcheck="false" maxlength="500"> </div> </main> <script>
+    'use strict';
+    /* ============================================================
+       Adapted from Pinperepette's terminal.html
+       https://github.com/Pinperepette/pinperepette.github.io
+       ============================================================ */
+    const output = document.getElementById('output');
+    const inputLine = document.getElementById('input-line');
+    const cmdInput = document.getElementById('cmd-input');
+    const USER = 'frisoni';
+    const HOST = 'unibonlp-login';
+    const HOME = '/home/' + USER;
+    const SITE = 'https://giacomofrisoni.github.io';
+    const CV_PDF = '/assets/pdf/cv_giacomo_frisoni_080626.pdf';
+    let commandHistory = [];
+    let historyIndex = -1;
+    let cwd = HOME;
+
+    /* ============================================
+       LINKS (external profiles reachable via ssh)
+       ============================================ */
+    const hosts = {
+      unibo:       { url: 'https://www.unibo.it/sitoweb/giacomo.frisoni/en', desc: 'Institutional page, University of Bologna' },
+      scholar:     { url: 'https://scholar.google.com/citations?user=BEZlFiAAAAAJ', desc: 'Google Scholar' },
+      dblp:        { url: 'https://dblp.org/pid/271/1231.html', desc: 'DBLP' },
+      orcid:       { url: 'https://orcid.org/0000-0003-1104-2014', desc: 'ORCID 0000-0003-1104-2014' },
+      github:      { url: 'https://github.com/giacomofrisoni', desc: 'GitHub' },
+      linkedin:    { url: 'https://www.linkedin.com/in/giacomo-frisoni-3b97a8129', desc: 'LinkedIn' },
+      unibonlp:    { url: 'https://disi-unibo-nlp.github.io/', desc: 'UniboNLP research group' },
+      huggingface: { url: 'https://huggingface.co/disi-unibo-nlp', desc: 'UniboNLP models and datasets on Hugging Face' },
+      dare:        { url: 'https://www.fondazionedare.it/', desc: 'DARE project (Fondazione DARE)' },
+      amslaurea:   { url: 'https://amslaurea.unibo.it/', desc: 'AMS Laurea, thesis repository of the University of Bologna' },
+    };
+
+    /* ============================================
+       PUBLICATIONS (from the CV, June 2026)
+       ============================================ */
+    const papers = [
+      // conferences
+      { n: 1,  type: 'conf', year: 2026, title: 'Graph-of-Mark: Promote Spatial Reasoning in Multimodal Language Models with Graph-Based Visual Prompting', authors: 'G. Frisoni, L. Molfetta, M. Buzzoni, G. Moro', venue: 'AAAI-26', rank: 'A*' },
+      { n: 2,  type: 'conf', year: 2025, title: 'PORTS: Preference-Optimized Retrievers for Tool Selection with Large Language Models', authors: 'L. Molfetta, G. Frisoni, N. Monaldini, G. Moro', venue: 'EMNLP-25', rank: 'A*' },
+      { n: 3,  type: 'conf', year: 2025, title: 'ZeroNER: Fueling Zero-Shot Named Entity Recognition via Entity Type Descriptions', authors: 'A. Cocchieri, M. M. Galindo, G. Frisoni, G. Moro, C. Sartori, G. Tagliavini', venue: 'Findings of ACL-25', rank: 'A*' },
+      { n: 4,  type: 'conf', year: 2025, title: 'OpenBioNER: Lightweight Open-Domain Biomedical Named Entity Recognition Through Entity Type Description', authors: 'A. Cocchieri, G. Frisoni, M. M. Galindo, G. Moro, G. Tagliavini, F. Candoli', venue: 'Findings of NAACL-25', rank: 'A*' },
+      { n: 5,  type: 'conf', year: 2025, title: 'FEAST: Retrieval-Augmented Multi-Hierarchical Food Classification for the FoodEx2 System', authors: 'L. Molfetta, A. Cocchieri, S. Fantazzini, G. Frisoni, L. Ragazzi, G. Moro', venue: 'ECAI-25', rank: 'A' },
+      { n: 6,  type: 'conf', year: 2025, title: 'Magic Mirror on the Wall, Which Is the Fairest Prompt of All? A Survey on Automatic Prompt Learning', authors: 'S. Fantazzini, G. Frisoni, G. Moro, L. Ragazzi, M. Ciccioni, C. Sartori', venue: 'ECAI-25', rank: 'A' },
+      { n: 7,  type: 'conf', year: 2025, title: 'Predicting Protein Functions with Ensemble Deep Learning and Protein Language Models', authors: 'G. Frisoni, M. Fuschi, G. Moro', venue: 'ECAI-25 (demo)', rank: 'A' },
+      { n: 8,  type: 'conf', year: 2024, title: 'Unknown Claims: Generation of Fact-Checking Training Examples from Unstructured and Structured Data', authors: 'J. F. Bussotti, L. Ragazzi, G. Frisoni, G. Moro, P. Papotti', venue: 'EMNLP-24', rank: 'A*' },
+      { n: 9,  type: 'conf', year: 2024, title: 'To Generate or to Retrieve? On the Effectiveness of Artificial Contexts for Medical Open-Domain Question Answering', authors: 'G. Frisoni, A. Cocchieri, A. Presepi, G. Moro, Z. Meng', venue: 'ACL-24', rank: 'A*' },
+      { n: 10, type: 'conf', year: 2023, title: 'Cogito Ergo Summ: Abstractive Summarization of Biomedical Papers via Semantic Parsing Graphs and Consistency Rewards', authors: 'G. Frisoni, P. Italiani, S. Salvatori, G. Moro', venue: 'AAAI-23', rank: 'A*' },
+      { n: 11, type: 'conf', year: 2022, title: 'BioReader: a Retrieval-Enhanced Text-to-Text Transformer for Biomedical Literature', authors: 'G. Frisoni, M. Mizutani, G. Moro, L. Valgimigli', venue: 'EMNLP-22', rank: 'A*' },
+      { n: 12, type: 'conf', year: 2022, title: 'Enhancing Biomedical Scientific Reviews Summarization with Graph-Based Factual Evidence Extracted from Papers', authors: 'G. Frisoni, P. Italiani, F. Boschi, G. Moro', venue: 'DATA-22 (Best Student Paper Award)', rank: 'C' },
+      { n: 13, type: 'conf', year: 2022, title: 'Text-to-Text Extraction and Verbalization of Biomedical Event Graphs', authors: 'G. Frisoni, G. Moro, L. Balzani', venue: 'COLING-22', rank: 'B' },
+      { n: 14, type: 'conf', year: 2020, title: 'Unsupervised Descriptive Text Mining for Knowledge Graph Learning', authors: 'G. Frisoni, G. Moro, A. Carbonaro', venue: 'KDIR-20', rank: 'C' },
+      { n: 15, type: 'conf', year: 2020, title: 'Learning Interpretable and Statistically Significant Knowledge from Unlabeled Corpora of Social Text Messages: A Novel Methodology of Descriptive Text Mining', authors: 'G. Frisoni, G. Moro, A. Carbonaro', venue: 'DATA-20 (Best Paper Award)', rank: 'C' },
+      // journals
+      { n: 16, type: 'journal', year: 2026, title: 'COMMA: A Multi-Task and Multi-Lingual Dataset of Constitutional Verdicts', authors: 'L. Ragazzi, G. Frisoni, G. Moro, P. Italiani, L. Molfetta, V. Folin', venue: 'Artificial Intelligence and Law', rank: 'Q1' },
+      { n: 17, type: 'journal', year: 2026, title: 'OpenBioNER-v2: A Suite of Lightweight Models for Zero-Shot Medical Named Entity Recognition via Type Descriptions', authors: 'A. Cocchieri, G. Frisoni, F. Zangrillo, L. Ragazzi, M. M. Galindo, G. Tagliavini, G. Moro', venue: 'Expert Systems with Applications', rank: 'Q1' },
+      { n: 18, type: 'journal', year: 2025, title: 'LAWSUIT: A Large Expert-Written Summarization Dataset of Italian Constitutional Court Verdicts', authors: 'L. Ragazzi, G. Moro, S. Guidi, G. Frisoni', venue: 'Artificial Intelligence and Law', rank: 'Q1' },
+      { n: 19, type: 'journal', year: 2025, title: 'Abstractive Summarization through the Prism of Decoding Strategies', authors: 'G. Frisoni, L. Ragazzi, D. Cohen, G. Moro, A. Carbonaro, C. Sartori', venue: 'Neural Networks', rank: 'Q1' },
+      { n: 20, type: 'journal', year: 2024, title: 'Evidence, my Dear Watson: Abstractive Dialogue Summarization on Learnable Relevant Utterances', authors: 'P. Italiani, G. Frisoni, G. Moro, A. Carbonaro, C. Sartori', venue: 'Neurocomputing', rank: 'Q1' },
+      { n: 21, type: 'journal', year: 2023, title: 'Graph-Enhanced Biomedical Abstractive Summarization via Factual Evidence Extraction', authors: 'G. Frisoni, P. Italiani, G. Moro, I. Bartolini, M. A. Boschetti, A. Carbonaro', venue: 'SN Computer Science', rank: 'Q2' },
+      { n: 22, type: 'journal', year: 2023, title: 'Efficient Text-Image Semantic Search: A Multi-Modal Vision-Language Approach for Fashion Retrieval', authors: 'G. Moro, S. Salvatori, G. Frisoni', venue: 'Neurocomputing', rank: 'Q1' },
+      { n: 23, type: 'journal', year: 2023, title: 'Efficient Memory-Enhanced Transformer for Long-Document Summarization in Low-Resource Regimes', authors: 'G. Moro, L. Ragazzi, L. Valgimigli, G. Frisoni, C. Sartori, G. Marfia', venue: 'Sensors', rank: 'Q1' },
+      { n: 24, type: 'journal', year: 2022, title: 'Comprehensive Analysis of Knowledge Graph Embedding Techniques Benchmarked on Link Prediction', authors: 'I. Ferrari, G. Frisoni, P. Italiani, G. Moro, C. Sartori', venue: 'Electronics', rank: 'Q2' },
+      { n: 25, type: 'journal', year: 2022, title: 'Human Being Detection from UWB NLOS Signals: Accuracy and Generality of Advanced Machine Learning Models', authors: 'G. Moro, F. Di Luca, D. Dardari, G. Frisoni', venue: 'Sensors', rank: 'Q1' },
+      { n: 26, type: 'journal', year: 2021, title: 'Unsupervised Event Graph Representation and Similarity Learning on Biomedical Literature', authors: 'G. Frisoni, G. Moro, G. Carlassare, A. Carbonaro', venue: 'Sensors', rank: 'Q1' },
+      { n: 27, type: 'journal', year: 2021, title: 'A Survey on Event Extraction for Natural Language Understanding: Riding the Biomedical Literature Wave', authors: 'G. Frisoni, G. Moro, A. Carbonaro', venue: 'IEEE Access', rank: 'Q1' },
+      // books, chapters, workshops, preprints
+      { n: 28, type: 'book', year: 2025, title: 'Knowledge-Enhanced Information Retrieval', authors: 'Z. Wang, J. Fang, G. Frisoni, Z. Dai, Z. Meng, G. Moro, E. Yilmaz', venue: 'Book', rank: '' },
+      { n: 29, type: 'chapter', year: 2021, title: 'Phenomena Explanation from Text: Unsupervised Learning of Interpretable and Statistically Significant Knowledge', authors: 'G. Frisoni, G. Moro', venue: 'Springer CCIS vol. 1446 (revised Best Paper)', rank: '' },
+      { n: 30, type: 'workshop', year: 2025, title: 'Enhancing Representation Learning for Content-Based Information Retrieval: A Knowledge-Enhanced Geometric Approach', authors: 'M. Goyo, G. Frisoni, G. Moro, C. Sartori', venue: 'KEIR (Springer)', rank: '' },
+      { n: 31, type: 'workshop', year: 2024, title: 'Refining Triplet Sampling for Improved Self-Supervised Representation Learning', authors: 'M. Goyo, G. Frisoni, G. Moro, C. Sartori', venue: 'SEBD-24', rank: '' },
+      { n: 32, type: 'preprint', year: 2026, title: 'Mixture of Masters: Sparse Chess Language Models with Player Routing', authors: 'G. Frisoni, L. Molfetta, D. Freddi, G. Moro', venue: 'arXiv', rank: '' },
+    ];
+
+    /* ============================================
+       FILESYSTEM
+       ============================================ */
+    const filesystem = {
+      [HOME]: {
+        type: 'dir',
+        children: ['about.txt', 'train.sh', 'publications/', 'projects/', 'teaching/', 'service/', 'collaborations.txt', 'cv.pdf', '.bashrc', '.ssh/', '.slurm/']
+      },
+      [HOME + '/about.txt']: {
+        type: 'file',
+        content: [
+          '# About',
+          '',
+          'Name:       Giacomo Frisoni, Ph.D.',
+          'Role:       Postdoctoral Researcher in Natural Language Processing',
+          'Where:      Department of Computer Science and Engineering (DISI)',
+          '            University of Bologna, Cesena campus, Italy',
+          'Group:      UniboNLP (coordinated by Gianluca Moro)',
+          'Contact:    giacomo.frisoni@unibo.it',
+          'Web:        ' + SITE,
+          '',
+          'Giacomo Frisoni, Ph.D., is a postdoctoral researcher in Computer Science',
+          'and Engineering at the University of Bologna. His research interests lie',
+          'in Natural Language Processing, Large Language Models, and Graph Neural',
+          'Networks, particularly for medical applications. He has co-authored over',
+          '25 papers in prestigious conferences and journals, including ACL, NAACL,',
+          'EMNLP, and AAAI, receiving best paper and reviewer awards. He has',
+          'actively contributed to the research community by serving in various',
+          'scientific roles, including editorial board member, program committee',
+          'member, area chair, and workshop organizer for many international',
+          'venues. He has collaborated with esteemed academic and industrial',
+          'institutions, including the University of Glasgow, IBM Research,',
+          'EURECOM, and the University of Edinburgh. He served as an adjunct',
+          'professor and tutor for multiple AI courses at the University of',
+          'Bologna, co-supervising over 55 theses.',
+          '',
+          '"Language is the dress of thought." - Samuel Johnson',
+        ]
+      },
+      [HOME + '/train.sh']: {
+        type: 'file',
+        content: [
+          '#!/bin/bash',
+          '#SBATCH --job-name=nlp-course-training',
+          '#SBATCH --partition=cpu',
+          '#SBATCH --time=1-semester',
+          '',
+          '# Fine-tune a cohort of Master\'s students on NLP.',
+          '# Run it with: ./train.sh   (or: sbatch train.sh)',
+          'module load coffee',
+          'source .venv/bin/activate',
+          'python train.py --model students --data lectures+labs --epochs 3 \\',
+          '                --loss confusion --metric can-explain-attention \\',
+          '                --early-stopping "will this be on the exam?"',
+        ]
+      },
+      [HOME + '/publications']: {
+        type: 'dir',
+        children: ['README.md', 'conferences.txt', 'journals.txt', 'books-chapters.txt', 'workshops.txt', 'preprints.txt', 'metrics.txt']
+      },
+      [HOME + '/publications/README.md']: {
+        type: 'file',
+        content: [
+          '# Publications',
+          '',
+          '32 entries: 15 conference papers, 12 journal articles, 1 book,',
+          '1 book chapter, 2 workshop papers, 1 preprint (as of June 2026).',
+          '',
+          'Use the `papers` command for a quick listing:',
+          '  papers            -> all publications',
+          '  papers 2025       -> filter by year',
+          '  papers emnlp      -> filter by venue or keyword',
+          '  papers --first    -> first-authored papers only',
+          '',
+          'Full list with links: ' + SITE + '/publications/',
+        ]
+      },
+      [HOME + '/publications/metrics.txt']: {
+        type: 'file',
+        content: [
+          '# Bibliometrics (June 2026)',
+          '',
+          'Google Scholar:  613 citations, h-index 15',
+          'Scopus:          408 citations, h-index 12',
+          '',
+          'Journal articles:    12',
+          'Conference articles: 15',
+        ]
+      },
+      [HOME + '/projects']: { type: 'dir', children: ['dare.md', 'ai-sln.md', 'ai-pact.md'] },
+      [HOME + '/projects/dare.md']: {
+        type: 'file',
+        content: [
+          '# DARE -- Digital Lifelong Prevention',
+          '',
+          'Duration:  Dec 2022 - Dec 2026',
+          'Funder:    Italian Ministry of University and Research, National Plan',
+          '           for Complementary Investments to the PNRR',
+          '           [cod. PNC0000002, CUP B53C22006450001]',
+          'Budget:    EUR 124 million',
+          'Partners:  Universities, research centers, IRCCS hospitals, local',
+          '           health authorities, environmental agencies, companies',
+          'Goal:      Maximize the potential of data to enhance health promotion',
+          '           and enable lifelong prevention.',
+          '',
+          'My role:   Postdoctoral Research Fellow (Feb 2024 - Jan 2027).',
+          '           Representational and generative AI, including language',
+          '           models and graph neural networks, for clinical and',
+          '           biomedical applications.',
+          '',
+          'https://www.fondazionedare.it/',
+        ]
+      },
+      [HOME + '/projects/ai-sln.md']: {
+        type: 'file',
+        content: [
+          '# AI-SLN -- AI Analysis for Risk Assessment of Empty Lymph Nodes',
+          '#           in Endometrial Cancer Surgery',
+          '',
+          'Duration:  Jul 2024 - Jun 2026',
+          'Funder:    Fondazione Cassa di Risparmio in Bologna (CARISBO)',
+          'Call:      "Ricerca Scientifica e Alta Tecnologia 2024"',
+          'Budget:    EUR 20,000',
+          'Partners:  DISI, University of Bologna; University Hospital of',
+          '           Bologna IRCCS, Sant\'Orsola Polyclinic',
+          'Goal:      An AI tool estimating the probability that retroperitoneal',
+          '           tissue marked with indocyanine green, collected with the',
+          '           standardized sentinel lymph node biopsy procedure, turns',
+          '           out to be an empty lymph node packet at final microscopy.',
+          '',
+          'My role:   Co-Principal Investigator (scientific responsibility).',
+          '',
+          'https://disi-unibo-nlp.github.io/ai-sln/',
+        ]
+      },
+      [HOME + '/projects/ai-pact.md']: {
+        type: 'file',
+        content: [
+          '# AI-PACT -- Artificial Intelligence for Public Administrations Connected',
+          '',
+          'Duration:  Mar 2023 - May 2026',
+          'Funder:    Ministry of Enterprises and Made in Italy',
+          'Call:      NextGenerationEU (Seal of Excellence award)',
+          'Budget:    ~EUR 5.8 million',
+          'Partners:  SDA Bocconi, Maggioli Group, University of Bologna,',
+          '           University of Milano-Bicocca, IFEL, Tempo S.r.l.',
+          'Goal:      Support public administrations, SMEs and startups in',
+          '           piloting AI-based solutions.',
+          '',
+          'My role:   Training services and test-before-invest services on',
+          '           retrieval-augmented chatbots in low-resource regimes.',
+        ]
+      },
+      [HOME + '/teaching']: { type: 'dir', children: ['courses.md', 'theses.txt'] },
+      [HOME + '/teaching/courses.md']: {
+        type: 'file',
+        content: [
+          '# Teaching',
+          '',
+          '## Text Mining and Natural Language Processing',
+          'Master in Data Science and Business Analytics, Bologna Business School',
+          '- Adjunct Professor, co-instructor with Gianluca Moro',
+          '- Responsible for the laboratory module (12 hours in-person),',
+          '  design and evaluation of coding assignments',
+          '- Academic years: 2023-24 (4.3/5), 2024-25 (4.5/5), 2025-26',
+          '',
+          '## Big Data Analytics and Text Mining (Module 1)',
+          'M.S. in Artificial Intelligence, University of Bologna',
+          '- Tutor: teaching material, seminars, project assignment and',
+          '  assessment (20 hours); course coordinator Gianluca Moro',
+          '- Topics: LLMs, prompt optimization, compression and quantization,',
+          '  PEFT, multimodal LMs, RAG, GNNs, agents',
+          '- Academic years: 2023-24, 2024-25, 2025-26',
+          '',
+          '## International thesis evaluation commissions',
+          '- Universidad Tecnica Federico Santa Maria, Valparaiso, Chile (2026):',
+          '  external member, Magister en Ciencias de la Ingenieria Informatica',
+          '',
+          SITE + '/teaching/',
+        ]
+      },
+      [HOME + '/teaching/theses.txt']: {
+        type: 'file',
+        content: [
+          '# Thesis co-supervision',
+          '',
+          'Co-supervisor of 57 Bachelor\'s and Master\'s theses on NLP and deep',
+          'learning at the University of Bologna (full list on AMS Laurea).',
+          '',
+          'Selected:',
+          '- Buzzoni, M. (2026). Graph-of-Mark: Graph-Based Visual Prompting for',
+          '  Enhanced Spatial Reasoning in Multimodal Language Models. M.S., AI.',
+          '- Raponi, M. (2025). Multimodal Generative Information Retrieval of',
+          '  Chest X-Rays Grounded on ICD-9 Taxonomy. B.S., CSE.',
+          '- Zecca, A. (2024). End-to-End Extraction and Injection of Graphs: A',
+          '  Self-Supervised Neuro-Symbolic Method for Explainable LLMs. M.S., AI.',
+          '- Monaldini, N. (2024). Large Action Models: End-to-End Retrieval-',
+          '  Enhanced Learning for Generating Function Calls from Instruction',
+          '  Manuals. B.S., CSE.',
+          '- Cocchieri, A. (2023). Leveraging LLM Distillation to Enhance Zero-Shot',
+          '  Named Entity Recognition and Classification. M.S., AI.',
+          '- Presepi, A. (2023). To Generate or to Retrieve: On the Effectiveness',
+          '  of Artificial Contexts for Biomedical QA. B.S., CSE.',
+        ]
+      },
+      [HOME + '/service']: { type: 'dir', children: ['awards.txt', 'area-chair.txt', 'reviewing.txt', 'workshops.txt', 'editorial.txt'] },
+      [HOME + '/service/awards.txt']: {
+        type: 'file',
+        content: [
+          '# Awards',
+          '',
+          '2026  Gold Reviewer Award, ICML-26',
+          '      (4,439 of 17,749 reviewers, top 25%)',
+          '2025  Outstanding Reviewer Award, EMNLP-25',
+          '      (51 of 13,048 reviewers, top ~0.4%)',
+          '2022  Best Student Paper Award, DATA-22 (INSTICC)',
+          '2020  Best Paper Award, DATA-20 (INSTICC)',
+          '2020  Best Master\'s Thesis Award, Con.Scienze Prize (national, top 10)',
+        ]
+      },
+      [HOME + '/service/area-chair.txt']: {
+        type: 'file',
+        content: [
+          '# Area Chair / Action Editor, ACL Rolling Review',
+          '',
+          '21 meta-reviews so far:',
+          '  ACL ARR May 2026      7 meta-reviews',
+          '  ACL ARR January 2026  7 meta-reviews',
+          '  ACL ARR October 2025  7 meta-reviews',
+          '',
+          '# Session Chair',
+          '  AAAI-26, Singapore        Natural Language Processing 15',
+          '  ECAI-25, Bologna          Natural Language Processing 7',
+          '  DATA-22, Lisbon (virtual) Neural Network Applications',
+        ]
+      },
+      [HOME + '/service/reviewing.txt']: {
+        type: 'file',
+        content: [
+          '# Reviewing',
+          '',
+          '79 conference reviews (2023-2026), including:',
+          '  NeurIPS-26 (4), ICML-26 (6), ICLR-26 (5), AAAI-26 (6), AAMAS-26 (1),',
+          '  EACL-26 SRW (2), ECAI-25 (3), ICLR-25 (3), ECIR-24 (5),',
+          '  NeurIPS-24 D&B (2), NeurIPS-23 (1), AAAI-24 (1), AAAI-23 (1),',
+          '  ISWC-23 (1), ESWC-23 (1), ACL ARR (10 cycles, 40 reviews),',
+          '  KEIR-24/25 (3), ANSyA-25 (2)',
+          '',
+          '7 journal reviews (2022-2024):',
+          '  Engineering Applications of AI (2), Semantic Web Journal, Expert',
+          '  Systems, MDPI Information, Symmetry, Applied Sciences',
+        ]
+      },
+      [HOME + '/service/workshops.txt']: {
+        type: 'file',
+        content: [
+          '# Workshop organization',
+          '',
+          'KEIR-25: 2nd Workshop on Knowledge-Enhanced Information Retrieval',
+          '  Co-Chair. ECIR-25, Lucca, Italy, Apr 10, 2025.',
+          '  10 submissions, 4 accepted. Proceedings in Springer LNCS vol. 16086.',
+          '',
+          'KEIR-24: 1st Workshop on Knowledge-Enhanced Information Retrieval',
+          '  Publicity Chair. ECIR-24, Glasgow, Scotland, Mar 28, 2024.',
+          '  7 submissions, 4 accepted.',
+        ]
+      },
+      [HOME + '/service/editorial.txt']: {
+        type: 'file',
+        content: [
+          '# Editorial boards',
+          '',
+          'Guest Editor, Sensors (Q1), Special Issue',
+          '  "Role and Challenges of Healthcare Cognitive Computing:',
+          '   From Extraction to Data Analysis Techniques"',
+          '  Jun 2025 - Jan 2026',
+        ]
+      },
+      [HOME + '/collaborations.txt']: {
+        type: 'file',
+        content: [
+          '# Collaborations',
+          '',
+          'UniboNLP, University of Bologna (2020-)',
+          '  Main group. Medical NLP and GNN expert, SLURM cluster co-management,',
+          '  student co-supervision, funding proposals, teaching.',
+          'TerrierTeam, University of Glasgow (2022-)',
+          '  ~4-month research visit with Zaiqiao Meng; MedGENIE paper; KEIR.',
+          'IBM Research Europe, Dublin (2023-)',
+          '  Zero-shot information extraction and multimodal fact checking;',
+          '  ZeroNER and OpenBioNER papers.',
+          'EURECOM, Data Science Department (2023-)',
+          '  Multimodal fact checking with Paolo Papotti; Unknown Claims paper.',
+          'Universidad Tecnica Federico Santa Maria, Chile (2024-)',
+          '  Representation learning with Ricardo Nanculef.',
+          'University of Edinburgh, School of Informatics (2026-)',
+          '  LLM reasoning, knowledge distillation, board games with',
+          '  Pasquale Minervini.',
+        ]
+      },
+      [HOME + '/cv.pdf']: {
+        type: 'file',
+        content: [
+          '%PDF-1.7',
+          '% This is a binary file. Try: open cv.pdf',
+        ]
+      },
+      [HOME + '/.bashrc']: {
+        type: 'file',
+        content: [
+          '# ~/.bashrc',
+          '',
+          'export EDITOR=vim',
+          'export HF_HOME=/scratch/frisoni/hf',
+          'export PYTHONDONTWRITEBYTECODE=1',
+          '',
+          'alias ll="ls -lah"',
+          'alias gpus="nvidia-smi"',
+          'alias jobs="squeue -u $USER"',
+          'alias papers="papers --first"',
+          'alias coffee="echo \'Moka on.\'"',
+          '',
+          '# Do not run experiments on the login node.',
+          '# (Yes, this line is here for a reason.)',
+        ]
+      },
+      [HOME + '/.ssh']: { type: 'dir', children: ['config', 'known_hosts'] },
+      [HOME + '/.ssh/config']: {
+        type: 'file',
+        content: [
+          '# ssh <host> opens the corresponding profile',
+          '',
+          ...Object.keys(hosts).map(h => 'Host ' + h.padEnd(14) + '# ' + hosts[h].desc),
+        ]
+      },
+      [HOME + '/.ssh/known_hosts']: {
+        type: 'file',
+        content: Object.keys(hosts).map(h => h + ' ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAI' + btoa(h).replace(/=/g, '').slice(0, 20) + '...'),
+      },
+      [HOME + '/.slurm']: { type: 'dir', children: ['README'] },
+      [HOME + '/.slurm/README']: {
+        type: 'file',
+        content: [
+          'This is a login node. Useful commands:',
+          '  sinfo        partitions and nodes',
+          '  squeue       what is running (spoiler: research)',
+          '  nvidia-smi   the GPUs everyone is waiting for',
+          '  sbatch <s>   submit a script (try: sbatch train.sh)',
+          '  module avail modules that can be loaded',
+        ]
+      },
+    };
+
+    // Publication files are generated from the `papers` array so that the two never drift apart.
+    function paperFile(title, types) {
+      const list = papers.filter(p => types.includes(p.type));
+      const lines = ['# ' + title + ' (' + list.length + ')', ''];
+      for (const p of list) {
+        lines.push('[' + p.n + '] ' + p.title);
+        lines.push('    ' + p.authors + ' (' + p.year + '). ' + p.venue + (p.rank ? '. ' + p.rank : '') + '.');
+        lines.push('');
+      }
+      return { type: 'file', content: lines };
+    }
+    filesystem[HOME + '/publications/conferences.txt'] = paperFile('Conference papers', ['conf']);
+    filesystem[HOME + '/publications/journals.txt'] = paperFile('Journal articles', ['journal']);
+    filesystem[HOME + '/publications/books-chapters.txt'] = paperFile('Books and book chapters', ['book', 'chapter']);
+    filesystem[HOME + '/publications/workshops.txt'] = paperFile('Workshop and symposium papers', ['workshop']);
+    filesystem[HOME + '/publications/preprints.txt'] = paperFile('Preprints', ['preprint']);
+
+    /* ============================================
+       HELPERS
+       ============================================ */
+    const DAYS = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const two = n => n.toString().padStart(2, '0');
+    const clock = d => two(d.getHours()) + ':' + two(d.getMinutes()) + ':' + two(d.getSeconds());
+
+    function getLastLogin() {
+      const d = new Date(); d.setDate(d.getDate() - 1);
+      return DAYS[d.getDay()] + ' ' + MONTHS[d.getMonth()] + ' ' + d.getDate().toString().padStart(2, ' ') + ' ' + clock(d) + ' from 137.204.0.1';
+    }
+
+    function addLine(text, cls) {
+      const el = document.createElement('div');
+      el.className = 'terminal-line' + (cls ? ' ' + cls : '');
+      el.textContent = text;
+      output.appendChild(el);
+    }
+
+    function addHTML(html, cls) {
+      const el = document.createElement('div');
+      el.className = 'terminal-line' + (cls ? ' ' + cls : '');
+      el.innerHTML = html;
+      output.appendChild(el);
+    }
+
+    function addAsciiLine(text) {
+      const el = document.createElement('div');
+      el.className = 'terminal-line terminal-ascii';
+      el.textContent = text;
+      output.appendChild(el);
+    }
+
+    function scrollToBottom() { window.scrollTo(0, document.body.scrollHeight); }
+    function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+    function escapeHtml(t) { const d = document.createElement('div'); d.textContent = t; return d.innerHTML; }
+    function escapeRegex(str) { return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+    function link(url, label) {
+      const safe = escapeHtml(url);
+      return '<a href="' + safe + '" class="terminal-link" target="_blank" rel="noopener noreferrer">' + escapeHtml(label || url) + '</a>';
+    }
+
+    function resolvePath(path) {
+      if (!path) return cwd;
+      if (path === '~') return HOME;
+      if (path.startsWith('~/')) return HOME + '/' + path.slice(2);
+      if (path.startsWith('/')) return path;
+      const base = cwd.endsWith('/') ? cwd : cwd + '/';
+      const parts = (base + path).split('/').filter(p => p !== '' && p !== '.');
+      const stack = [];
+      for (const p of parts) { if (p === '..') stack.pop(); else stack.push(p); }
+      return '/' + stack.join('/');
+    }
+
+    function getNode(path) {
+      const clean = path.replace(/\/+$/, '') || '/';
+      return filesystem[clean] || null;
+    }
+
+    function getDisplayCwd() {
+      if (cwd === HOME) return '~';
+      if (cwd.startsWith(HOME + '/')) return '~/' + cwd.slice(HOME.length + 1);
+      return cwd;
+    }
+
+    function promptText() { return '[' + USER + '@' + HOST + ' ' + getDisplayCwd() + ']$ '; }
+    function updatePrompt() { document.querySelector('.prompt').textContent = promptText(); }
+    function echoPrompt(raw) { addHTML('<span class="prompt-echo">' + escapeHtml(promptText()) + '</span>' + escapeHtml(raw)); }
+
+    function linkify(text) {
+      return escapeHtml(text).replace(/(https?:\/\/[^\s<>"]+)/g, m => '<a href="' + m + '" class="terminal-link" target="_blank" rel="noopener noreferrer">' + m + '</a>');
+    }
+
+    /* ============================================
+       BOOT SEQUENCE
+       ============================================ */
+    const bootLines = [
+      { t: '', d: 150 },
+      { t: 'UniboNLP Node Firmware v2.0.2020', c: 'text-bright' },
+      { t: 'Copyright (C) 2020-2026 UniboNLP, DISI, University of Bologna', c: 'text-dim' },
+      { t: '' },
+      { t: 'Detecting hardware...' },
+      { t: '  cpu0-cpu63: online' },
+      { t: '  mem: 512 GiB' },
+      { t: '  nvidia0: ok    nvidia1: ok    nvidia2: ok    nvidia3: ok' },
+      { t: '  nvme0n1: 7.68 TB   /scratch' },
+      { t: '  eth0: 10 Gbps  link up' },
+      { t: '' },
+      { t: 'INIT: booting unibonlp-login', c: 'text-bright' },
+      { t: '', d: 250 },
+      { t: 'mounting /home            [ ok ]' },
+      { t: 'mounting /scratch          [ ok ]' },
+      { t: 'mounting /datasets (ro)    [ ok ]' },
+      { t: 'starting munge             [ ok ]' },
+      { t: 'starting slurmd            [ ok ]' },
+      { t: 'contacting slurmctld       [ ok ]' },
+      { t: 'loading module environment [ ok ]' },
+      { t: 'starting sshd              [ ok ]' },
+      { t: 'starting cron              [ ok ]' },
+      { t: 'warming up tokenizers      [ ok ]' },
+      { t: 'checking citations         [ 613 ]', c: 'text-dim' },
+      { t: '', d: 300 },
+      { t: 'login: ' + USER, c: 'text-bright' },
+      { t: 'Password: ********', c: 'text-bright' },
+      { t: '', d: 400 },
+    ];
+
+    const asciiArt = [
+      '███████╗██████╗ ██╗███████╗ ██████╗ ███╗   ██╗██╗',
+      '██╔════╝██╔══██╗██║██╔════╝██╔═══██╗████╗  ██║██║',
+      '█████╗  ██████╔╝██║███████╗██║   ██║██╔██╗ ██║██║',
+      '██╔══╝  ██╔══██╗██║╚════██║██║   ██║██║╚██╗██║██║',
+      '██║     ██║  ██║██║███████║╚██████╔╝██║ ╚████║██║',
+      '╚═╝     ╚═╝  ╚═╝╚═╝╚══════╝ ╚═════╝ ╚═╝  ╚═══╝╚═╝',
+    ];
+
+    function printMotd() {
+      addLine('');
+      for (const a of asciiArt) addAsciiLine(a);
+      addLine('');
+      addLine(' Giacomo Frisoni, Ph.D. -- Postdoctoral Researcher in NLP', 'text-bright');
+      addLine(' Department of Computer Science and Engineering, University of Bologna', 'text-dim');
+      addLine(' Last login: ' + getLastLogin(), 'text-dim');
+      addLine('');
+      addLine(' Language models and graph neural networks. Mostly on medical data.', 'text-bright');
+      addLine('');
+      addHTML(' Type <span class="text-accent">help</span> for the command list, <span class="text-accent">cat about.txt</span> to start,');
+      addHTML(' or <span class="text-accent">exit</span> to go back to the graphical site.');
+      addLine('');
+    }
+
+    async function runBootSequence() {
+      const skip = new URLSearchParams(window.location.search).has('fast') ||
+                   window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!skip) { for (const l of bootLines) { addLine(l.t, l.c); await sleep(l.d || 30); } }
+      printMotd();
+      inputLine.style.display = 'flex';
+      cmdInput.focus();
+      scrollToBottom();
+    }
+
+    /* ============================================
+       COMMAND ROUTER
+       ============================================ */
+    function runCommand(raw) {
+      if (raw.length > 500) { addLine('sh: command line too long (max 500 chars)'); scrollToBottom(); return; }
+      const trimmed = raw.trim();
+      const parts = trimmed.split(/\s+/);
+      const cmd = parts[0];
+      const args = parts.slice(1);
+
+      echoPrompt(raw);
+      if (!trimmed) { scrollToBottom(); return; }
+
+      const handlers = {
+        help: cmdHelp, ls: cmdLs, ll: a => cmdLs(['-lah', ...a]), cd: cmdCd, pwd: cmdPwd, cat: cmdCat, bat: cmdBat,
+        head: cmdHead, tail: cmdTail, stat: cmdStat, find: cmdFind, tree: cmdTree,
+        grep: cmdGrep, wc: cmdWc, echo: cmdEcho, which: cmdWhich, file: cmdFile,
+        open: cmdOpen, 'xdg-open': cmdOpen,
+        papers: cmdPapers, projects: cmdProjects, teaching: cmdTeaching, awards: cmdAwards,
+        squeue: cmdSqueue, sinfo: cmdSinfo, sbatch: cmdSbatch, scancel: cmdScancel, 'nvidia-smi': cmdNvidiaSmi, module: cmdModule,
+        df: cmdDf, du: cmdDu, ps: cmdPs, top: cmdTop, htop: cmdTop, free: cmdFree, uptime: cmdUptime,
+        uname: cmdUname, env: cmdEnv, lscpu: cmdLscpu, crontab: cmdCrontab,
+        ping: cmdPing, ssh: cmdSsh, mail: cmdMail, lynx: cmdLynx, w3m: cmdLynx, links: cmdLynx,
+        nano: cmdNano, vim: cmdVim, vi: cmdVim, nvim: cmdVim,
+        sh: cmdSh, bash: cmdSh, man: cmdMan, whoami: cmdWhoami, id: cmdId, hostname: cmdHostname,
+        date: cmdDate, cal: cmdCal, clear: cmdClear, history: cmdHistory,
+        fortune: cmdFortune, chess: cmdChess, credits: cmdCredits, exit: cmdExit, logout: cmdExit, gui: cmdExit,
+      };
+
+      if (trimmed.match(/^(sudo\s+)?rm\s+.*-rf|^(sudo\s+)?rm\s+-rf/)) { cmdRmRf(); }
+      else if (handlers[cmd]) { handlers[cmd](args); }
+      else if (cmd.startsWith('./')) { cmdSh([cmd.slice(2), ...args]); }
+      else if (['mkdir','rmdir','rm','cp','mv','ln','chmod','chown','touch'].includes(cmd)) { addLine(cmd + ': permission denied (read-only home, this is a portfolio)'); }
+      else if (cmd === 'sudo') { addLine(USER + ' is not in the sudoers file. This incident will be reported to the cluster admin (who is also ' + USER + ').'); }
+      else if (cmd === 'su') { addLine('su: Authentication failure'); }
+      else if (['wget','curl'].includes(cmd)) { addLine(cmd + ': network requests disabled on the login node. Try ssh <host> or lynx.'); }
+      else if (cmd === 'emacs') { addLine('emacs: not installed. vim is right there.'); }
+      else if (['python','python3'].includes(cmd)) {
+        if (args.length && args[0].endsWith('.py')) { cmdSh(args); }
+        else { addLine('Python 3.12.3 (unibonlp-login)'); addLine('>>> Not a real interpreter. Try ./train.sh for a (fake) training run instead.'); }
+      }
+      else if (cmd === 'pip') { addLine('ERROR: pip is disabled on the login node. Use a virtual environment on a compute node.'); }
+      else if (['apt','yum','pacman','brew','conda'].includes(cmd)) { addLine(cmd + ': permission denied'); }
+      else if (['reboot','shutdown','poweroff','halt'].includes(cmd)) { addLine(cmd + ': permission denied (and there are jobs running)'); }
+      else if (cmd === 'git') { addLine('git: not a git repository (or any of the parent directories). The site itself is at ' + hosts.github.url + '/giacomofrisoni.github.io'); }
+      else if (trimmed.includes(':(){ :|:& };:') || trimmed.includes(':(){ :|:&};:')) { addLine(''); addLine('Fork bomb detected. cgroups say no.', 'text-accent'); addLine(''); }
+      else { addLine('sh: command not found: ' + cmd); addLine("Type 'help' for the list of commands.", 'text-dim'); }
+      scrollToBottom();
+    }
+
+    /* ============================================
+       COMMAND IMPLEMENTATIONS
+       ============================================ */
+    function cmdHelp() {
+      addLine('');
+      addLine(' Available commands:', 'text-bright');
+      const pad = 27;
+      const sections = [
+        ['PROFILE', [
+          ['cat about.txt',        'Who I am'],
+          ['papers [year|kw|--first]', 'List publications'],
+          ['projects',             'Funded research projects'],
+          ['teaching',             'Courses and thesis supervision'],
+          ['awards',               'Awards'],
+          ['man frisoni',          'The manual page'],
+          ['open cv.pdf',          'Open the full CV (PDF)'],
+        ]],
+        ['FILES & NAVIGATION', [
+          ['ls [-lah] [dir]',      'List directory contents'],
+          ['cd <dir>',             'Change directory'],
+          ['tree',                 'Show the whole tree'],
+          ['cat <file>',           'Display file contents'],
+          ['bat <file>',           'Syntax-highlighted view'],
+          ['head/tail <file>',     'First/last lines'],
+          ['grep <pat> <file>',    'Search in a file'],
+          ['find [text]',          'Search file names'],
+          ['nano / vim <file>',    'Open in an editor'],
+        ]],
+        ['CLUSTER', [
+          ['squeue',               'Running jobs'],
+          ['sinfo',                'Partitions and nodes'],
+          ['nvidia-smi',           'GPU status'],
+          ['sbatch train.sh',      'Submit a (fake) training job'],
+          ['module avail',         'Loadable modules'],
+        ]],
+        ['NETWORK', [
+          ['ssh <host>',           'Open a profile (scholar, dblp, orcid, github, ...)'],
+          ['ssh',                  'List known hosts'],
+          ['lynx <page>',          'Browse the site: news, publications, cv, teaching'],
+          ['mail',                 'Contact info'],
+          ['ping <host>',          'Ping host'],
+        ]],
+        ['SYSTEM', [
+          ['ps / top',             'Processes'],
+          ['df / du / free',       'Disk / directory / memory usage'],
+          ['uname -a / lscpu',     'System info'],
+          ['env / crontab -l',     'Environment / scheduled jobs'],
+          ['whoami / id / uptime', 'User info / uptime'],
+          ['date / cal',           'Date / calendar'],
+          ['history / clear',      'Command history / clear screen'],
+        ]],
+        ['OTHER', [
+          ['chess',                'A board, since MoM lives here'],
+          ['fortune',              'A quote'],
+          ['credits',              'Who to thank for this terminal'],
+          ['exit',                 'Back to the graphical site'],
+        ]],
+      ];
+      for (const [title, cmds] of sections) {
+        addLine('');
+        addHTML(' <span class="text-bright">-- ' + title + ' --</span>');
+        for (const [c, d] of cmds) addHTML('  <span class="text-accent">' + escapeHtml(c.padEnd(pad)) + '</span>' + escapeHtml(d));
+      }
+      addLine('');
+      addLine(" Tab completes commands and file names; Up/Down browse the history; Ctrl+L clears.", 'text-dim');
+      addLine('');
+    }
+
+    function cmdLs(args) {
+      const long = args.some(a => /^-[a-z]*l/.test(a));
+      const hidden = args.some(a => /^-[a-z]*a/.test(a));
+      let target = cwd;
+      for (const a of args) { if (!a.startsWith('-')) { target = resolvePath(a); break; } }
+      const dir = getNode(target);
+      if (!dir) { addLine("ls: cannot access '" + target + "': No such file or directory"); return; }
+      if (dir.type === 'file') { addLine(target.split('/').pop()); return; }
+      let items = [...dir.children].filter(i => hidden || !i.startsWith('.'));
+      if (hidden) items = ['./', '../', ...items];
+      if (long) {
+        addLine('total ' + items.length * 4);
+        for (const item of items) {
+          const isDir = item.endsWith('/');
+          const node = getNode(target.replace(/\/$/, '') + '/' + item.replace(/\/$/, ''));
+          const size = isDir ? 4096 : (node ? node.content.join('\n').length : 0);
+          addHTML((isDir ? 'drwxr-xr-x' : '-rw-r--r--') + '  1 ' + USER + ' unibonlp ' + size.toString().padStart(6) + ' Jun  8 09:41 ' +
+            (isDir ? '<span class="text-accent">' + escapeHtml(item) + '</span>' : escapeHtml(item)));
+        }
+      } else {
+        addHTML(items.map(item => item.endsWith('/') ? '<span class="text-accent">' + escapeHtml(item) + '</span>' : escapeHtml(item)).join('  '));
+      }
+    }
+
+    function cmdCd(args) {
+      if (!args.length || args[0] === '~') { cwd = HOME; updatePrompt(); return; }
+      const target = resolvePath(args[0]);
+      const dir = getNode(target);
+      if (dir && dir.type === 'dir') { cwd = target.replace(/\/$/, '') || '/'; updatePrompt(); }
+      else if (dir) addLine('cd: ' + args[0] + ': Not a directory');
+      else addLine('cd: ' + args[0] + ': No such file or directory');
+    }
+
+    function cmdPwd() { addLine(cwd); }
+
+    function readFile(name, args) {
+      if (!args.length) { addLine(name + ': missing operand'); return null; }
+      const f = getNode(resolvePath(args[args.length - 1]));
+      if (!f) { addLine(name + ': ' + args[args.length - 1] + ': No such file or directory'); return null; }
+      if (f.type === 'dir') { addLine(name + ': ' + args[args.length - 1] + ': Is a directory'); return null; }
+      return f;
+    }
+
+    function cmdCat(args) {
+      if (args.length && args[0] === 'cv.pdf') { cmdOpen(args); return; }
+      const f = readFile('cat', args); if (!f) return;
+      for (const line of f.content) addHTML(linkify(line));
+    }
+
+    function cmdHead(args) { const f = readFile('head', args); if (!f) return; f.content.slice(0, 10).forEach(l => addHTML(linkify(l))); }
+    function cmdTail(args) { const f = readFile('tail', args); if (!f) return; f.content.slice(-10).forEach(l => addHTML(linkify(l))); }
+
+    function cmdBat(args) {
+      const f = readFile('bat', args); if (!f) return;
+      const filename = args[args.length - 1];
+      const lang = detectLang(filename);
+      const container = document.createElement('div');
+      container.className = 'bat-container';
+      const header = document.createElement('div');
+      header.className = 'bat-header';
+      header.innerHTML = '<span class="bat-header-file">File: ' + escapeHtml(filename) + '</span><span class="bat-header-lang">' + escapeHtml(lang) + '</span>';
+      container.appendChild(header);
+      f.content.forEach((line, i) => {
+        const lineEl = document.createElement('div'); lineEl.className = 'bat-line';
+        const gutter = document.createElement('span'); gutter.className = 'bat-gutter'; gutter.textContent = (i + 1).toString();
+        const content = document.createElement('span'); content.className = 'bat-content'; content.innerHTML = highlightSyntax(line, lang);
+        lineEl.appendChild(gutter); lineEl.appendChild(content); container.appendChild(lineEl);
+      });
+      output.appendChild(container);
+    }
+
+    function detectLang(filename) {
+      if (filename.endsWith('.sh') || filename.endsWith('.bashrc')) return 'Bash';
+      if (filename.endsWith('.py')) return 'Python';
+      if (filename.endsWith('.md')) return 'Markdown';
+      if (filename.endsWith('.pdf')) return 'PDF';
+      return 'Plain Text';
+    }
+
+    function highlightSyntax(line, lang) {
+      let h = escapeHtml(line);
+      if (lang === 'Bash') {
+        h = h.replace(/^(\s*)(#.*)$/, '$1<span class="syn-comment">$2</span>');
+        h = h.replace(/(&quot;[^&]*&quot;)/g, '<span class="syn-string">$1</span>');
+        h = h.replace(/\b(export|alias|echo|if|then|else|fi|for|do|done|module|source|exit|python)\b/g, '<span class="syn-keyword">$1</span>');
+        h = h.replace(/(\$\w+|\$\{[^}]+\})/g, '<span class="syn-var">$1</span>');
+        h = h.replace(/(\s)(--?\w[\w-]*)/g, '$1<span class="syn-flag">$2</span>');
+      } else if (lang === 'Markdown') {
+        if (h.match(/^#{1,6}\s/)) h = '<span class="syn-heading">' + h + '</span>';
+        h = h.replace(/\*\*([^*]+)\*\*/g, '<span class="syn-bold">**$1**</span>');
+        h = h.replace(/`([^`]+)`/g, '<span class="syn-string">`$1`</span>');
+        h = h.replace(/(https?:\/\/[^\s<>"]+)/g, m => '<a href="' + m + '" class="terminal-link syn-link" target="_blank" rel="noopener noreferrer">' + m + '</a>');
+      } else if (lang === 'Plain Text') {
+        h = h.replace(/^(\s*)([A-Za-z][\w\s'-]*?)(:\s+)/, '$1<span class="syn-var">$2</span>$3');
+        h = h.replace(/(https?:\/\/[^\s<>"]+)/g, m => '<a href="' + m + '" class="terminal-link syn-link" target="_blank" rel="noopener noreferrer">' + m + '</a>');
+        h = h.replace(/\b(19|20)\d\d\b/g, '<span class="syn-number">$&</span>');
+      }
+      return h;
+    }
+
+    function cmdStat(args) {
+      if (!args.length) { addLine('stat: missing operand'); return; }
+      const f = getNode(resolvePath(args[0]));
+      if (!f) { addLine("stat: cannot stat '" + args[0] + "': No such file or directory"); return; }
+      addLine('  File: ' + args[0]);
+      addLine('  Size: ' + (f.type === 'dir' ? '4096' : f.content.join('\n').length) + '\tBlocks: 8\tIO Block: 4096\t' + (f.type === 'dir' ? 'directory' : 'regular file'));
+      addLine('Access: ' + (f.type === 'dir' ? '(0755/drwxr-xr-x)' : '(0644/-rw-r--r--)') + '  Uid: (2020/' + USER + ')  Gid: (2020/unibonlp)');
+      addLine('Modify: 2026-06-08 09:41:00.000000000 +0200');
+    }
+
+    function cmdFind(args) {
+      const pat = (args.find(a => !a.startsWith('-')) || '').toLowerCase();
+      for (const key of Object.keys(filesystem)) {
+        if (!key.startsWith(HOME)) continue;
+        const rel = '.' + key.slice(HOME.length);
+        if (!pat || rel.toLowerCase().includes(pat)) addLine(rel || '.');
+      }
+    }
+
+    function cmdTree() {
+      function walk(path, prefix) {
+        const dir = getNode(path);
+        const kids = dir.children;
+        kids.forEach((k, i) => {
+          const last = i === kids.length - 1;
+          const isDir = k.endsWith('/');
+          addHTML(escapeHtml(prefix + (last ? '└── ' : '├── ')) + (isDir ? '<span class="text-accent">' + escapeHtml(k) + '</span>' : escapeHtml(k)));
+          if (isDir) walk(path + '/' + k.replace(/\/$/, ''), prefix + (last ? '    ' : '│   '));
+        });
+      }
+      addHTML('<span class="text-accent">' + escapeHtml(getDisplayCwd()) + '</span>');
+      walk(cwd, '');
+    }
+
+    function cmdGrep(args) {
+      const flags = args.filter(a => a.startsWith('-'));
+      const rest = args.filter(a => !a.startsWith('-'));
+      if (rest.length < 2) { addLine('Usage: grep [-r] <pattern> <file|dir>'); return; }
+      const pat = rest[0].toLowerCase();
+      const target = resolvePath(rest[1]);
+      const node = getNode(target);
+      if (!node) { addLine('grep: ' + rest[1] + ': No such file or directory'); return; }
+      const files = node.type === 'file' ? [[rest[1], node]] :
+        Object.keys(filesystem).filter(k => k.startsWith(target + '/') && filesystem[k].type === 'file').map(k => ['.' + k.slice(HOME.length), filesystem[k]]);
+      if (node.type === 'dir' && !flags.includes('-r')) { addLine('grep: ' + rest[1] + ': Is a directory (use -r)'); return; }
+      const re = new RegExp('(' + escapeRegex(escapeHtml(pat)) + ')', 'gi');
+      for (const [name, f] of files) {
+        for (const line of f.content) {
+          if (line.toLowerCase().includes(pat)) {
+            addHTML((files.length > 1 ? '<span class="text-dim">' + escapeHtml(name) + ':</span>' : '') + escapeHtml(line).replace(re, '<span class="text-accent">$1</span>'));
+          }
+        }
+      }
+    }
+
+    function cmdWc(args) {
+      const f = readFile('wc', args); if (!f) return;
+      const words = f.content.join(' ').split(/\s+/).filter(w => w).length;
+      addLine(' ' + f.content.length + '  ' + words + ' ' + f.content.join('\n').length + ' ' + args[args.length - 1]);
+    }
+
+    function cmdEcho(args) { addLine(args.join(' ').replace(/^["']|["']$/g, '').replace(/\$USER/g, USER).replace(/\$HOME/g, HOME)); }
+
+    const bins = ['ls','cd','pwd','cat','bat','head','tail','grep','find','tree','echo','man','ps','top','htop','ping','ssh','nano','vim','vi','nvim','sh','bash','date','cal','clear','whoami','uname','env','df','du','free','uptime','wc','stat','file','which','history','id','hostname','mail','lynx','crontab','lscpu','squeue','sinfo','sbatch','scancel','nvidia-smi','module','papers','projects','teaching','awards','open','fortune','chess','credits','exit','help'];
+
+    function cmdWhich(args) {
+      if (!args.length) { addLine('which: missing argument'); return; }
+      addLine(bins.includes(args[0]) ? '/usr/bin/' + args[0] : args[0] + ' not found');
+    }
+
+    function cmdFile(args) {
+      if (!args.length) { addLine('file: missing argument'); return; }
+      const f = getNode(resolvePath(args[0]));
+      if (!f) { addLine(args[0] + ': cannot open (No such file or directory)'); return; }
+      if (f.type === 'dir') addLine(args[0] + ': directory');
+      else if (args[0].endsWith('.sh')) addLine(args[0] + ': Bourne-Again shell script, ASCII text executable');
+      else if (args[0].endsWith('.pdf')) addLine(args[0] + ': PDF document, version 1.7, 14 pages');
+      else if (args[0].endsWith('.md')) addLine(args[0] + ': UTF-8 Unicode text (Markdown)');
+      else addLine(args[0] + ': ASCII text');
+    }
+
+    function cmdOpen(args) {
+      if (!args.length) { addLine('open: missing file'); return; }
+      const name = args[0].replace(/^~\//, '').replace(/^\.\//, '');
+      if (name === 'cv.pdf') {
+        addHTML('Opening cv.pdf (14 pages, June 2026): ' + link(CV_PDF, SITE + CV_PDF));
+        window.open(CV_PDF, '_blank', 'noopener,noreferrer');
+      } else if (getNode(resolvePath(args[0]))) { addLine('open: ' + args[0] + ': no graphical viewer on the login node. Try cat.'); }
+      else addLine('open: ' + args[0] + ': No such file or directory');
+    }
+
+    /* ---- Profile commands ---- */
+    function paperLine(p) {
+      const tag = p.rank ? ' <span class="text-dim">[' + p.rank + ']</span>' : '';
+      addHTML(' <span class="text-dim">[' + String(p.n).padStart(2) + ']</span> <span class="text-bright">' + p.year + '</span>  <span class="text-accent">' + escapeHtml(p.venue) + '</span>' + tag);
+      addHTML('      ' + escapeHtml(p.title));
+      addHTML('      <span class="text-dim">' + escapeHtml(p.authors) + '</span>');
+    }
+
+    function cmdPapers(args) {
+      let list = papers;
+      let label = 'all';
+      for (const a of args) {
+        if (a === '--first' || a === '-f') { list = list.filter(p => p.authors.startsWith('G. Frisoni')); label = 'first-authored'; }
+        else if (/^\d{4}$/.test(a)) { list = list.filter(p => p.year === parseInt(a, 10)); label = a; }
+        else if (['conf','conference','conferences','journal','journals','book','chapter','workshop','preprint','preprints'].includes(a)) {
+          const t = a.replace(/s$/, '').replace('conference', 'conf'); list = list.filter(p => p.type === t); label = a;
+        }
+        else { const k = a.toLowerCase(); list = list.filter(p => (p.title + ' ' + p.venue + ' ' + p.authors).toLowerCase().includes(k)); label = '"' + a + '"'; }
+      }
+      addLine('');
+      if (!list.length) { addLine(' No publications matching ' + label + '.', 'text-dim'); addLine(''); return; }
+      addLine(' ' + list.length + ' publication' + (list.length === 1 ? '' : 's') + ' (' + label + '), newest first:', 'text-bright');
+      addLine('');
+      list.forEach(paperLine);
+      addLine('');
+      addHTML(' <span class="text-dim">Rankings: ICORE 2026 for conferences, Scimago 2026 quartile for journals.</span>');
+      addHTML(' <span class="text-dim">Links and BibTeX: </span>' + link(SITE + '/publications/'));
+      addLine('');
+    }
+
+    function cmdProjects() {
+      addLine('');
+      addLine(' Funded research projects (competitive calls):', 'text-bright');
+      addLine('');
+      addHTML('  <span class="text-accent">DARE</span>     2022-2026  EUR 124M   MUR / PNC-PNRR      Postdoctoral Research Fellow');
+      addHTML('  <span class="text-accent">AI-SLN</span>   2024-2026  EUR 20K    CARISBO             Co-Principal Investigator');
+      addHTML('  <span class="text-accent">AI-PACT</span>  2023-2026  ~EUR 5.8M  MIMIT / NextGenEU   Training & test-before-invest');
+      addLine('');
+      addLine("  Details: cat projects/dare.md  |  cat projects/ai-sln.md  |  cat projects/ai-pact.md", 'text-dim');
+      addHTML('  <span class="text-dim">Web: </span>' + link(SITE + '/projects/'));
+      addLine('');
+    }
+
+    function cmdTeaching() { addLine(''); cmdCat(['~/teaching/courses.md']); addLine(''); addLine(' Theses: cat teaching/theses.txt', 'text-dim'); addLine(''); }
+    function cmdAwards() { addLine(''); cmdCat(['~/service/awards.txt']); addLine(''); }
+
+    /* ---- Cluster (SLURM) commands ---- */
+    const jobs = [
+      { id: 202412, name: 'dare-clinical-llm',   part: 'gpu',   st: 'R',  time: '2-14:03:11', nodes: 'gpu01' },
+      { id: 202501, name: 'ai-sln-lymph-nodes',   part: 'gpu',   st: 'R',  time: '1-02:47:09', nodes: 'gpu02' },
+      { id: 202603, name: 'mixture-of-masters',  part: 'gpu',   st: 'R',  time: '  11:19:54', nodes: 'gpu03' },
+      { id: 202604, name: 'keir-cikm-2026',      part: 'cpu',   st: 'R',  time: '   4:32:00', nodes: 'cpu01' },
+      { id: 202605, name: 'arr-meta-reviews',    part: 'cpu',   st: 'PD', time: '      0:00', nodes: '(Priority)' },
+      { id: 202606, name: 'nlp-course-2026-27',  part: 'cpu',   st: 'PD', time: '      0:00', nodes: '(Dependency)' },
+      { id: 202607, name: 'thesis-cosupervision',part: 'cpu',   st: 'R',  time: '999-00:00:00', nodes: 'cpu02' },
+    ];
+    let submittedJobs = [];
+
+    function cmdSqueue() {
+      addLine('             JOBID PARTITION     NAME                 USER ST       TIME  NODES NODELIST(REASON)');
+      for (const j of [...jobs, ...submittedJobs]) {
+        addHTML(j.id.toString().padStart(18) + ' ' + j.part.padEnd(9) + ' ' + escapeHtml(j.name.padEnd(20)) + ' ' + USER.padStart(4) + ' ' +
+          (j.st === 'R' ? '<span class="text-ok">R </span>' : '<span class="text-warning">PD</span>') + ' ' + j.time.padStart(10) + '      1 ' + escapeHtml(j.nodes));
+      }
+    }
+
+    function cmdSinfo() {
+      addLine('PARTITION AVAIL  TIMELIMIT  NODES  STATE NODELIST');
+      addLine('gpu*         up 7-00:00:00      3  alloc gpu[01-03]');
+      addLine('gpu*         up 7-00:00:00      1   idle gpu04');
+      addLine('cpu          up 3-00:00:00      2  alloc cpu[01-02]');
+      addLine('cpu          up 3-00:00:00      2   idle cpu[03-04]');
+      addLine('interactive  up    4:00:00      1   idle login01');
+    }
+
+    async function cmdSbatch(args) {
+      if (!args.length) { addLine('sbatch: error: No script specified'); return; }
+      const f = getNode(resolvePath(args[0]));
+      if (!f || f.type !== 'file') { addLine('sbatch: error: Unable to open file ' + args[0]); return; }
+      if (!args[0].endsWith('.sh')) { addLine('sbatch: error: This does not look like a script: ' + args[0]); return; }
+      const id = 202700 + submittedJobs.length + 1;
+      const name = (f.content.find(l => l.includes('--job-name=')) || '').split('=')[1] || args[0];
+      addLine('Submitted batch job ' + id);
+      submittedJobs.push({ id, name, part: 'gpu', st: 'PD', time: '      0:00', nodes: '(Resources)' });
+      await sleep(900);
+      const j = submittedJobs[submittedJobs.length - 1]; j.st = 'R'; j.time = '      0:01'; j.nodes = 'gpu04';
+      addLine('slurmstepd: job ' + id + ' started on gpu04 (1 GPU, 24:00:00). Check it with squeue.', 'text-dim');
+      scrollToBottom();
+    }
+
+    function cmdScancel(args) {
+      if (!args.length) { addLine('scancel: error: No job identification provided'); return; }
+      const id = parseInt(args[0], 10);
+      const i = submittedJobs.findIndex(j => j.id === id);
+      if (i >= 0) { submittedJobs.splice(i, 1); addLine('scancel: Terminating job ' + id); }
+      else if (jobs.some(j => j.id === id)) addLine('scancel: error: Kill job error on job id ' + id + ': Access/permission denied (that one is real work)');
+      else addLine('scancel: error: Invalid job id specified');
+    }
+
+    function cmdNvidiaSmi() {
+      const d = new Date();
+      addLine(DAYS[d.getDay()] + ' ' + MONTHS[d.getMonth()] + ' ' + d.getDate().toString().padStart(2, ' ') + ' ' + clock(d) + ' ' + d.getFullYear());
+      addLine('+-----------------------------------------------------------------------------------------+');
+      addLine('| NVIDIA-SMI 570.86.15              Driver Version: 570.86.15      CUDA Version: 12.8     |');
+      addLine('|-----------------------------------------+------------------------+----------------------+');
+      addLine('| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |');
+      addLine('| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |');
+      addLine('|=========================================+========================+======================|');
+      const gpus = [
+        ['0', '71C', '312W / 400W', '61234MiB / 81920MiB', '97%'],
+        ['1', '68C', '298W / 400W', '55110MiB / 81920MiB', '94%'],
+        ['2', '64C', '241W / 400W', '38921MiB / 81920MiB', '88%'],
+        ['3', '33C', ' 61W / 400W', '    0MiB / 81920MiB', ' 0%'],
+      ];
+      gpus.forEach(([i, t, p, m, u]) => {
+        addLine('|   ' + i + '  Tensor Core Unit          On   | 00000000:0' + i + ':00.0 Off |                    0 |');
+        addLine('| N/A   ' + t + '    P0            ' + p + ' | ' + m + ' |    ' + u + '      Default |');
+        addLine('+-----------------------------------------+------------------------+----------------------+');
+      });
+      addLine('');
+      addLine('| Processes:                                                                              |');
+      addLine('|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |');
+      addLine('|=========================================================================================|');
+      addLine('|    0   N/A  N/A    202412      C   python train.py --data clinical-notes         61234MiB |');
+      addLine('|    1   N/A  N/A    202501      C   python train.py --data lymph-node-images      55110MiB |');
+      addLine('|    2   N/A  N/A    202603      C   python train.py --model mixture-of-masters    38921MiB |');
+      addLine('+-----------------------------------------------------------------------------------------+');
+      addLine('gpu3 is idle. Yes, really. Grab it.', 'text-dim');
+    }
+
+    function cmdModule(args) {
+      const sub = args[0] || 'avail';
+      if (sub === 'avail' || sub === 'av') {
+        addLine('---------------------------- /opt/modules/modulefiles ----------------------------');
+        addLine('cuda/12.8   python/3.12   pytorch/2.7   transformers/4.53   vllm/0.9   dspy/2.6');
+        addLine('bm25/0.2    faiss/1.9     pyg/2.6       umls/2025AB         chess/1.11 latex/2026');
+      } else if (sub === 'load') { addLine(args.slice(1).length ? 'Loaded: ' + args.slice(1).join(', ') : 'module load: missing module name'); }
+      else if (sub === 'list') { addLine('Currently Loaded Modulefiles:'); addLine(' 1) cuda/12.8   2) python/3.12   3) pytorch/2.7   4) transformers/4.53'); }
+      else addLine('module: unknown subcommand ' + sub + ' (try avail, load, list)');
+    }
+
+    /* ---- System commands ---- */
+    function cmdDf() {
+      addLine('Filesystem        Size  Used Avail Use% Mounted on');
+      addLine('/dev/nvme0n1p2    440G  312G  106G  75% /');
+      addLine('nas:/home         120T   88T   32T  74% /home');
+      addLine('nas:/datasets     500T  483T   17T  97% /datasets');
+      addLine('/dev/nvme1n1      7.0T  6.1T  0.9T  88% /scratch');
+      addLine('tmpfs             252G   12M  252G   1% /dev/shm');
+    }
+
+    function cmdDu() {
+      addLine('4.0K\t./about.txt');
+      addLine('4.0K\t./train.sh');
+      addLine(' 32K\t./publications');
+      addLine(' 12K\t./projects');
+      addLine('8.0K\t./teaching');
+      addLine(' 20K\t./service');
+      addLine('4.0K\t./collaborations.txt');
+      addLine('1.2M\t./cv.pdf');
+      addLine('2.1T\t/scratch/frisoni/hf   (not counted, do not tell the admin)');
+      addLine('1.3M\t.');
+    }
+
+    function cmdPs() {
+      addLine('  PID TTY          TIME CMD');
+      addLine(' 2020 pts/0    00:00:00 bash');
+      addLine(' 2024 pts/0    00:03:12 postdoc');
+      addLine(' 2025 pts/0    00:01:48 area-chair --arr');
+      addLine(' 2026 pts/0    00:00:37 keir-cochair');
+      addLine(' 2027 pts/0    00:02:05 thesis-cosupervisor');
+      addLine(' 2028 pts/0    00:00:09 slurm-admin');
+      addLine(' 2029 pts/0    00:00:01 moka');
+      addLine(' 2030 pts/0    00:00:00 ps');
+    }
+
+    function cmdTop() {
+      addLine('top - ' + clock(new Date()) + ' up 2201 days, 1 user, load average: 3.14, 2.72, 1.62');
+      addLine('Tasks:   8 total,   3 running,   5 sleeping');
+      addLine('%Cpu(s): 42.0 us,  3.1 sy,  0.0 ni, 54.6 id,  0.3 wa');
+      addLine('MiB Mem : 524288.0 total, 190112.4 free, 301944.2 used, 32231.4 buff/cache');
+      addLine('');
+      addLine('  PID USER      PR  NI    VIRT    RES  %CPU %MEM     TIME+ COMMAND');
+      addLine(' 2024 frisoni   20   0   64.2g  31.4g  38.0  6.0  87:12.44 python train.py');
+      addLine(' 2025 frisoni   20   0    2.1g   1.1g   2.7  0.2   4:15.03 area-chair --arr');
+      addLine(' 2027 frisoni   20   0    1.4g   0.6g   1.1  0.1  12:03.55 thesis-cosupervisor');
+      addLine(' 2026 frisoni   20   0    0.9g   0.3g   0.4  0.1   0:52.10 keir-cochair');
+      addLine(' 2029 frisoni   20   0    0.1g   0.0g   0.0  0.0   0:00.31 moka');
+    }
+
+    function cmdFree() {
+      addLine('               total        used        free      shared  buff/cache   available');
+      addLine('Mem:       536870912   309190861   194675072     1048576    33005056   225083392');
+      addLine('Swap:              0           0           0');
+    }
+
+    function cmdUptime() {
+      const start = new Date(2020, 9, 1); // Ph.D. start, Oct 2020
+      const days = Math.floor((Date.now() - start.getTime()) / 86400000);
+      addLine(' ' + clock(new Date()) + ' up ' + days + ' days (since the Ph.D. started, Oct 2020), 1 user, load average: 3.14, 2.72, 1.62');
+    }
+
+    function cmdUname(args) {
+      if (args.includes('-a')) addLine('Linux ' + HOST + ' 6.8.0-unibonlp #2020 SMP PREEMPT_DYNAMIC x86_64 GNU/Linux');
+      else addLine('Linux');
+    }
+
+    function cmdEnv() {
+      [
+        'USER=' + USER, 'HOME=' + HOME, 'SHELL=/bin/bash', 'TERM=xterm-256color', 'HOSTNAME=' + HOST, 'LANG=en_US.UTF-8', 'EDITOR=vim',
+        'REAL_NAME=Giacomo Frisoni', 'ROLE=Postdoctoral Researcher in NLP', 'AFFILIATION=DISI, University of Bologna',
+        'GROUP=UniboNLP', 'PROJECT=DARE', 'PHD_YEAR=2024', 'PAPERS=32', 'CITATIONS_SCHOLAR=613', 'H_INDEX_SCHOLAR=15',
+        'THESES_COSUPERVISED=57', 'META_REVIEWS=21', 'REVIEWS=79', 'ORCID=0000-0003-1104-2014',
+        'RESEARCH=nlp,llm,gnn,biomedical,clinical,rag,chess', 'CUDA_VISIBLE_DEVICES=3', 'HF_HOME=/scratch/frisoni/hf',
+        'MOTTO=Language is the dress of thought',
+      ].forEach(l => addLine(l));
+    }
+
+    function cmdLscpu() {
+      addLine('Architecture:          x86_64');
+      addLine('CPU(s):                64');
+      addLine('Model name:            Postdoc Core (Cesena edition)');
+      addLine('Thread(s) per core:    2');
+      addLine('Core(s) per socket:    32');
+      addLine('CPU max MHz:           3800.000');
+      addLine('L3 cache:              256 MiB');
+      addLine('Flags:                 nlp llm gnn rag peft moe sse4_2 avx512 chess');
+    }
+
+    function cmdCrontab(args) {
+      if (!args.includes('-l')) { addLine('usage: crontab -l'); return; }
+      addLine('# m h dom mon dow   command');
+      addLine('0  9  *   *   1-5   /usr/bin/check-arr-queue      # ACL Rolling Review');
+      addLine('0  7  *   *   *     /usr/bin/squeue -u frisoni     # what died overnight?');
+      addLine('30 8  *   *   1     /usr/bin/thesis-meetings       # tesisti');
+      addLine('0  0  1   *   *     /usr/bin/update-cv --scholar --scopus');
+      addLine('0  18 *   *   5     /usr/bin/lichess --puzzles');
+    }
+
+    /* ---- Network commands ---- */
+    function cmdPing(args) {
+      if (!args.length) { addLine('ping: missing host operand'); return; }
+      const host = args[0];
+      const ip = host.includes('unibo') ? '137.204.24.8' : host.includes('github') ? '140.82.121.3' : host.includes('scholar') ? '142.250.180.78' : '93.184.216.34';
+      addLine('PING ' + host + ' (' + ip + '): 56 data bytes');
+      for (let i = 0; i < 4; i++) addLine('64 bytes from ' + ip + ': icmp_seq=' + i + ' ttl=56 time=' + (Math.random() * 20 + 4).toFixed(1) + ' ms');
+      addLine('--- ' + host + ' ping statistics ---');
+      addLine('4 packets transmitted, 4 received, 0% packet loss');
+      if (host.includes('scholar')) addHTML('scholar says: <span class="text-accent">613 citations</span>, <span class="text-accent">h-index 15</span>');
+    }
+
+    function cmdSsh(args) {
+      if (!args.length) {
+        addLine('usage: ssh <host>');
+        addLine('known hosts:');
+        for (const h of Object.keys(hosts)) addHTML('  <span class="text-accent">' + h.padEnd(13) + '</span>' + escapeHtml(hosts[h].desc));
+        return;
+      }
+      const key = args[0].replace(/^.*@/, '').split('.')[0].toLowerCase();
+      const h = hosts[key];
+      if (h) { addHTML('Connecting to ' + escapeHtml(key) + '... ' + link(h.url)); window.open(h.url, '_blank', 'noopener,noreferrer'); }
+      else addLine('ssh: connect to host ' + args[0] + ' port 22: Connection refused (try: ssh scholar)');
+    }
+
+    function cmdMail() {
+      addLine('');
+      addLine(' No new mail (the real inbox is another story).', 'text-dim');
+      addLine(' To contact me:', 'text-dim');
+      addLine('');
+      addHTML('  <span class="text-accent">Email</span>     ' + link('mailto:giacomo.frisoni@unibo.it', 'giacomo.frisoni@unibo.it'));
+      addHTML('  <span class="text-accent">Office</span>    Via dell\'Universita 50, 47522 Cesena (FC), Italy');
+      addHTML('  <span class="text-accent">LinkedIn</span>  ' + link(hosts.linkedin.url));
+      addHTML('  <span class="text-accent">GitHub</span>    ' + link(hosts.github.url));
+      addLine('');
+    }
+
+    const sitePages = {
+      home: '/', about: '/', news: '/', publications: '/publications/', papers: '/publications/',
+      projects: '/projects/', cv: '/cv/', teaching: '/teaching/', terminal: '/terminal/',
+    };
+    const news = [
+      ['2026-05-15', 'Received the Gold Reviewer Award at ICML-26 (top 25% of 17,749 reviewers).'],
+      ['2026-01-25', 'Presented Graph-of-Mark at AAAI-26 in Singapore (in-person, oral) and served as Session Chair for the NLP 15 session.'],
+      ['2025-11-05', 'Presented PORTS at EMNLP-25 in Suzhou, China (in-person, oral), and received the Outstanding Reviewer Award (top ~0.4% of 13,048 reviewers).'],
+    ];
+
+    function cmdLynx(args) {
+      const target = (args[0] || '').toLowerCase();
+      addLine('');
+      if (!target) {
+        addLine('  Lynx Version 2.9.2 (text-mode browser)', 'text-bright');
+        addLine('  Usage: lynx <page>    pages: ' + Object.keys(sitePages).join(', '), 'text-dim');
+        addLine('         lynx <url>     opens the URL in a new tab', 'text-dim');
+        addLine(''); return;
+      }
+      if (target === 'news') {
+        addLine('  ' + SITE + '/  --  news', 'text-bright');
+        addLine('');
+        for (const [d, t] of news) addHTML('  <span class="text-accent">' + d + '</span>  ' + escapeHtml(t));
+        addLine(''); return;
+      }
+      if (sitePages[target]) {
+        const url = SITE + sitePages[target];
+        addHTML('  Looking up ' + escapeHtml(url) + '... ' + link(url, 'open'));
+        window.open(sitePages[target], '_blank', 'noopener,noreferrer');
+        addLine(''); return;
+      }
+      if (/^https?:\/\//.test(args[0])) { addHTML('  Opening ' + link(args[0])); window.open(args[0], '_blank', 'noopener,noreferrer'); addLine(''); return; }
+      addLine('  lynx: unknown page "' + target + '"');
+      addLine('  Try: lynx news, lynx publications, lynx cv', 'text-dim');
+      addLine('');
+    }
+
+    /* ---- Editors ---- */
+    function cmdNano(args) {
+      if (!args.length) { addLine('nano: missing filename'); return; }
+      const f = getNode(resolvePath(args[0]));
+      const exists = f && f.type === 'file';
+      addLine('');
+      addHTML(
+        '<div class="editor-block">' +
+          '<div class="nano-titlebar"><span class="nano-version">  GNU nano 7.2</span><span class="nano-file">' + escapeHtml(args[0]) + '</span><span class="nano-mod">' + (exists ? '' : 'New File') + '</span></div>' +
+          '<div class="nano-body">' + (exists ? f.content.map(l => linkify(l) || '&nbsp;').join('<br>') : '<span class="text-dim">[ New File ]</span>') + '</div>' +
+          '<div class="nano-shortcuts"><span class="key">^G</span>Help <span class="key">^O</span>Write Out <span class="key">^W</span>Where Is <span class="key">^K</span>Cut <span class="key">^X</span>Exit</div>' +
+        '</div>');
+      addLine('(read-only: ^O says permission denied, ^X gets you out)', 'text-dim');
+      addLine('');
+    }
+
+    function cmdVim(args) {
+      addLine('');
+      const fname = args[0] || '';
+      const f = fname ? getNode(resolvePath(fname)) : null;
+      const exists = f && f.type === 'file';
+      let body = '';
+      if (!fname) {
+        const splash = ['', '', '              VIM - Vi IMproved', '', '                 version 9.1', '            by Bram Moolenaar et al.',
+          '      Vim is open source and freely distributable', '', '       type  :q<Enter>               to exit',
+          '       type  :help<Enter>            for on-line help', '', '       (this one exits on its own, do not worry)', ''];
+        body = splash.map(s => '<div class="vim-line"><span class="vim-gutter vim-tilde">~</span><span class="vim-content">' + escapeHtml(s) + '</span></div>').join('');
+      } else {
+        const lines = exists ? f.content : [''];
+        body = lines.map((l, i) => '<div class="vim-line"><span class="vim-gutter">' + (i + 1).toString().padStart(3) + '</span><span class="vim-content">' + (linkify(l) || '&nbsp;') + '</span></div>').join('');
+        for (let i = lines.length; i < Math.max(lines.length + 2, 8); i++) body += '<div class="vim-line"><span class="vim-gutter vim-tilde">~</span><span class="vim-content">&nbsp;</span></div>';
+      }
+      addHTML(
+        '<div class="editor-block">' + body +
+          '<div class="vim-statusline"><span>' + (fname ? escapeHtml(fname) + (exists ? '' : ' [New]') : '[No Name]') + '</span><span>' + (exists ? f.content.length + 'L' : '0L') + '  utf-8  unix</span></div>' +
+          '<div class="vim-modeline"><span class="vim-mode-tag">NORMAL</span>' + (fname ? '"' + escapeHtml(fname) + '" ' + (exists ? f.content.length + 'L, ' + f.content.join('\n').length + 'B' : '[New File]') : '') + '</div>' +
+        '</div>');
+      addLine(':q!', 'text-dim');
+      addLine('');
+    }
+
+    /* ---- Scripts ---- */
+    async function cmdSh(args) {
+      if (!args.length) { addLine('sh: missing script'); return; }
+      const name = args[0].replace(/^\.\//, '');
+      const f = getNode(resolvePath(name));
+      if (!f || f.type !== 'file') { addLine('sh: ' + args[0] + ': No such file or directory'); return; }
+      if (name.endsWith('train.sh')) { await runTraining(); return; }
+      addLine('sh: ' + args[0] + ': Permission denied (not executable). Try ./train.sh');
+    }
+
+    async function runTraining() {
+      addLine('module load coffee          [ ok ]', 'text-dim');
+      addLine('source .venv/bin/activate   [ ok ]', 'text-dim');
+      addLine('Loading model: students (1 cohort, M.S. in Artificial Intelligence)', 'text-dim');
+      addLine('Loading data: lectures + labs (tokenizers -> transformers -> LLMs -> RAG -> agents)', 'text-dim');
+      await sleep(400);
+      let loss = 3.42;
+      const questions = ['"is the exam open book?"', '"can we use ChatGPT for the project?"', '"what is a token, exactly?"', '"is this like the Python course?"', '"do we need the GPU?"', '"can the deadline move?"'];
+      for (let ep = 1; ep <= 3; ep++) {
+        for (let step = 100; step <= 500; step += 100) {
+          loss = Math.max(0.31, loss * (0.86 + Math.random() * 0.06));
+          const acc = (0.41 + (ep - 1) * 0.14 + step / 5000 + Math.random() * 0.01).toFixed(3);
+          addLine('epoch ' + ep + '/3  step ' + step.toString().padStart(4) + '/500  confusion ' + loss.toFixed(3) + '  can-explain-attention ' + acc + '  lr 3.0e-05  ' + (Math.random() * 2 + 1.2).toFixed(2) + ' students/s');
+          if (step === 300) addLine('  [warn] question from the back row: ' + questions[Math.floor(Math.random() * questions.length)], 'text-warning');
+          scrollToBottom();
+          await sleep(140);
+        }
+        if (ep < 3) addLine('  checkpoint saved: exam-session-' + ep + ' (3 students asked "will this be on the exam?", as expected)', 'text-dim');
+      }
+      addLine('');
+      addHTML('<span class="text-ok">Training complete.</span> Final exam accuracy: 0.871. Satisfaction: 4.5/5.');
+      addLine('57 checkpoints so far in /home/frisoni/theses/. Next cohort starts in September.', 'text-dim');
+    }
+
+    /* ---- Misc ---- */
+    function cmdMan(args) {
+      if (!args.length) { addLine('What manual page do you want?'); addLine("Try 'man frisoni'."); return; }
+      const topic = args[0].toLowerCase();
+      if (['frisoni','giacomo','postdoc','me'].includes(topic)) {
+        addLine('');
+        addHTML('<span class="text-bright">FRISONI(1)               Researcher Commands               FRISONI(1)</span>');
+        addLine('');
+        addHTML('<span class="text-bright">NAME</span>');
+        addLine('       frisoni - postdoctoral researcher in natural language processing');
+        addLine('');
+        addHTML('<span class="text-bright">SYNOPSIS</span>');
+        addLine('       frisoni [--collaborate] [--supervise] [--review] [--teach] [--talk]');
+        addLine('');
+        addHTML('<span class="text-bright">DESCRIPTION</span>');
+        addLine('       Giacomo Frisoni, Ph.D. (University of Bologna, 2024, 5/5 Excellent,');
+        addLine('       ranked 1st of 132 in the doctoral call). Postdoctoral Research');
+        addLine('       Fellow at DISI, University of Bologna, within the UniboNLP group,');
+        addLine('       funded by the DARE project (PNC-PNRR). Main group expert on');
+        addLine('       medical NLP and graph neural networks; co-manages the SLURM cluster.');
+        addLine('');
+        addHTML('<span class="text-bright">OPTIONS</span>');
+        addHTML('       <span class="text-accent">--collaborate</span>   Knowledge-enhanced NLP, clinical/biomedical LLMs, GNNs');
+        addHTML('       <span class="text-accent">--supervise</span>     57 theses co-supervised so far');
+        addHTML('       <span class="text-accent">--review</span>        ACL ARR area chair (21 meta-reviews), 79+ conference reviews');
+        addHTML('       <span class="text-accent">--teach</span>         NLP at BBS (adjunct professor) and Unibo (tutor)');
+        addHTML('       <span class="text-accent">--talk</span>          Invited talks: ALMA-AI, FutureData4EU, EURECOM, Glasgow');
+        addLine('');
+        addHTML('<span class="text-bright">PUBLICATIONS</span>');
+        addLine('       15 conference papers (AAAI x2, EMNLP x3, ACL, NAACL, COLING, ECAI x3)');
+        addLine('       12 journal articles (10 in Q1), 1 book, 1 chapter, 2 workshop papers');
+        addLine('       Google Scholar: 613 citations, h-index 15 (June 2026)');
+        addLine('');
+        addHTML('<span class="text-bright">AWARDS</span>');
+        addLine('       Gold Reviewer ICML-26, Outstanding Reviewer EMNLP-25 (top 0.4%),');
+        addLine('       Best Student Paper DATA-22, Best Paper DATA-20, Con.Scienze Prize 2020');
+        addLine('');
+        addHTML('<span class="text-bright">SEE ALSO</span>');
+        addLine('       cat about.txt, papers, projects, teaching, cat collaborations.txt, mail');
+        addLine('');
+        addHTML('<span class="text-bright">AUTHOR</span>');
+        addHTML('       Giacomo Frisoni &lt;giacomo.frisoni@unibo.it&gt;  ' + link(SITE));
+        addLine('');
+        addHTML('<span class="text-dim">giacomofrisoni.github.io          June 2026                  FRISONI(1)</span>');
+        addLine('');
+      } else if (bins.includes(topic)) {
+        addLine('');
+        addHTML('<span class="text-bright">' + topic.toUpperCase() + '(1)</span>');
+        addLine('       ' + topic + ' - simulated command of this terminal. Type help for the list.');
+        addLine("       The interesting page is 'man frisoni'.", 'text-dim');
+        addLine('');
+      } else { addLine('No manual entry for ' + topic); addLine("Try 'man frisoni'."); }
+    }
+
+    function cmdWhoami() {
+      addLine('');
+      addHTML(' <span class="text-bright">Giacomo Frisoni</span>  <span class="text-dim">Ph.D., Postdoctoral Researcher in NLP</span>');
+      addLine(' Department of Computer Science and Engineering, University of Bologna');
+      addLine(' UniboNLP research group, Cesena campus, Italy');
+      addLine('');
+      addHTML(' <span class="text-dim">ORCID</span> 0000-0003-1104-2014   <span class="text-dim">mail</span> giacomo.frisoni@unibo.it');
+      addLine('');
+    }
+
+    function cmdId() { addLine('uid=2020(' + USER + ') gid=2020(unibonlp) groups=2020(unibonlp),1001(dare),1002(keir),1003(slurm-admin),1004(chess)'); }
+    function cmdHostname() { addLine(HOST); }
+
+    function cmdDate() {
+      const d = new Date();
+      addLine(DAYS[d.getDay()] + ' ' + MONTHS[d.getMonth()] + ' ' + d.getDate().toString().padStart(2, ' ') + ' ' + clock(d) + ' ' + Intl.DateTimeFormat().resolvedOptions().timeZone + ' ' + d.getFullYear());
+      addLine('CV last updated: Jun  8 2026', 'text-dim');
+    }
+
+    function cmdCal() {
+      const d = new Date();
+      const year = d.getFullYear(), month = d.getMonth();
+      const names = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+      const header = names[month] + ' ' + year;
+      addLine(' '.repeat(Math.max(0, Math.floor((20 - header.length) / 2))) + header);
+      addLine('Su Mo Tu We Th Fr Sa');
+      const firstDay = new Date(year, month, 1).getDay();
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+      let line = '   '.repeat(firstDay);
+      for (let day = 1; day <= daysInMonth; day++) {
+        const cell = day.toString().padStart(2, ' ');
+        line += (day === d.getDate() ? '<span class="text-accent">' + cell + '</span>' : cell) + ' ';
+        if ((firstDay + day) % 7 === 0) { addHTML(line.trimEnd()); line = ''; }
+      }
+      if (line) addHTML(line.trimEnd());
+    }
+
+    function cmdClear() { output.innerHTML = ''; }
+    function cmdHistory() { commandHistory.forEach((c, i) => addLine('  ' + (i + 1).toString().padStart(4) + '  ' + c)); }
+
+    const fortunes = [
+      'Language is the dress of thought. -- Samuel Johnson',
+      'To generate or to retrieve? Both, and then check the evidence.',
+      'A meta-review is a review of reviews. It is still due on Monday.',
+      'The GPU you need is always the one that is allocated.',
+      'Every ICD code has a story. Most of them are long.',
+      'Chess and NLP share a secret: the next token is a move.',
+      'If the loss goes up, check the learning rate. If it still goes up, check the data. If it still goes up, coffee.',
+      'Knowledge is retrieved, generated, or hallucinated. Choose wisely.',
+    ];
+    function cmdFortune() { addLine(''); addLine(' ' + fortunes[Math.floor(Math.random() * fortunes.length)], 'text-accent'); addLine(''); }
+
+    function cmdChess() {
+      // Starting position, from White's side. Unicode pieces.
+      const rows = ['rnbqkbnr', 'pppppppp', '........', '........', '........', '........', 'PPPPPPPP', 'RNBQKBNR'];
+      const glyph = { r: '♜', n: '♞', b: '♝', q: '♛', k: '♚', p: '♟', R: '♖', N: '♘', B: '♗', Q: '♕', K: '♔', P: '♙', '.': '·' };
+      addLine('');
+      const board = document.createElement('div');
+      board.className = 'terminal-line chess-board';
+      let html = '';
+      rows.forEach((row, ri) => {
+        html += '<span class="text-dim">' + (8 - ri) + ' </span>';
+        [...row].forEach((c, ci) => {
+          const light = (ri + ci) % 2 === 0;
+          html += '<span class="' + (light ? 'sq-w' : 'sq-b') + '">' + glyph[c] + ' </span>';
+        });
+        html += '\n';
+      });
+      html += '<span class="text-dim">  a b c d e f g h</span>';
+      board.innerHTML = html;
+      output.appendChild(board);
+      addLine('');
+      addLine(' Mixture of Masters (MoM): sparse chess language models where each', 'text-dim');
+      addLine(' expert is routed by player style. Preprint: papers chess', 'text-dim');
+      addHTML(' <span class="text-accent">1. e4</span>  <span class="text-dim">(the model suggests; the human decides)</span>');
+      addLine('');
+    }
+
+    function cmdCredits() {
+      addLine('');
+      addLine(' Credits', 'text-bright');
+      addLine('');
+      addHTML('  This terminal mode is adapted from <span class="text-accent">The Pirate\'s Den</span> by Andrea Amani');
+      addHTML('  aka <span class="text-accent">Pinperepette</span>, who wrote the original virtual filesystem, boot');
+      addLine('  sequence, command router, editors, tab completion and easter eggs.');
+      addLine('');
+      addHTML('  Original:  ' + link('https://pinperepette.github.io/terminal.html'));
+      addHTML('  Source:    ' + link('https://github.com/Pinperepette/pinperepette.github.io'));
+      addLine('');
+      addLine('  Adapted for giacomofrisoni.github.io: content, SLURM commands, amber theme.', 'text-dim');
+      addHTML('  Site source: ' + link(hosts.github.url + '/giacomofrisoni.github.io'));
+      addLine('');
+    }
+
+    async function cmdRmRf() {
+      addLine('rm: removing /home/frisoni/publications ...');
+      await sleep(400);
+      addLine('rm: removing /home/frisoni/cv.pdf ...');
+      await sleep(400);
+      addLine('rm: cannot remove: 613 citations still reference these files', 'text-error');
+      addLine('rm: operation cancelled by slurmctld (jobs depend on /home)', 'text-error');
+      addLine('');
+      addLine('Nothing was harmed. This home is read-only.', 'text-dim');
+      scrollToBottom();
+    }
+
+    function cmdExit() {
+      addLine('logout');
+      addLine('');
+      addLine('Connection to ' + HOST + ' closed. Returning to the graphical site...', 'text-dim');
+      inputLine.style.display = 'none';
+      setTimeout(() => { window.location.href = '/'; }, 900);
+    }
+
+    /* ============================================
+       INPUT HANDLING (history, tab completion)
+       ============================================ */
+    cmdInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const raw = cmdInput.value;
+        if (raw.trim()) { commandHistory.push(raw.trim()); if (commandHistory.length > 100) commandHistory.shift(); historyIndex = commandHistory.length; }
+        runCommand(raw);
+        cmdInput.value = '';
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        if (historyIndex > 0) { historyIndex--; cmdInput.value = commandHistory[historyIndex]; }
+      } else if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        if (historyIndex < commandHistory.length - 1) { historyIndex++; cmdInput.value = commandHistory[historyIndex]; }
+        else { historyIndex = commandHistory.length; cmdInput.value = ''; }
+      } else if (e.key === 'Tab') {
+        e.preventDefault();
+        const val = cmdInput.value;
+        const parts = val.split(/\s+/);
+        if (parts.length <= 1) {
+          const matches = [...new Set([...bins, 'll', 'logout', 'sudo'])].filter(c => c.startsWith(parts[0]));
+          if (matches.length === 1) cmdInput.value = matches[0] + ' ';
+          else if (matches.length > 1) { echoPrompt(val); addLine(matches.join('  ')); scrollToBottom(); }
+        } else {
+          const partial = parts[parts.length - 1];
+          const slash = partial.lastIndexOf('/');
+          const dirPart = slash >= 0 ? partial.slice(0, slash + 1) : '';
+          const filePart = slash >= 0 ? partial.slice(slash + 1) : partial;
+          const dir = getNode(resolvePath(dirPart || '.'));
+          if (dir && dir.type === 'dir') {
+            const matches = dir.children.filter(c => c.startsWith(filePart));
+            if (matches.length === 1) { parts[parts.length - 1] = dirPart + matches[0]; cmdInput.value = parts.join(' ') + (matches[0].endsWith('/') ? '' : ' '); }
+            else if (matches.length > 1) { echoPrompt(val); addLine(matches.join('  ')); scrollToBottom(); }
+          }
+        }
+      } else if (e.key === 'l' && e.ctrlKey) { e.preventDefault(); output.innerHTML = ''; }
+      else if (e.key === 'c' && e.ctrlKey && !window.getSelection().toString()) { echoPrompt(cmdInput.value + '^C'); cmdInput.value = ''; scrollToBottom(); }
+    });
+
+    // Keep the focus on the prompt: any key press (without modifiers) lands in the input.
+    document.addEventListener('keydown', (e) => {
+      if (inputLine.style.display !== 'none' && !e.ctrlKey && !e.metaKey && !e.altKey && e.key.length === 1) cmdInput.focus();
+    });
+    document.addEventListener('click', (e) => {
+      if (e.target.closest('a')) return;
+      if (!window.getSelection().toString() && inputLine.style.display !== 'none') cmdInput.focus();
+    });
+    document.getElementById('topbar-help').addEventListener('click', (e) => { e.preventDefault(); if (inputLine.style.display !== 'none') { echoPrompt('help'); cmdHelp(); scrollToBottom(); } });
+
+    /* ============================================
+       KONAMI CODE -- token rain easter egg
+       ============================================ */
+    const konamiSequence = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+    let konamiIndex = 0;
+    document.addEventListener('keydown', (e) => {
+      if (e.key === konamiSequence[konamiIndex]) { konamiIndex++; if (konamiIndex === konamiSequence.length) { konamiIndex = 0; startTokenRain(); } }
+      else konamiIndex = 0;
+    });
+
+    function startTokenRain() {
+      if (document.getElementById('rain-canvas')) return;
+      const canvas = document.createElement('canvas');
+      canvas.id = 'rain-canvas';
+      canvas.style.cssText = 'position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:9998;pointer-events:none;';
+      document.body.appendChild(canvas);
+      const ctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+      // Tokens that rain: ICD codes, SMILES-ish fragments, chess moves, subword pieces.
+      const tokens = ['I10', 'E11', 'J18', 'N39', 'Z87', '[CLS]', '[SEP]', '##ing', '<s>', 'e4', 'Nf3', 'O-O', 'Qxd5', 'PubMed', 'UMLS', 'GNN', 'RAG', '▁the', '▁of', 'λ', 'σ', '∇', '0.781'];
+      const fontSize = 14;
+      const columns = Math.floor(canvas.width / (fontSize * 3));
+      const drops = Array(columns).fill(1);
+      let frames = 0;
+      const maxFrames = 220;
+      function draw() {
+        ctx.fillStyle = 'rgba(11, 10, 8, 0.08)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.font = fontSize + 'px JetBrains Mono, monospace';
+        for (let i = 0; i < drops.length; i++) {
+          ctx.fillStyle = Math.random() > 0.97 ? '#fff3d1' : '#f2b63d';
+          ctx.fillText(tokens[Math.floor(Math.random() * tokens.length)], i * fontSize * 3, drops[i] * fontSize);
+          if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+          drops[i]++;
+        }
+        frames++;
+        if (frames < maxFrames) requestAnimationFrame(draw);
+        else {
+          canvas.style.transition = 'opacity 1s'; canvas.style.opacity = '0';
+          setTimeout(() => canvas.remove(), 1000);
+          addLine('');
+          addLine('Tokens all the way down. Welcome to the embedding space.', 'text-accent');
+          addLine('');
+          scrollToBottom();
+        }
+      }
+      draw();
+    }
+
+    document.addEventListener('DOMContentLoaded', runBootSequence);
+  </script> </body> </html>
