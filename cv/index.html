@@ -36,9 +36,20 @@
   .cv .list-group-item .col-sm-2 table.table-cv {
     width: 100%;
     border-collapse: collapse;
+    margin: 0;
+  }
+  /* The site-wide table styling draws a rule under every cell; the badge and
+     the place must not be separated by lines. */
+  .cv .list-group-item .col-sm-2 table.table-cv,
+  .cv .list-group-item .col-sm-2 table.table-cv tbody,
+  .cv .list-group-item .col-sm-2 table.table-cv tr,
+  .cv .list-group-item .col-sm-2 table.table-cv td {
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
   }
   .cv .list-group-item .col-sm-2 table.table-cv td {
-    padding: 0;
+    padding: 0 !important;
     text-align: left;
     vertical-align: top;
   }
