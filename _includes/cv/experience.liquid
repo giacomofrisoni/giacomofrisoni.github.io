@@ -1,13 +1,20 @@
 {% comment %}
-  Local override of al_folio_cv's experience.liquid with two fixes:
+  Local override of al_folio_cv's experience.liquid with three fixes:
   1. A page-wide style reset removing default list bullets/padding on CV
      list-groups (the theme ships with Tailwind preflight disabled, so
      native <ul> disc markers leak through and misalign the date badges).
-  2. Location/date captures are stripped of whitespace, so the location
+  2. Page-wide styling of the date/location column: the theme gives it a
+     fixed 75px width and a negative transform, which pushes the badge past
+     the card edge and lets the place name drift left or center depending on
+     which of the two is wider. Here the column gets a fixed track, left
+     alignment, a subtle divider, and a single-line badge + place on phones.
+  3. Location/date captures are stripped of whitespace, so the location
      pin icon is no longer rendered for entries without a location.
 {% endcomment %}
 
 <style>
+  /* Page-wide CV style fixes (this include is rendered on the CV page, so the
+     rules below apply to every section: Education, Experience, Awards, ...). */
   .cv .list-group {
     list-style: none;
     padding-left: 0;
@@ -22,6 +29,100 @@
   }
   .cv ul.items li {
     list-style: disc;
+  }
+
+  /* --- Date / location column (first column of every dated entry) ----- */
+  /* Undo the theme's fixed 75px width and negative transform, which push the
+     badge past the card edge and let the location drift left or center
+     depending on which of the two is wider. */
+  .cv .list-group-item .col-sm-2 {
+    width: auto;
+    transform: none;
+    text-align: left;
+    padding-top: 0.15rem;          /* badge cap-height lines up with the title */
+  }
+  .cv .list-group-item .col-sm-2 table.table-cv {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .cv .list-group-item .col-sm-2 table.table-cv td {
+    padding: 0;
+    text-align: left;
+    vertical-align: top;
+  }
+  .cv .list-group-item .col-sm-2 .badge {
+    display: inline-block;
+    min-width: 0 !important;        /* overrides the inline min-width: 75px */
+    padding: 0.2rem 0.55rem;
+    border-radius: 0.25rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.03em;
+    line-height: 1.25;
+    white-space: nowrap;
+  }
+  .cv .list-group-item .col-sm-2 p.location {
+    margin: 0.45rem 0 0 0.1rem;
+    font-size: 0.78rem;
+    line-height: 1.35;
+    color: var(--global-text-color-light);
+    white-space: normal;            /* long places wrap instead of overflowing */
+  }
+  .cv .list-group-item .col-sm-2 p.location i.iconlocation {
+    font-size: 0.75rem;
+    margin-right: 0.15rem;
+  }
+
+  /* --- Two-column grid ---------------------------------------------------- */
+  /* From the small breakpoint up, give the date column a fixed track and let
+     the description take the rest, instead of a 2/10 split whose left cell is
+     too narrow for "2019 - PRESENT" plus a place name. */
+  @media (min-width: 576px) {
+    .cv .list-group-item .row {
+      flex-wrap: nowrap;
+      align-items: flex-start;
+    }
+    .cv .list-group-item .row > .col-sm-2 {
+      flex: 0 0 9.5rem;
+      max-width: 9.5rem;
+      padding-right: 1rem;
+      border-right: 1px solid var(--global-divider-color);
+      min-height: 100%;
+      align-self: stretch;
+    }
+    .cv .list-group-item .row > .col-sm-2 + div {
+      flex: 1 1 0;
+      max-width: none;
+      min-width: 0;
+      padding-left: 1.25rem;
+    }
+    .cv .list-group-item .row > .col-sm-2 + div > .title,
+    .cv .list-group-item .row > .col-sm-2 + div > h6 {
+      margin-left: 0 !important;     /* ml-md-4 offset is no longer needed */
+    }
+  }
+
+  /* Stacked layout on narrow screens: badge and place on one line. */
+  @media (max-width: 575.98px) {
+    .cv .list-group-item .col-sm-2 table.table-cv,
+    .cv .list-group-item .col-sm-2 table.table-cv tbody,
+    .cv .list-group-item .col-sm-2 table.table-cv tr,
+    .cv .list-group-item .col-sm-2 table.table-cv td {
+      display: inline;
+    }
+    .cv .list-group-item .col-sm-2 p.location {
+      display: inline;
+      margin: 0 0 0 0.6rem;
+    }
+    .cv .list-group-item .row > .col-sm-2 + div > .title,
+    .cv .list-group-item .row > .col-sm-2 + div > h6 {
+      margin-left: 0 !important;
+    }
+  }
+
+  /* Breathing room between entries. */
+  .cv .list-group-item {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
   }
 </style>
 
