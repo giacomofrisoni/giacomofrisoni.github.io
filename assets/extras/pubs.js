@@ -138,20 +138,20 @@
         var L = [["citations", s.citations, gain > 0 ? "+" + gain + " in the last 30 days" : ""], ["h-index", s.h_index, "papers with at least h citations each"],
           ["i10-index", s.i10_index, "papers with at least 10 citations"], ["papers", n, "listed on this page"]];
         out.innerHTML += "\n" + '<span class="d"># Google Scholar profile, refreshed every morning</span>\n' + L.map(function (l) {
-          return '<span class="row">' + S.esc(l[0].padEnd(11)) + '<span class="h">' + S.esc(String(l[1] == null ? "n/a" : l[1]).padStart(5)) + '</span>   <span class="d">' + S.esc(l[2]) + "</span></span>";
+          return '<span class="row"><span class="cmd">' + S.esc(l[0].padEnd(11)) + '</span><span class="h">' + S.esc(String(l[1] == null ? "n/a" : l[1]).padStart(5)) + '</span>   <span class="d">' + S.esc(l[2]) + "</span></span>";
         }).join("\n");
         status.textContent = "Last update: " + fmt(metrics.updated) + (metrics.seed ? " (values from the CV until the first automatic update)" : "") + ". Try the other commands above.";
       }],
       year: ["scholar citations --per-year", function () {
         var py = s.per_year || {}, ys = Object.keys(py).sort();
         var holder = document.createElement("div"); out.appendChild(document.createTextNode("\n")); out.appendChild(holder);
-        if (!ys.length) { holder.innerHTML = '<span class="d">no data yet: appears after the first daily update</span>'; return; }
+        if (!ys.length) { holder.innerHTML = '<span class="d">no data yet: the chart appears after the first automatic update</span>'; status.textContent = "Citations received in each calendar year, from Google Scholar."; return; }
         S.bars(holder, status, ys, [{ name: "citations", values: ys.map(function (y) { return py[y]; }), cls: "bar-a", ch: "█" }], "citations");
         status.textContent = "Citations received in each calendar year (the current year is still running). Hover a bar for its value.";
       }],
       time: ["scholar citations --history", function () {
         var holder = document.createElement("div"); out.appendChild(document.createTextNode("\n")); out.appendChild(holder);
-        if (hs.length < 2) { holder.innerHTML = '<span class="d">tracking started on ' + S.esc(fmt(hs[0] && hs[0].date)) + ": the curve appears after the second daily update</span>"; return; }
+        if (hs.length < 2) { holder.innerHTML = '<span class="d">the curve appears after two automatic daily updates</span>'; status.textContent = "Total citations over time, one point per day."; return; }
         S.spark(holder, status, hs.map(function (h) { return { d: h.date, v: h.scholar_citations }; }), "total citations");
         status.textContent = "Total citations, one point per day. Hover the line to read a day.";
       }],

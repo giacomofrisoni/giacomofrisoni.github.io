@@ -178,10 +178,10 @@
     },
     /* types "$ cmd" in the output area, then calls done() */
     run: function (out, cmd, done) {
-      if (reduce) { out.innerHTML = '<span class="p">$</span> ' + esc(cmd); return done(); }
+      if (reduce) { out.innerHTML = '<span class="p">$</span> <span class="cmd">' + esc(cmd) + "</span>"; return done(); }
       var i = 0;
       (function t() {
-        out.innerHTML = '<span class="p">$</span> ' + esc(cmd.slice(0, i)) + '<span class="gf-term-cursor"></span>';
+        out.innerHTML = '<span class="p">$</span> <span class="cmd">' + esc(cmd.slice(0, i)) + '</span><span class="gf-term-cursor"></span>';
         if (i++ < cmd.length) setTimeout(t, 22 + Math.random() * 25); else setTimeout(done, 160);
       })();
     },
