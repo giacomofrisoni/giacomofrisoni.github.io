@@ -1,6 +1,7 @@
 # Written by bin/update_metrics.py, do not edit by hand.
-updated: '2026-10-01'
-theses: 59
+# Seed values from the CV of June 8, 2026; replaced by the first workflow run.
+updated: '2026-06-08'
+theses: 57
 citations: 613
 h_index: 15
 i10_index: null

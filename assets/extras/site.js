@@ -41,6 +41,12 @@
   /* 3. home hero terminal: types a short session when it scrolls into view */
   function heroTerminal() {
     var box = document.querySelector("[data-gf-term]"); if (!box) return;
+    /* the whole box opens the terminal (it is a div, so the theme's link colours never apply to it) */
+    var href = box.getAttribute("data-href");
+    if (href) {
+      box.addEventListener("click", function (e) { if (!e.target.closest("a")) window.location.href = href; });
+      box.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); window.location.href = href; } });
+    }
     var body = box.querySelector(".gf-term-body"), script;
     try { script = JSON.parse(box.querySelector("script[type='application/json']").textContent); } catch (e) { return; }
     var prompt = '<span class="p">[frisoni@unibonlp-login ~]$</span> ';

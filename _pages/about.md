@@ -33,10 +33,10 @@ I have co-authored over 30 papers in prestigious conferences and journals, inclu
 I currently work on the [DARE](https://www.fondazionedare.it/) project, advancing representational and generative AI for health. I teach as adjunct professor at Bologna Business School and as tutor in the Master's degree in Artificial Intelligence, and I have co-supervised <span data-gf-metric="theses.count">{{ site.data.metrics.theses | default: 57 }}</span> Bachelor's and Master's theses on NLP and deep learning.
 
 <div markdown="0">
-<a class="gf-term" data-gf-term href="{{ '/terminal/' | relative_url }}" aria-label="Open the interactive terminal version of this site">
+<div class="gf-term" data-gf-term data-href="{{ '/terminal/' | relative_url }}" role="link" tabindex="0" aria-label="Open the interactive terminal version of this site">
   <div class="gf-term-bar" aria-hidden="true"><i></i><i></i><i></i><span>frisoni@unibonlp-login: ~</span></div>
   <div class="gf-term-body" aria-hidden="true"></div>
-  <div class="gf-term-cta"><b>Open the interactive shell</b><span>or press <kbd>`</kbd> anywhere. Try <kbd>help</kbd>, <kbd>ls</kbd>, <kbd>squeue</kbd></span></div>
+  <div class="gf-term-cta"><a class="gf-term-open" href="{{ '/terminal/' | relative_url }}">Open the interactive shell</a><span>or press <kbd>`</kbd> anywhere. Try <kbd>help</kbd>, <kbd>ls</kbd>, <kbd>squeue</kbd></span></div>
   <script type="application/json">
   [
     {"cmd": "whoami", "out": [["h", "Giacomo Frisoni"], ["", "Postdoc in NLP @ University of Bologna, UniboNLP group"]]},
@@ -44,7 +44,7 @@ I currently work on the [DARE](https://www.fondazionedare.it/) project, advancin
     {"cmd": "squeue -u frisoni", "out": [["d", "JOBID  NAME                       ST  WHERE"], ["", "2610   emnlp26-paint-it-black     R   Budapest"], ["", "2611   keir-cikm26-workshop       R   Rome"]]}
   ]
   </script>
-</a>
+</div>
 </div>
 
 <h2 class="gf-h2">upcoming</h2>
