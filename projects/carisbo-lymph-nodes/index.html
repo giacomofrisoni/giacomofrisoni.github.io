@@ -1,10 +1,55 @@
-<!DOCTYPE html> <html lang="en"> <head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <title> AI-SLN | Giacomo Frisoni </title> <meta name="author" content="Giacomo Frisoni"> <meta name="description" content="AI for empty lymph node risk assessment in endometrial cancer surgery"> <meta name="keywords" content="giacomo frisoni, natural language processing, large language models, graph neural networks, biomedical nlp, university of bologna, unibonlp"> <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' data: https:; media-src 'self' https:; frame-src 'self' https:; connect-src 'self' https:;"> <style>
+<!DOCTYPE html> <html lang="en"> <head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <title> AI-SLN | Giacomo Frisoni </title> <meta name="author" content="Giacomo Frisoni"> <meta name="description" content="AI support for the surgeon during sentinel lymph node biopsy in endometrial cancer"> <meta name="keywords" content="giacomo frisoni, natural language processing, large language models, graph neural networks, biomedical nlp, university of bologna, unibonlp"> <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' data: https:; media-src 'self' https:; frame-src 'self' https:; connect-src 'self' https:;"> <style>
   :root {
     --max-content-width: 930px;
   }
 </style> <link rel="stylesheet" href="/assets/css/tailwind.css?v=50c64c15cbb9fd1ce6056fdb8bcb4b62"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" integrity="sha256-MVopmdyC2tYTiJ8wlktf0uh0v4NgT+vNdyVFepi7Q0c=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.5/css/academicons.min.css" integrity="sha256-SzrCOBJbGVFMahewkgjwnApaV2+av1DwMAA+/QGLyZw=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/scholar-icons@1.0.3/css/scholar-icons.css" integrity="sha256-VY3hHVj/hNX3fYG6wtbA6TcKJQl7+FthzGSyIB64klY=" crossorigin="anonymous"> <link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap"> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?v=591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light"> <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%F0%9F%9A%80&lt;/text&gt;&lt;/svg&gt;"> <link rel="stylesheet" href="/assets/css/main.css?v=f0b101217084a90093badfe99ff9a7d1"> <link rel="canonical" href="https://giacomofrisoni.github.io/projects/carisbo-lymph-nodes/"> <script src="/assets/js/theme.js?v=7af685e2ba20b37fef545c97b8064050"></script> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?v=5847e5ed4a4568527aa6cfab446049ca" media="none" id="highlight_theme_dark"> <script>
     initTheme();
-  </script> </head> <body class="fixed-top-nav "> <header> <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation"> <div class="container"> <a class="navbar-brand title font-weight-lighter" href="/"> <span class="font-weight-bold">Giacomo</span> Frisoni </a> <button class="navbar-toggler collapsed navbar-toggler-main" type="button" data-nav-toggle="navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar top-bar"></span> <span class="icon-bar middle-bar"></span> <span class="icon-bar bottom-bar"></span> </button> <div class="collapse navbar-collapse navbar-collapse-main" id="navbarNav"> <ul class="navbar-nav navbar-menu-list flex-nowrap"> <li class="nav-item "> <a class="nav-link" href="/">about </a> </li> <li class="nav-item "> <a class="nav-link" href="/publications/">publications </a> </li> <li class="nav-item active"> <a class="nav-link" href="/projects/">projects <span class="sr-only">(current)</span> </a> </li> <li class="nav-item "> <a class="nav-link" href="/cv/">CV </a> </li> <li class="nav-item "> <a class="nav-link" href="/teaching/">teaching </a> </li> <li class="nav-item"> <button id="search-toggle" type="button" title="Search" aria-label="Open search"> <span class="nav-link">ctrl k <i class="fa-solid fa-magnifying-glass"></i></span> </button> </li> <li class="toggle-container"> <button id="light-toggle" type="button" title="Change theme" aria-label="Change color theme"> <i class="fa-half-sun-moon" id="light-toggle-system"></i> <i class="fa-solid fa-moon" id="light-toggle-dark"></i> <i class="fa-solid fa-sun" id="light-toggle-light"></i> </button> </li> </ul> </div> </div> </nav> <progress id="progress" value="0"> <div class="progress-container"> <span class="progress-bar"></span> </div> </progress> </header> <div class="container mt-5" role="main"> <div class="post"> <header class="post-header"> <h1 class="post-title">AI-SLN</h1> <p class="post-description">AI for empty lymph node risk assessment in endometrial cancer surgery</p> </header> <article> <p><strong>Duration:</strong> Jul 2024 – Jun 2026 · <strong>Funder:</strong> Fondazione Cassa di Risparmio in Bologna (CARISBO) · <strong>Total budget:</strong> €20,000</p> <p>A collaboration between the Department of Computer Science and Engineering of the University of Bologna and the University Hospital of Bologna IRCCS, Sant’Orsola Polyclinic. The project develops an AI-based tool capable of estimating the probability that retroperitoneal tissue marked with indocyanine green—collected according to the standardized sentinel lymph node biopsy procedure—will turn out to be an empty lymph node packet at final microscopic analysis.</p> <p><strong>My role:</strong> Co-Principal Investigator (scientific responsibility).</p> <p><strong>Project website:</strong> <a href="https://disi-unibo-nlp.github.io/ai-sln/" rel="external nofollow noopener" target="_blank">disi-unibo-nlp.github.io/ai-sln</a></p> </article> </div> </div> <footer class="fixed-bottom" role="contentinfo"> <div class="container mt-0"> © Copyright 2026 Giacomo Frisoni. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. Last updated: September 08, 2026. </div> </footer> <script>
+  </script> </head> <body class="fixed-top-nav "> <header> <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation"> <div class="container"> <a class="navbar-brand title font-weight-lighter" href="/"> <span class="font-weight-bold">Giacomo</span> Frisoni </a> <button class="navbar-toggler collapsed navbar-toggler-main" type="button" data-nav-toggle="navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar top-bar"></span> <span class="icon-bar middle-bar"></span> <span class="icon-bar bottom-bar"></span> </button> <div class="collapse navbar-collapse navbar-collapse-main" id="navbarNav"> <ul class="navbar-nav navbar-menu-list flex-nowrap"> <li class="nav-item "> <a class="nav-link" href="/">about </a> </li> <li class="nav-item "> <a class="nav-link" href="/publications/">publications </a> </li> <li class="nav-item active"> <a class="nav-link" href="/projects/">projects <span class="sr-only">(current)</span> </a> </li> <li class="nav-item "> <a class="nav-link" href="/cv/">CV </a> </li> <li class="nav-item "> <a class="nav-link" href="/teaching/">teaching </a> </li> <li class="nav-item "> <a class="nav-link" href="/blog/">blog </a> </li> <li class="nav-item "> <a class="nav-link" href="/cli/">cli </a> </li> <li class="nav-item"> <button id="search-toggle" type="button" title="Search" aria-label="Open search"> <span class="nav-link">ctrl k <i class="fa-solid fa-magnifying-glass"></i></span> </button> </li> <li class="toggle-container"> <button id="light-toggle" type="button" title="Change theme" aria-label="Change color theme"> <i class="fa-half-sun-moon" id="light-toggle-system"></i> <i class="fa-solid fa-moon" id="light-toggle-dark"></i> <i class="fa-solid fa-sun" id="light-toggle-light"></i> </button> </li> </ul> </div> </div> </nav> <progress id="progress" value="0"> <div class="progress-container"> <span class="progress-bar"></span> </div> </progress> </header> <div class="container mt-5" role="main"> <div class="post"> <header class="post-header"> <h1 class="post-title">AI-SLN</h1> <p class="post-description">AI support for the surgeon during sentinel lymph node biopsy in endometrial cancer</p> </header> <article> <div class="gf-proj-head"> <img src="/assets/img/logos/carisbo.png" alt="Fondazione Cassa di Risparmio in Bologna"> </div> <div class="gf-facts"> <div> <span>Funder</span><b>Fondazione CARISBO</b> </div> <div> <span>Duration</span><b>Jul 2024 – Jun 2026</b> </div> <div> <span>Budget</span><b>€20,000</b> </div> <div> <span>Clinical partner</span><b>IRCCS Sant'Orsola, Bologna</b> </div> <div> <span>My role</span><b>Co-Principal Investigator</b> </div> </div> <figure class="gf-figure"> <img src="/assets/img/projects/ai-sln/ai_sln_overview.jpg" alt="Illustration of robotic surgery: the surgeon at the console and an assistant pointing at the laparoscopic view, where the system highlights the lymph node"> <figcaption><b>The idea.</b> During robotic surgery, the system watches the laparoscopic video and points the surgical team to lymph node tissue in real time.</figcaption> </figure> <p>In endometrial cancer surgery, the <strong>sentinel lymph node</strong> (the first node that drains the tumour) is found by injecting indocyanine green (ICG), a dye that glows under near-infrared light. Sometimes the tissue removed as “sentinel node” turns out, at the microscope, to contain no lymph node at all. <strong>AI-SLN</strong> analyses the surgical videos to help the surgeon recognise lymph node tissue and reduce these empty samples. It is a collaboration between the Department of Computer Science and Engineering of the University of Bologna and the Gynecology unit of the IRCCS Sant’Orsola Polyclinic.</p> <h2 class="gf-h2">three questions for the AI</h2> <div class="gf-tasks" role="tablist" aria-label="Project tasks"> <button type="button" role="tab" aria-selected="true" data-t="1">1. When?</button> <button type="button" role="tab" aria-selected="false" data-t="2">2. Involved?</button> <button type="button" role="tab" aria-selected="false" data-t="3">3. How many?</button> </div> <div class="gf-taskpanel" data-p="1"> <div class="gf-player" id="gf-player"> <div class="gf-frame" role="img" aria-label="Frame of a surgical video sequence" style="background-image:url('/assets/img/projects/ai-sln/seq_sprite.jpg')"></div> <canvas class="gf-signal" width="600" height="28" aria-hidden="true"></canvas> <div class="gf-ctrl"> <button type="button" class="gf-play" aria-label="Play">▶</button><input type="range" min="0" max="79" value="0" aria-label="Frame"><span class="gf-phase">white light</span> </div> </div> <div> <h3>When does the sentinel node appear?</h3> <p>Find the moment in the video when the lymph node becomes visible. Drag the slider through a real sequence of 80 frames: the amber line shows how much ICG fluorescence each frame contains, measured from the images.</p> <span class="gf-big" data-count="66.7" data-suffix="%">0%</span> <p class="gf-note">of video sequences with the right moment found, with a mean error of about three seconds.</p> </div> </div> <div class="gf-taskpanel" data-p="2" hidden=""> <img src="/assets/img/projects/ai-sln/sample_meta.jpg" alt="Close-up of a lymph node held by a surgical instrument"> <div> <h3>Is the node involved?</h3> <p>Distinguish lymph nodes with metastases from disease-free ones, looking only at the intra-operative image, before the histopathological result is available.</p> <span class="gf-big" data-count="0.71" data-dec="2">0</span> <p class="gf-note">PR-AUC (area under the precision-recall curve, 1 is perfect) in separating metastatic from disease-free nodes.</p> </div> </div> <div class="gf-taskpanel" data-p="3" hidden=""> <img src="/assets/img/projects/ai-sln/sample_count.jpg" alt="Removed tissue glowing green under ICG fluorescence"> <div> <h3>How many nodes are in the tissue?</h3> <p>Estimate the number of lymph nodes contained in the removed tissue from its fluorescence image, and compare it with the count from the pathologist.</p> <span class="gf-big" data-count="71" data-suffix="%">0%</span> <p class="gf-note">of cases estimated within one node of the histopathological count (mean error 1.39 nodes).</p> </div> </div> <h2 class="gf-h2">approach</h2> <p>No pre-trained model exists for this kind of image, so we compared medical foundation models (LemonFM, MedSigLIP, MedGemma) and segmentation and tracking models, with training and data augmentation designed for small case series. Everything runs on local infrastructure, as required by the ethics protocol. A journal article is in preparation, with release of the source code (the clinical data cannot be shared). The project also supported <em>Paint It, Black</em>, a benchmark for clinical document de-identification accepted at EMNLP 2026 and co-authored with the clinical partners.</p> <p><strong>Project website:</strong> <a href="https://disi-unibo-nlp.github.io/ai-sln/" rel="external nofollow noopener" target="_blank">disi-unibo-nlp.github.io/ai-sln</a></p> <script>
+(function () {
+  var SIG = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.002, 0.049, 0.056, 0.071, 0.069, 0.073, 0.084, 0.083, 0.066, 0.109, 0.09, 0.102, 0.084, 0.095, 0.103, 0.113, 0.117, 0.082, 0.11, 0.121, 0.113, 0.097, 0.12, 0.094, 0.11, 0.106, 0.127, 0.109, 0.127, 0.14, 0.122, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0];
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  /* task tabs */
+  var tabs = document.querySelectorAll(".gf-tasks button"), panels = document.querySelectorAll(".gf-taskpanel");
+  function count(p) {
+    var n = p.querySelector("[data-count]"); if (!n || n.dataset.done) return; n.dataset.done = 1;
+    var to = parseFloat(n.dataset.count), dec = +(n.dataset.dec || (to % 1 ? 1 : 0)), suf = n.dataset.suffix || "", t0 = null;
+    function f(t) { t0 = t0 || t; var k = reduce ? 1 : Math.min(1, (t - t0) / 900); n.textContent = (to * (1 - Math.pow(1 - k, 3))).toFixed(dec) + suf; if (k < 1) requestAnimationFrame(f); }
+    requestAnimationFrame(f);
+  }
+  tabs.forEach(function (b) { b.addEventListener("click", function () {
+    tabs.forEach(function (x) { x.setAttribute("aria-selected", String(x === b)); });
+    panels.forEach(function (p) { p.hidden = p.dataset.p !== b.dataset.t; if (!p.hidden) count(p); });
+  }); });
+  var io = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { count(panels[0]); io.disconnect(); } }); io.observe(panels[0]);
+  /* sequence player */
+  var pl = document.getElementById("gf-player"), fr = pl.querySelector(".gf-frame"), rg = pl.querySelector("input"), ph = pl.querySelector(".gf-phase"), btn = pl.querySelector(".gf-play"), cv = pl.querySelector("canvas");
+  var max = Math.max.apply(null, SIG), timer = null;
+  function draw(i) {
+    var ctx = cv.getContext("2d"), w = cv.width, h = cv.height; ctx.clearRect(0, 0, w, h);
+    ctx.strokeStyle = "#f2b63d"; ctx.lineWidth = 2; ctx.beginPath();
+    SIG.forEach(function (v, j) { var x = j / (SIG.length - 1) * w, y = h - 3 - v / max * (h - 6); if (j) ctx.lineTo(x, y); else ctx.moveTo(x, y); }); ctx.stroke();
+    ctx.fillStyle = "#fff3d1"; ctx.fillRect(i / (SIG.length - 1) * w - 1, 0, 2, h);
+  }
+  function show(i) {
+    i = +i; fr.style.backgroundPosition = (i % 10) / 9 * 100 + "% " + Math.floor(i / 10) / 7 * 100 + "%";
+    ph.textContent = SIG[i] > 0.02 ? "ICG fluorescence" : "white light"; rg.value = i; draw(i);
+  }
+  rg.addEventListener("input", function () { stop(); show(rg.value); });
+  function stop() { clearInterval(timer); timer = null; btn.textContent = "▶"; btn.setAttribute("aria-label", "Play"); }
+  btn.addEventListener("click", function () {
+    if (timer) return stop();
+    btn.textContent = "❚❚"; btn.setAttribute("aria-label", "Pause");
+    timer = setInterval(function () { show((+rg.value + 1) % SIG.length); }, 160);
+  });
+  show(0);
+})();
+</script> </article> </div> </div> <footer class="fixed-bottom" role="contentinfo"> <div class="container mt-0"> © Copyright 2026 Giacomo Frisoni. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. Last updated: October 01, 2026. </div> </footer> <link rel="preconnect" href="https://fonts.googleapis.com"> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&amp;display=swap"> <link rel="stylesheet" href="/assets/extras/site.css?v=1790896688"> <script>
+  window.GF = {
+    base: null,
+    terminal: "/terminal/",
+    data: "/assets/data/"
+  };
+</script> <script src="/assets/extras/site.js?v=1790896688" defer></script> <script>
   window.alFolio = {
     compatBootstrap: false
   };
@@ -24,7 +69,7 @@ ninja.data = [{
     },
   },{id: "nav-publications",
           title: "publications",
-          description: "Conference and journal articles, books, book chapters, workshop papers, and preprints, in reversed chronological order.",
+          description: "Conference papers, journal articles, workshop papers, books, and preprints. Venue classes follow ICORE 2026 for conferences and Scimago (SJR) 2026 for journals.",
           section: "Navigation",
           handler: () => {
             window.location.href = "/publications/";
@@ -45,10 +90,24 @@ ninja.data = [{
           },
         },{id: "nav-teaching",
           title: "teaching",
-          description: "Courses, tutoring activities, and thesis supervision at the University of Bologna.",
+          description: "Courses, tutoring, supervised projects, and thesis co-supervision at the University of Bologna.",
           section: "Navigation",
           handler: () => {
             window.location.href = "/teaching/";
+          },
+        },{id: "nav-blog",
+          title: "blog",
+          description: "Occasional notes on research life, teaching, the things I build, and whatever happens to be on my mind :)",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/blog/";
+          },
+        },{id: "nav-cli",
+          title: "cli",
+          description: "",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/cli/";
           },
         },{id: "news-presented-ports-at-emnlp-25-in-suzhou-china-in-person-oral-and-received-the-outstanding-reviewer-award-top-0-4-of-13-048-reviewers",
           title: 'Presented PORTS at EMNLP-25 in Suzhou, China (in-person, oral), and received the Outstanding...',
@@ -59,6 +118,9 @@ ninja.data = [{
           section: "News",},{id: "news-received-the-gold-reviewer-award-at-icml-26-top-25-of-17-749-reviewers",
           title: 'Received the Gold Reviewer Award at ICML-26 (top 25% of 17,749 reviewers).',
           description: "",
+          section: "News",},{id: "news-five-live-unibonlp-demos-at-the-notte-dei-ricercatori-in-cesena-biblioteca-malatestiana-medgenie-openbioner-v2-paint-it-black-mixture-of-masters-and-the-reachy-mini-robot",
+          title: 'Five live UniboNLP demos at the Notte dei Ricercatori in Cesena (Biblioteca Malatestiana):...',
+          description: "",
           section: "News",},{id: "projects-ai-pact",
           title: 'AI-PACT',
           description: "Retrieval-augmented chatbots in low-resource regimes for the public sector",
@@ -66,7 +128,7 @@ ninja.data = [{
               window.location.href = "/projects/ai-pa-connected/";
             },},{id: "projects-ai-sln",
           title: 'AI-SLN',
-          description: "AI for empty lymph node risk assessment in endometrial cancer surgery",
+          description: "AI support for the surgeon during sentinel lymph node biopsy in endometrial cancer",
           section: "Projects",handler: () => {
               window.location.href = "/projects/carisbo-lymph-nodes/";
             },},{id: "projects-dare",
@@ -92,13 +154,6 @@ ninja.data = [{
           window.open("mailto:%67%69%61%63%6F%6D%6F.%66%72%69%73%6F%6E%69@%75%6E%69%62%6F.%69%74", "_blank");
         },
       },{
-        id: 'social-work',
-        title: 'Work',
-        section: 'Socials',
-        handler: () => {
-          window.open("https://www.unibo.it/sitoweb/giacomo.frisoni/en", "_blank");
-        },
-      },{
         id: 'social-orcid',
         title: 'ORCID',
         section: 'Socials',
@@ -120,13 +175,6 @@ ninja.data = [{
           window.open("https://dblp.org/pid/271/1231.html", "_blank");
         },
       },{
-        id: 'social-github',
-        title: 'GitHub',
-        section: 'Socials',
-        handler: () => {
-          window.open("https://github.com/giacomofrisoni", "_blank");
-        },
-      },{
         id: 'social-linkedin',
         title: 'LinkedIn',
         section: 'Socials',
@@ -139,6 +187,13 @@ ninja.data = [{
         section: 'Socials',
         handler: () => {
           window.open("/assets/pdf/cv_giacomo_frisoni_080626.pdf", "_blank");
+        },
+      },{
+        id: 'social-unibo',
+        title: 'Unibo',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://www.unibo.it/sitoweb/giacomo.frisoni/en", "_blank");
         },
       },{
         id: 'social-unibonlp',
