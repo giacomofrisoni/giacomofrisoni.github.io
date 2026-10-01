@@ -120,6 +120,28 @@ html[data-theme="dark"] {
 .gf-shell-out .spark span { cursor: crosshair; } .gf-shell-out .spark span:hover { color: #fff3d1; }
 .gf-shell-status { padding: 0.35rem 1rem 0.55rem; color: var(--gf-amber-lo); border-top: 1px dashed #2e2615; min-height: 2.2em; white-space: pre-wrap; }
 
+/* Terminal palette, written with high specificity and !important so that no theme
+   rule (link colours, typography resets) can override it on the live site. */
+html body .gf-term, html body .gf-shell,
+html body .gf-term .gf-term-body, html body .gf-shell .gf-shell-out,
+html body .gf-term .gf-term-body span, html body .gf-shell .gf-shell-out span { color: var(--gf-amber) !important; }
+html body .gf-term .gf-term-body span.p, html body .gf-shell .gf-shell-out span.p, html body .gf-term .p, html body .gf-shell .p { color: var(--gf-amber-hi) !important; }
+html body .gf-term .gf-term-body span.d, html body .gf-shell .gf-shell-out span.d, html body .gf-term .d, html body .gf-shell .d, html body .gf-shell .gf-shell-status,
+html body .gf-term .gf-term-bar span, html body .gf-shell .gf-term-bar span, html body .gf-term .gf-term-cta span { color: var(--gf-amber-lo) !important; }
+html body .gf-term .gf-term-body span.h, html body .gf-shell .gf-shell-out span.h, html body .gf-term .h, html body .gf-shell .h { color: #fff3d1 !important; }
+html body .gf-shell .gf-shell-out span.g { color: #9fe39a !important; }
+html body .gf-shell .gf-shell-out span.bar-b, html body .gf-shell .gf-shell-out span.bar-b span { color: #c98f2a !important; }
+html body .gf-term .gf-term-cta kbd, html body .gf-shell kbd { color: var(--gf-amber-hi) !important; background: #2e2615 !important; }
+html body .gf-shell .gf-shell-tabs button { color: var(--gf-amber-lo) !important; background: transparent !important; border: 1px solid #3a2e12 !important; }
+html body .gf-shell .gf-shell-tabs button:hover { color: var(--gf-amber-hi) !important; border-color: var(--gf-amber-lo) !important; }
+html body .gf-shell .gf-shell-tabs button[aria-selected="true"] { color: var(--gf-night) !important; background: var(--gf-amber) !important; border-color: var(--gf-amber) !important; }
+html body .gf-term .gf-term-cta a.gf-term-open {
+  color: var(--gf-night) !important; background: var(--gf-amber) !important; padding: 0.25rem 0.75rem; border-radius: 5px;
+  font-weight: 600; text-decoration: none !important; background-image: none !important;
+}
+html body .gf-term:hover .gf-term-cta a.gf-term-open, html body .gf-term .gf-term-cta a.gf-term-open:focus-visible { background: var(--gf-amber-hi) !important; }
+.gf-term[role="link"] { cursor: pointer; }
+
 /* --------------------------------------------------------------- home page */
 .gf-affil-box { display: flex; align-items: center; gap: 0.7rem; margin-top: 0.6rem; padding: 0.6rem 0.7rem; border: 1px solid var(--gf-line); border-radius: 10px; text-align: left; background: var(--gf-card); }
 .gf-affil-box img { width: 46px; height: 46px; flex: none; }
