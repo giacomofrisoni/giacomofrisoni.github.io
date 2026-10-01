@@ -125,6 +125,8 @@ html[data-theme="dark"] {
 html body .gf-term, html body .gf-shell,
 html body .gf-term .gf-term-body, html body .gf-shell .gf-shell-out,
 html body .gf-term .gf-term-body span, html body .gf-shell .gf-shell-out span { color: var(--gf-amber) !important; }
+html body .gf-shell .gf-shell-out span.cmd, html body .gf-shell .gf-shell-out span.row, html body .gf-shell .gf-term-bar > span { color: var(--gf-amber) !important; }
+html body .gf-shell .gf-term-bar > span { color: var(--gf-amber-lo) !important; }
 html body .gf-term .gf-term-body span.p, html body .gf-shell .gf-shell-out span.p, html body .gf-term .p, html body .gf-shell .p { color: var(--gf-amber-hi) !important; }
 html body .gf-term .gf-term-body span.d, html body .gf-shell .gf-shell-out span.d, html body .gf-term .d, html body .gf-shell .d, html body .gf-shell .gf-shell-status,
 html body .gf-term .gf-term-bar span, html body .gf-shell .gf-term-bar span, html body .gf-term .gf-term-cta span { color: var(--gf-amber-lo) !important; }
