@@ -1,0 +1,59 @@
+# Exam projects ("Project", 6 CFU) and Project Works (3 CFU) co-supervised in
+# Big Data Analytics and Text Mining (M.S. in Artificial Intelligence).
+# Topics only, no student names. This is a selection: add one item per project.
+- year: 2025–2026
+  items:
+    - title: Protein function prediction with geometric GNNs
+      text: GearNet, ESM-GearNet and GGN-GO on CAFA-5 using 3D structures from AlphaFold-DB.
+      kind: Project + Project Work
+    - title: Uncertainty quantification for LLMs, a clinical tutorial
+      text: White-box, black-box and multimodal uncertainty with lm-polygraph and uqlm, with calibration and benchmarking.
+      kind: Project + Project Work
+    - title: DSPy tutorial on a multi-agent ICD coder
+      text: Re-implementing the Code Like Humans pipeline with DSPy and open models served by llama.cpp.
+      kind: Project
+    - title: Biomedical NER with reinforcement learning
+      text: MedGemma fine-tuned with LoRA SFT and GRPO to extract typed entity spans as JSON.
+      kind: Project + Project Work
+    - title: First-order-logic reasoning in small LLMs
+      text: PiCSAR answer selection and logical-equivalence evaluation for FOL proof chains checked with Prover9.
+      kind: Project
+    - title: Compositional faithfulness of text-to-image models
+      text: A benchmark of five diffusion models on T2I-CompBench and GenEval, scored with OWLv2.
+      kind: Project + Project Work
+    - title: Synthetic clinical documents
+      text: A LangGraph multi-agent pipeline producing realistic, degraded clinical PDFs with LLM-as-a-judge checks.
+      kind: Project Work
+    - title: Chest X-rays generated from radiology reports
+      text: Clinical and anatomical faithfulness of report-conditioned diffusion models on MIMIC-CXR, with controlled editing.
+      kind: Project + Project Work
+    - title: Multimodal ICD coding with vision-language models
+      text: Fine-tuning a multimodal LLM with a custom tokenizer, and agentic use of the same VLM on ChestMNIST.
+      kind: Project + Project Work
+    - title: Robot learning with LeRobot
+      text: Diffusion policy and ACT in simulation, and a comparison of SmolVLA and X-VLA on LIBERO.
+      kind: Project
+    - title: A personal chess coach
+      text: Opening repertoires tailored to a player's games, repertoire gaps, and move commentary from Stockfish and an LLM.
+      kind: Project
+    - title: Clinical relational deep learning
+      text: Extending RelBench with MIMIC and eICU databases and new temporal prediction tasks.
+      kind: Project
+    - title: Person search with vision-language models
+      text: Finding a person in image collections from a natural-language description.
+      kind: Project
+    - title: Few-shot summarization
+      text: Comparing small fine-tuned models and larger prompted LLMs on news summarization with little data.
+      kind: Project
+    - title: Backdoor attacks through quantization
+      text: Whether a model that behaves well at full precision can hide malicious behaviour that appears once quantized.
+      kind: Project
+    - title: Data contamination in LLM benchmarks
+      text: Detecting when test questions have leaked into a model's training data.
+      kind: Project
+    - title: Visual question answering
+      text: Prompting and fine-tuning strategies for multimodal LLMs answering questions about images.
+      kind: Project
+    - title: Faithful explanations for text classifiers
+      text: Counterfactual tests of whether a classifier relies on style or on topic.
+      kind: Project Work

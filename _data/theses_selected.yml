@@ -1,0 +1,47 @@
+# Selected co-supervised theses shown on /teaching/.
+# If AMS Laurea already lists a thesis by the same student (surname match),
+# assets/extras/teaching.js replaces title, year and degree with the official
+# record and links it. Fields below are the fallback.
+- surname: Ferri
+  name: Ferri, A.
+  year: 2026
+  title: On-Device Retrieval-Augmented Generation over Personal Clinical Records
+  note: Paper accepted at KEIR @ CIKM 2026
+- surname: Rubri
+  name: Rubri, M.
+  year: 2026
+  title: Automatic Optimization of Agentic Pipelines for Protein Function Prediction
+- surname: Buzzoni
+  name: Buzzoni, M.
+  year: 2026
+  title: "Graph-of-Mark: Graph-Based Visual Prompting for Enhanced Spatial Reasoning in Multimodal Language Models"
+  degree: M.S. thesis, Artificial Intelligence
+  note: Paper at AAAI-26 (oral)
+- surname: Raponi
+  name: Raponi, M.
+  year: 2025
+  title: Multimodal Generative Information Retrieval of Chest X-Rays Grounded on ICD-9 Taxonomy
+  degree: B.S. thesis, Computer Science and Engineering
+- surname: Zecca
+  name: Zecca, A.
+  year: 2024
+  title: "End-to-End Extraction and Injection of Graphs: A Self-Supervised Neuro-Symbolic Method for Explainable Large Language Models"
+  degree: M.S. thesis, Artificial Intelligence
+- surname: Monaldini
+  name: Monaldini, N.
+  year: 2024
+  title: "Large Action Models: End-to-End Retrieval-Enhanced Learning for Generating Function Calls from Instruction Manuals"
+  degree: B.S. thesis, Computer Science and Engineering
+  note: Paper at EMNLP-25 (PORTS)
+- surname: Cocchieri
+  name: Cocchieri, A.
+  year: 2023
+  title: Leveraging Large Language Model Distillation to Enhance Zero-Shot Named Entity Recognition and Classification
+  degree: M.S. thesis, Artificial Intelligence
+  note: Papers at NAACL-25 and ACL-25
+- surname: Presepi
+  name: Presepi, A.
+  year: 2023
+  title: "To Generate or to Retrieve: On the Effectiveness of Artificial Contexts for Biomedical Question Answering"
+  degree: B.S. thesis, Computer Science and Engineering
+  note: Paper at ACL-24 (MedGENIE)

@@ -253,7 +253,6 @@ render_with_liquid: false
       scholar:     { url: 'https://scholar.google.com/citations?user=BEZlFiAAAAAJ', desc: 'Google Scholar' },
       dblp:        { url: 'https://dblp.org/pid/271/1231.html', desc: 'DBLP' },
       orcid:       { url: 'https://orcid.org/0000-0003-1104-2014', desc: 'ORCID 0000-0003-1104-2014' },
-      github:      { url: 'https://github.com/giacomofrisoni', desc: 'GitHub' },
       linkedin:    { url: 'https://www.linkedin.com/in/giacomo-frisoni-3b97a8129', desc: 'LinkedIn' },
       unibonlp:    { url: 'https://disi-unibo-nlp.github.io/', desc: 'UniboNLP research group' },
       huggingface: { url: 'https://huggingface.co/disi-unibo-nlp', desc: 'UniboNLP models and datasets on Hugging Face' },
@@ -305,6 +304,17 @@ render_with_liquid: false
     /* ============================================
        FILESYSTEM
        ============================================ */
+    // Live number of co-supervised theses (AMS Laurea), refreshed daily by bin/update_metrics.py.
+    let THESES = 57;
+    fetch('/assets/data/metrics.json', { cache: 'no-cache' }).then(r => r.ok ? r.json() : null).then(m => {
+      const n = m && m.theses && m.theses.count;
+      if (!n) return;
+      THESES = n;
+      const f = filesystem[HOME + '/teaching/theses.txt'];
+      if (f) f.content = f.content.map(l => l.replace(/Co-supervisor of \d+/, 'Co-supervisor of ' + n));
+      const a = filesystem[HOME + '/about.txt'];
+      if (a && a.content) a.content = a.content.map(l => l.replace(/co-supervising over \d+ theses/, 'co-supervising ' + n + ' theses'));
+    }).catch(() => {});
     const filesystem = {
       [HOME]: {
         type: 'dir',
@@ -559,6 +569,10 @@ render_with_liquid: false
         type: 'file',
         content: [
           '# Workshop organization',
+          '',
+          'KEIR-26: 3rd Workshop on Knowledge-Enhanced Information Retrieval',
+          '  Co-organizer. CIKM 2026, Sapienza University of Rome, Nov 8, 2026.',
+          '  32 submissions, 16 accepted. Keynote: Fabio Petroni.',
           '',
           'KEIR-25: 2nd Workshop on Knowledge-Enhanced Information Retrieval',
           '  Co-Chair. ECIR-25, Lucca, Italy, Apr 10, 2025.',
@@ -858,7 +872,7 @@ render_with_liquid: false
       else if (cmd === 'pip') { addLine('ERROR: pip is disabled on the login node. Use a virtual environment on a compute node.'); }
       else if (['apt','yum','pacman','brew','conda'].includes(cmd)) { addLine(cmd + ': permission denied'); }
       else if (['reboot','shutdown','poweroff','halt'].includes(cmd)) { addLine(cmd + ': permission denied (and there are jobs running)'); }
-      else if (cmd === 'git') { addLine('git: not a git repository (or any of the parent directories). The site itself is at ' + hosts.github.url + '/giacomofrisoni.github.io'); }
+      else if (cmd === 'git') { addLine('git: not a git repository (or any of the parent directories).'); }
       else if (trimmed.includes(':(){ :|:& };:') || trimmed.includes(':(){ :|:&};:')) { addLine(''); addLine('Fork bomb detected. cgroups say no.', 'text-accent'); addLine(''); }
       else { addLine('sh: command not found: ' + cmd); addLine("Type 'help' for the list of commands.", 'text-dim'); }
       scrollToBottom();
@@ -900,7 +914,7 @@ render_with_liquid: false
           ['module avail',         'Loadable modules'],
         ]],
         ['NETWORK', [
-          ['ssh <host>',           'Open a profile (scholar, dblp, orcid, github, ...)'],
+          ['ssh <host>',           'Open a profile (scholar, dblp, orcid, huggingface, ...)'],
           ['ssh',                  'List known hosts'],
           ['lynx <page>',          'Browse the site: news, publications, cv, teaching'],
           ['mail',                 'Contact info'],
@@ -1335,7 +1349,7 @@ render_with_liquid: false
         'USER=' + USER, 'HOME=' + HOME, 'SHELL=/bin/bash', 'TERM=xterm-256color', 'HOSTNAME=' + HOST, 'LANG=en_US.UTF-8', 'EDITOR=vim',
         'REAL_NAME=Giacomo Frisoni', 'ROLE=Postdoctoral Researcher in NLP', 'AFFILIATION=DISI, University of Bologna',
         'GROUP=UniboNLP', 'PROJECT=DARE', 'PHD_YEAR=2024', 'PAPERS=32', 'CITATIONS_SCHOLAR=613', 'H_INDEX_SCHOLAR=15',
-        'THESES_COSUPERVISED=57', 'META_REVIEWS=21', 'REVIEWS=79', 'ORCID=0000-0003-1104-2014',
+        'THESES_COSUPERVISED=' + THESES, 'META_REVIEWS=21', 'REVIEWS=79', 'ORCID=0000-0003-1104-2014',
         'RESEARCH=nlp,llm,gnn,biomedical,clinical,rag,chess', 'CUDA_VISIBLE_DEVICES=3', 'HF_HOME=/scratch/frisoni/hf',
         'MOTTO=Language is the dress of thought',
       ].forEach(l => addLine(l));
@@ -1395,7 +1409,6 @@ render_with_liquid: false
       addHTML('  <span class="text-accent">Email</span>     ' + link('mailto:giacomo.frisoni@unibo.it', 'giacomo.frisoni@unibo.it'));
       addHTML('  <span class="text-accent">Office</span>    Via dell\'Universita 50, 47522 Cesena (FC), Italy');
       addHTML('  <span class="text-accent">LinkedIn</span>  ' + link(hosts.linkedin.url));
-      addHTML('  <span class="text-accent">GitHub</span>    ' + link(hosts.github.url));
       addLine('');
     }
 
@@ -1508,7 +1521,7 @@ render_with_liquid: false
       }
       addLine('');
       addHTML('<span class="text-ok">Training complete.</span> Final exam accuracy: 0.871. Satisfaction: 4.5/5.');
-      addLine('57 checkpoints so far in /home/frisoni/theses/. Next cohort starts in September.', 'text-dim');
+      addLine(THESES + ' checkpoints so far in /home/frisoni/theses/. Next cohort starts in September.', 'text-dim');
     }
 
     /* ---- Misc ---- */
@@ -1655,7 +1668,6 @@ render_with_liquid: false
       addHTML('  Source:    ' + link('https://github.com/Pinperepette/pinperepette.github.io'));
       addLine('');
       addLine('  Adapted for giacomofrisoni.github.io: content, SLURM commands, amber theme.', 'text-dim');
-      addHTML('  Site source: ' + link(hosts.github.url + '/giacomofrisoni.github.io'));
       addLine('');
     }
 

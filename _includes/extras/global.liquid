@@ -1,0 +1,12 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&display=swap">
+<link rel="stylesheet" href="{{ '/assets/extras/site.css' | relative_url }}?v={{ site.time | date: '%s' }}">
+<script>
+  window.GF = {
+    base: {{ site.baseurl | jsonify }},
+    terminal: {{ '/terminal/' | relative_url | jsonify }},
+    data: {{ '/assets/data/' | relative_url | jsonify }}
+  };
+</script>
+<script src="{{ '/assets/extras/site.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
