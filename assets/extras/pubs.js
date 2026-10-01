@@ -9,7 +9,6 @@
   var GF = window.GF || { data: "/assets/data/", base: "" };
   var META = window.GF_PUB_META || {};
   var BASE = GF.base || "";
-  var S = window.GFShell;
   function $$(s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
   function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
   function norm(t) { return String(t || "").normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim(); }
@@ -126,6 +125,8 @@
 
   /* ---------------------------------------------------------- shell panel */
   function shell(metrics, history, feed, n) {
+    /* site.js (which defines GFShell) loads after this file, so look it up now */
+    var S = window.GFShell;
     var box = document.getElementById("gf-scholar"); if (!box || !S) return;
     var out = box.querySelector(".gf-shell-out"), status = box.querySelector(".gf-shell-status");
     var s = metrics.scholar || {};
