@@ -477,14 +477,18 @@ def main() -> None:
     prev = load_json(DATA / "metrics.json", {})
     feed = load_json(DATA / "citation_feed.json", [])
     history = load_json(DATA / "history.json", [])
-    # the first row (June 8, 2026) held values copied from the CV, not a real daily reading
-    history = [h for h in history if h.get("date") != "2026-06-08"]
+    # Rows that only repeat the placeholder copied from the June CV (613 citations) are not real
+    # readings: the June 8 seed itself, and any day on which Scholar was unreachable before the
+    # first successful fetch (October 2, 2026).
+    history = [h for h in history if not (h.get("scholar_citations") == 613 and h.get("date", "") <= "2026-10-01")]
     snap = dict(prev)
     new_events: list[dict] = []
 
+    fresh_scholar = False
     if "scholar" in run:
         s, ev = collect_scholar(prev)
         if s:
+            fresh_scholar = True
             snap["scholar"] = s
             new_events += ev
             write_al_citations(s)
@@ -506,11 +510,11 @@ def main() -> None:
     dump_json(DATA / "citation_feed.json", feed)
 
     row = {"date": TODAY}
-    for src, keys in (("scholar", ("citations", "h_index", "i10_index")),):
-        for k in keys:
-            v = (snap.get(src) or {}).get(k)
+    if fresh_scholar:  # only values fetched today, never the ones carried over from a previous snapshot
+        for k in ("citations", "h_index", "i10_index"):
+            v = snap["scholar"].get(k)
             if v is not None:
-                row[f"{src}_{k}"] = v
+                row[f"scholar_{k}"] = v
     if snap.get("theses"):
         row["theses"] = snap["theses"]["count"]
     history = [h for h in history if h.get("date") != TODAY] + [row]

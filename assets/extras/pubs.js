@@ -135,9 +135,9 @@
     var box = document.getElementById("gf-scholar"); if (!box || !S) return;
     var out = box.querySelector(".gf-shell-out"), status = box.querySelector(".gf-shell-status");
     var s = metrics.scholar || {};
-    /* the June 8 row holds values copied from the CV: ignore it once real daily readings exist */
+    /* rows that only repeat the placeholder from the June CV (613, up to Oct 1 2026) are not real readings */
     var hs = (history || []).filter(function (h) { return h.scholar_citations != null; });
-    if (hs.some(function (h) { return h.date !== "2026-06-08"; })) hs = hs.filter(function (h) { return h.date !== "2026-06-08"; });
+    hs = hs.filter(function (h) { return !(h.scholar_citations === 613 && h.date <= "2026-10-01"); });
     var month = hs.filter(function (h) { return h.date <= daysAgo(30); }).pop() || hs[0];
     var gain = (s.citations != null && month && hs.length > 1) ? s.citations - month.scholar_citations : null;
     var cmds = {
