@@ -66,14 +66,19 @@
       var venue = v.join('<span class="gf-sep">·</span>') + (m.award ? '<span class="gf-award">🏆 ' + esc(m.award) + "</span>" : "");
 
       var links = [];
-      var primary = m.anthology ? "https://aclanthology.org/" + m.anthology + "/" : (m.url || (dblp[key] && dblp[key].url));
+      /* DOI: from pub_meta, else from the .bib (theme "DOI" button), else from the daily DBLP lookup */
+      var doi = m.doi || null;
+      var dblpUrl = dblp[key] && dblp[key].url;
       $$(".links a", box).forEach(function (a) {
-        var t = a.textContent.trim(), href = a.getAttribute("href");
-        if (t === "DOI" && !primary) primary = href;
+        var t = a.textContent.trim(), href = a.getAttribute("href") || "";
+        if (t === "DOI" && !doi) doi = href.replace(/^https?:\/\/(dx\.)?doi\.org\//, "");
         else if (["Bib", "Abs", "DOI", "Poster", "HTML"].indexOf(t) < 0 && href && href !== "#") links.push('<a href="' + esc(href) + '" target="_blank" rel="noopener">' + esc(t) + "</a>");
-        else if (t === "HTML" && !primary) primary = href;
       });
-      if (primary) links.unshift('<a href="' + esc(primary) + '" target="_blank" rel="noopener">' + esc(m.anthology ? "ACL Anthology" : labelFor(primary)) + "</a>");
+      if (!doi && dblpUrl && /doi\.org\//.test(dblpUrl)) doi = dblpUrl.replace(/^https?:\/\/(dx\.)?doi\.org\//, "");
+      var primary = m.anthology ? "https://aclanthology.org/" + m.anthology + "/" : (m.url || (dblpUrl && !/doi\.org\//.test(dblpUrl) ? dblpUrl : null));
+      if (!primary && doi) primary = "https://doi.org/" + doi;
+      if (doi) links.unshift('<a class="gf-doi" href="https://doi.org/' + esc(doi) + '" target="_blank" rel="noopener" title="Digital Object Identifier">doi:' + esc(doi) + "</a>");
+      if (primary && !(doi && primary === "https://doi.org/" + doi)) links.unshift('<a href="' + esc(primary) + '" target="_blank" rel="noopener">' + esc(m.anthology ? "ACL Anthology" : labelFor(primary)) + "</a>");
       if (m.demo) {
         var hf = m.demo.url && /huggingface\.co/.test(m.demo.url);
         var dl = (hf ? '<img src="' + esc(asset("/assets/img/logos/huggingface_color.svg")) + '" alt="">' : "") + "Demo";
@@ -130,7 +135,9 @@
     var box = document.getElementById("gf-scholar"); if (!box || !S) return;
     var out = box.querySelector(".gf-shell-out"), status = box.querySelector(".gf-shell-status");
     var s = metrics.scholar || {};
+    /* the June 8 row holds values copied from the CV: ignore it once real daily readings exist */
     var hs = (history || []).filter(function (h) { return h.scholar_citations != null; });
+    if (hs.some(function (h) { return h.date !== "2026-06-08"; })) hs = hs.filter(function (h) { return h.date !== "2026-06-08"; });
     var month = hs.filter(function (h) { return h.date <= daysAgo(30); }).pop() || hs[0];
     var gain = (s.citations != null && month && hs.length > 1) ? s.citations - month.scholar_citations : null;
     var cmds = {
@@ -138,9 +145,9 @@
         var L = [["citations", s.citations, gain > 0 ? "+" + gain + " in the last 30 days" : ""], ["h-index", s.h_index, "papers with at least h citations each"],
           ["i10-index", s.i10_index, "papers with at least 10 citations"], ["papers", n, "listed on this page"]];
         out.innerHTML += "\n" + '<span class="d"># Google Scholar profile, refreshed every morning</span>\n' + L.map(function (l) {
-          return '<span class="row"><span class="cmd">' + S.esc(l[0].padEnd(11)) + '</span><span class="h">' + S.esc(String(l[1] == null ? "n/a" : l[1]).padStart(5)) + '</span>   <span class="d">' + S.esc(l[2]) + "</span></span>";
+          return '<span class="gf-row"><span class="cmd">' + S.esc(l[0].padEnd(11)) + '</span><span class="h">' + S.esc(String(l[1] == null ? "n/a" : l[1]).padStart(5)) + '</span>   <span class="d">' + S.esc(l[2]) + "</span></span>";
         }).join("\n");
-        status.textContent = "Last update: " + fmt(metrics.updated) + (metrics.seed ? " (values from the CV until the first automatic update)" : "") + ". Try the other commands above.";
+        status.textContent = "Last update: " + fmt(metrics.updated) + (metrics.updated === "2026-06-08" ? " (values from the CV until the first automatic update)" : "") + ". Try the other commands above.";
       }],
       year: ["scholar citations --per-year", function () {
         var py = s.per_year || {}, ys = Object.keys(py).sort();
@@ -159,7 +166,7 @@
         var ev = (feed || []).filter(function (e) { return e.kind === "scholar" && !e.baseline; }).slice(0, 12);
         var rows = ev.map(function (e) {
           var t = e.cited_title || "", k = Object.keys(META).filter(function (key) { return false; });
-          return '<span class="row"><span class="d">' + S.esc(e.date) + '</span>  <span class="g">' + S.esc(("+" + e.delta).padStart(3)) + "</span>  " + S.esc(t.length > 58 ? t.slice(0, 57) + "…" : t) + ' <span class="d">(' + S.esc(e.total) + " total)</span></span>";
+          return '<span class="gf-row"><span class="d">' + S.esc(e.date) + '</span>  <span class="g">' + S.esc(("+" + e.delta).padStart(3)) + "</span>  " + S.esc(t.length > 58 ? t.slice(0, 57) + "…" : t) + ' <span class="d">(' + S.esc(e.total) + " total)</span></span>";
         });
         out.innerHTML += "\n" + '<span class="d"># papers whose Google Scholar count went up, compared day by day</span>\n' + (rows.length ? rows.join("\n") : '<span class="d">no increase recorded yet</span>');
         status.textContent = "Every morning the counts of each paper are compared with the previous day; each line is a paper that gained citations.";

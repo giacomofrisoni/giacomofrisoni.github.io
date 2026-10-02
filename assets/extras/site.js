@@ -125,11 +125,11 @@
       var lw = Math.max.apply(null, labels.map(function (l) { return String(l).length; }));
       var width = Math.max(10, cols(out) - lw - 10);
       var rows = labels.map(function (l, i) {
-        return '<span class="row" data-i="' + i + '"><span class="d">' + esc(String(l).padStart(lw)) + " │</span><span class=\"bars\"></span> <span class=\"h\"></span></span>";
+        return '<span class="gf-row" data-i="' + i + '"><span class="d">' + esc(String(l).padStart(lw)) + " │</span><span class=\"bars\"></span> <span class=\"h\"></span></span>";
       });
       var legend = series.length > 1 ? "\n" + series.map(function (s) { return '<span class="' + s.cls + '">' + s.ch + s.ch + "</span> " + esc(s.name); }).join("   ") : "";
       out.innerHTML = rows.join("\n") + '<span class="d">' + legend + "</span>";
-      var rowsEl = out.querySelectorAll(".row");
+      var rowsEl = out.querySelectorAll(".gf-row");
       function describe(i) { return labels[i] + ": " + series.map(function (s) { return (s.values[i] || 0) + " " + s.name; }).join(", ") + (series.length > 1 ? " (" + total[i] + " " + unit + ")" : ""); }
       rowsEl.forEach(function (r) {
         r.addEventListener("mouseenter", function () { status.textContent = describe(+r.dataset.i); });

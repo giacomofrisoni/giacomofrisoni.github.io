@@ -10,7 +10,8 @@
 #   acceptance  acceptance rate in % (conferences only)
 #   track       e.g. "Main", "Findings", "Demo"
 #   talk        how it was presented by me: Oral / Poster / Demo
-#   anthology   ACL Anthology ID (adds an "ACL Anthology" button)
+#   anthology   ACL Anthology ID (adds an "ACL Anthology" link)
+#   doi         DOI, shown as a link; when missing, the DOI in the .bib or the one found daily on DBLP is used
 #   url         publisher page when there is no DOI in the .bib
 #   demo        live demo; label + optional event where it was shown
 #   poster_img  poster (assets/img/posters/) opened in a lightbox from the "Poster" link
@@ -32,7 +33,8 @@ zangrillo2026paintitblack:
     label: Redaction game
     event: Notte dei Ricercatori 2026
     url: https://huggingface.co/spaces/disi-unibo-nlp/paint-it-black-demo
-  tldr: A benchmark that tests whether multimodal LLMs can find and black out personal health information in realistic clinical PDFs, across document types and scan quality levels.
+  tldr: Clinical records are often shared as PDFs full of patient identifiers. Paint It, Black is the first benchmark that asks open multimodal LLMs to locate those identifiers directly on the page image,
+    as bounding boxes and with no OCR step, across several physician-validated document types and three levels of scan degradation.
 frisoni2026graphofmark:
   event: AAAI-26
   city: Singapore
@@ -42,7 +44,9 @@ frisoni2026graphofmark:
   track: Main
   talk: Oral
   poster_img: gom_poster.jpg
-  tldr: Draws a graph of the objects in an image and of their spatial relations directly on the pixels, helping any multimodal language model answer spatial questions without retraining.
+  tldr: 'Multimodal LLMs often get simple spatial questions wrong. Graph-of-Mark detects the objects in an image and draws on it a graph of how they are placed: direction (above, left of), depth (in front
+    of, behind), and proximity. Any model can read the annotated image as its prompt, with no retraining.'
+  doi: 10.1609/aaai.v40i36.40329
 molfetta2025ports:
   event: EMNLP-25
   city: Suzhou
@@ -53,7 +57,9 @@ molfetta2025ports:
   talk: Oral
   anthology: 2025.emnlp-main.507
   poster_img: ports_poster.jpg
-  tldr: Trains tool retrievers with feedback from a frozen LLM and with hard negatives, so that agents find the right tool among thousands of candidates.
+  tldr: 'Agents that call tools must first find the right one among thousands. PORTS fine-tunes the tool retriever with two signals: how likely a frozen LLM is to produce the correct call from each candidate,
+    and contrast with near-identical wrong tools. Gains hold on six datasets, including tools never seen in training.'
+  doi: 10.18653/v1/2025.emnlp-main.507
 cocchieri2025zeroner:
   event: ACL-25
   city: Vienna
@@ -62,7 +68,9 @@ cocchieri2025zeroner:
   acceptance: 20
   track: Findings
   anthology: 2025.findings-acl.805
-  tldr: Zero-shot named entity recognition guided by natural-language descriptions of the entity types rather than by their names alone.
+  tldr: Zero-shot NER usually relies on the names of the entity types. ZeroNER reads a description of each type instead, which helps most in hard, low-resource settings where names alone are ambiguous;
+    a compact model trained this way surpasses baselines that only use type names.
+  doi: 10.18653/v1/2025.findings-acl.805
 cocchieri2025openbioner:
   event: NAACL-25
   city: Albuquerque
@@ -75,14 +83,18 @@ cocchieri2025openbioner:
     label: OpenBioNER-v2 demo
     event: Notte dei Ricercatori 2026
     url: https://huggingface.co/spaces/disi-unibo-nlp/openbioner-v2-demo-ndr
-  tldr: Lightweight biomedical named entity recognition that handles entity types never seen in training, using their descriptions.
+  tldr: Biomedical NER normally needs retraining for every new entity type. OpenBioNER is a 110M-parameter cross-encoder that receives a plain-language description of any biomedical type at inference time
+    and finds its mentions, reaching up to 10% higher F1 than specialized 7B NER models and GPT-4o.
+  doi: 10.18653/v1/2025.findings-naacl.47
 molfetta2025feast:
   event: ECAI-25
   city: Bologna
   country: IT
   rank: A
   acceptance: 23
-  tldr: Retrieval-augmented classification of food descriptions into the multi-level FoodEx2 coding system.
+  tldr: European food-safety data are coded with FoodEx2, a multi-level system with thousands of rare, fine-grained labels. FEAST splits the coding into three steps (main food term, which facets apply,
+    their values) and retrieves candidates with embeddings trained on the taxonomy, improving F1 on rare classes by 12 to 38% over the previous baseline.
+  doi: 10.3233/FAIA251309
 fantazzini2025magicmirror:
   event: ECAI-25
   city: Bologna
@@ -90,7 +102,9 @@ fantazzini2025magicmirror:
   rank: A
   acceptance: 23
   talk: Poster
-  tldr: A survey of methods that learn or optimize prompts automatically instead of writing them by hand.
+  tldr: The first systematic review of prompt learning for language models that work on text, focused on methods that build or optimize prompts automatically instead of by hand, with a continuously updated
+    repository of annotated papers.
+  doi: 10.3233/FAIA251343
 frisoni2025protein:
   event: ECAI-25
   city: Bologna
@@ -104,7 +118,9 @@ frisoni2025protein:
     label: GOMix interface
     event: ECAI-25 demo session
     img: /assets/img/projects/gomix_demo.png
-  tldr: An open-source ensemble that combines sequence similarity, protein interactions, protein language models and graph neural networks to predict what a protein does.
+  tldr: Predicts which Gene Ontology functions an unseen protein performs by combining seven predictors (sequence similarity, protein-interaction networks, protein language models, a neural network, and
+    a graph neural network) through a learned ensemble. Fully open source, light on compute, and packaged as a web demo.
+  doi: 10.3233/FAIA251439
 bussotti2024unknown:
   event: EMNLP-24
   city: Miami
@@ -113,7 +129,9 @@ bussotti2024unknown:
   acceptance: 21
   track: Main
   anthology: 2024.emnlp-main.675
-  tldr: Generates training examples for fact-checking from both text and tables, reducing the need for manual annotation.
+  tldr: Fact-checking systems need large sets of claims labeled as supported or refuted. Unown generates such training claims automatically from text and tables, choosing the evidence and producing refuting
+    claims through negation; models trained on its examples match expert-labeled data and gain up to 5% accuracy on FEVEROUS and SciFact.
+  doi: 10.18653/v1/2024.emnlp-main.675
 frisoni2024medgenie:
   event: ACL-24
   city: Bangkok
@@ -126,14 +144,18 @@ frisoni2024medgenie:
     label: MedGENIE challenge
     event: Notte dei Ricercatori 2026
     url: https://huggingface.co/spaces/disi-unibo-nlp/medgenie-demo
-  tldr: Shows that context generated by a language model can stand in for retrieved documents in medical question answering.
+  tldr: Medical question answering usually retrieves documents before answering. MedGENIE instead has a domain-specific language model generate its own background passages and then answers from them. Within
+    24 GB of GPU memory, it sets a new state of the art on MedQA-USMLE, MedMCQA, and MMLU, with a small reader beating zero-shot 175B models.
+  doi: 10.18653/v1/2024.acl-long.533
 frisoni2023cogito:
   event: AAAI-23
   city: Washington, DC
   country: US
   rank: A*
   acceptance: 20
-  tldr: Summarizes biomedical papers by combining semantic parsing graphs with rewards for factual consistency.
+  tldr: Summarizers of biomedical papers usually work on the words alone. Cogito Ergo Summ feeds a pre-trained language model with two kinds of semantic graphs parsed from the paper (biomedical events and
+    Abstract Meaning Representation) and trains it with a reward that penalizes losing information, producing summaries that are more informative, readable, and consistent with the source.
+  doi: 10.1609/aaai.v37i11.26503
 frisoni2022bioreader:
   event: EMNLP-22
   city: Abu Dhabi
@@ -141,7 +163,10 @@ frisoni2022bioreader:
   rank: A*
   acceptance: 22
   talk: Poster
-  tldr: A text-to-text Transformer for biomedical text that retrieves supporting passages from the scientific literature.
+  tldr: A T5 model for biomedical NLP that, while reading, retrieves and attaches relevant passages from a database of about 60 million tokens of PubMed literature. It outperforms several state-of-the-art
+    methods with up to three times fewer parameters, and its knowledge can be updated by changing the database instead of retraining.
+  doi: 10.18653/v1/2022.emnlp-main.390
+  anthology: 2022.emnlp-main.390
 frisoni2022enhancing:
   event: DATA-22
   city: Lisbon
@@ -150,7 +175,9 @@ frisoni2022enhancing:
   acceptance: 20
   talk: Oral (virtual)
   award: Best Student Paper Award
-  tldr: Improves summaries of biomedical reviews with factual evidence extracted as graphs from the source papers.
+  tldr: Open-domain triples cannot capture the nested, many-argument interactions found in biomedical text. EASumm extracts biomedical event graphs from the papers of a scientific review and encodes text
+    and graph side by side, matching or beating prior systems on the CDSR dataset of Cochrane reviews.
+  doi: 10.5220/0011354900003269
 frisoni2022text2text:
   event: COLING-22
   city: Gyeongju
@@ -158,14 +185,18 @@ frisoni2022text2text:
   rank: B
   acceptance: 28
   talk: Oral (virtual)
-  tldr: Extracts biomedical event graphs from text and turns them back into text with a single text-to-text model.
+  tldr: Biomedical event extraction usually needs multi-step pipelines limited to a few interaction types. This work turns both extraction and the reverse task (writing fluent sentences from event graphs)
+    into text-to-text translation with one model, linearizing graphs as text and releasing paired datasets covering more than 150 event types.
+  anthology: 2022.coling-1.238
 frisoni2020unsupervised:
   event: KDIR-20
   city: online
   country: HU
   rank: C
   acceptance: 21
-  tldr: An unsupervised text mining method that learns interpretable knowledge graphs from documents.
+  tldr: Builds a knowledge graph automatically from short, unlabeled texts, turning the correlations found by descriptive text mining into linked, queryable facts; shown on posts of patients with a rare
+    disease, and transferable to other domains and languages.
+  doi: 10.5220/0010153603160324
 frisoni2020learning:
   event: DATA-20
   city: online
@@ -174,84 +205,116 @@ frisoni2020learning:
   acceptance: 14
   talk: Oral (virtual)
   award: Best Paper Award
-  tldr: A descriptive text mining methodology that extracts interpretable and statistically significant knowledge from unlabeled social media messages.
+  tldr: Patients with a rare disease (esophageal achalasia) share their experiences in online communities. From their unlabeled posts, this methodology derives scientifically correct correlations among
+    symptoms, drugs, treatments, and foods, explains them, and keeps only those that are statistically significant.
+  doi: 10.5220/0009892001210132
 goyo2025geometric:
   event: KEIR @ ECIR-25
   city: Lucca
   country: IT
-  tldr: A knowledge-enhanced geometric approach to representation learning for content-based information retrieval.
+  tldr: Contrastive learning depends on the negative examples it sees. This work builds on earlier negative-sampling strategies by using geometric principles (such as midpoints between embeddings) to generate
+    more informative negatives, improving content-based image retrieval and classification.
+  doi: 10.1007/978-3-032-02899-0_3
 goyo2024triplet:
   event: SEBD-24
   city: Villasimius
   country: IT
-  tldr: Better triplet sampling for self-supervised representation learning.
+  tldr: Contrastive self-supervised learning is good at similarity but weak at dissimilarity, because negatives are averaged over the batch. ReTSam builds an explicit synthetic negative for each example
+    (the centroid of its k nearest neighbours) and trains with a triplet loss, improving image retrieval and classification, with +5% mAP on CIFAR-10.
 ragazzi2026comma:
   rank: Q1
-  tldr: A multi-task, multilingual dataset of constitutional court verdicts.
+  tldr: About 14,000 decisions of the Italian Constitutional Court in four languages, with tasks for summarizing verdicts at several lengths, generating the decision, retrieving the cited law articles,
+    and classifying the ruling. Benchmarks of many language models leave large room for improvement.
   short: AI and Law
+  doi: 10.1007/s10506-026-09520-x
 cocchieri2026openbionerv2:
   rank: Q1
   demo:
     label: OpenBioNER-v2 demo
     event: Notte dei Ricercatori 2026
     url: https://huggingface.co/spaces/disi-unibo-nlp/openbioner-v2-demo-ndr
-  tldr: A suite of lightweight models for zero-shot medical named entity recognition driven by entity type descriptions.
+  tldr: A family of small transformer encoders (15M to 110M parameters) that recognize biomedical and clinical entities never seen in training by reading a plain-language description of each type. Pretrained
+    on LLM-generated silver annotations covering thousands of medical types, it sets the state of the art on 11 benchmarks, including a new de-identification dataset, with variants of 56M parameters or
+    fewer beating UniversalNER and GLiNER.
   short: ESWA
+  doi: 10.1016/j.eswa.2026.131725
 ragazzi2025lawsuit:
   rank: Q1
-  tldr: A large summarization dataset of Italian Constitutional Court verdicts, with summaries written by legal experts.
+  tldr: 'The first large-scale Italian dataset for legal abstractive summarization: 14,000 verdicts of the Constitutional Court paired with the maxims written by the court''s experts, with documents far
+    longer than existing Italian summarization datasets.'
   short: AI and Law
+  doi: 10.1007/s10506-024-09414-w
 frisoni2025decoding:
   rank: Q1
-  tldr: A systematic study of how decoding strategies change the quality of abstractive summaries.
+  tldr: How a model picks each next word strongly affects its summaries. Over 3,500 combinations of models, datasets, and decoding settings, measured on quality, factuality, redundancy, and carbon footprint,
+    show that tuning the decoding strategy brings large gains. Also releases PRISM, a dataset of these predictions for learning decoding choices.
   short: Neural Networks
+  doi: 10.1016/j.neunet.2025.108249
 italiani2024evidence:
   rank: Q1
-  tldr: Dialogue summarization that first learns which utterances matter and then summarizes them.
+  tldr: Chat summaries often miss which messages matter. DearWatson learns to pick the relevant utterances in a conversation and marks them with tags that act as evidence for the summary, improving accuracy
+    and factuality on real messenger conversations while making the model's focus visible.
   short: Neurocomputing
+  doi: 10.1016/j.neucom.2023.127132
 frisoni2023graphenhanced:
   rank: Q2
-  tldr: Biomedical summarization guided by factual evidence extracted from the source as a graph.
+  tldr: 'Journal extension of EASumm (DATA-22): a summarizer that reads a biomedical paper together with the graph of events extracted from it, encoding both to produce summaries grounded in the facts the
+    paper actually states.'
   short: SN Comp. Sci.
+  doi: 10.1007/s42979-023-01867-1
 moro2023fashion:
   rank: Q1
-  tldr: Efficient search of fashion images from text queries with a vision-language model.
+  tldr: Searching a fashion catalog by text is slow when a model must score every text-image pair. This approach embeds texts and images separately with self-supervised pretraining, linear attention, and
+    metric learning, so that products close in the space are semantically similar and new images or descriptions can be searched without re-encoding the catalog.
   short: Neurocomputing
+  doi: 10.1016/j.neucom.2023.126196
 moro2023memory:
   rank: Q1
-  tldr: A memory-enhanced Transformer that summarizes long documents efficiently when little training data is available.
+  tldr: Long documents do not fit in a Transformer's input. Emma adds short- and long-term memory layers so the model reads a document in pieces while remembering what it has seen, keeping GPU cost fixed
+    regardless of length and working with few training examples.
   short: Sensors
+  doi: 10.3390/s23073542
 ferrari2022comprehensive:
   rank: Q2
-  tldr: A comparison of knowledge graph embedding techniques on the same link prediction benchmarks.
+  tldr: Dozens of methods embed knowledge graphs to guess missing facts (link prediction), but they are rarely compared under the same conditions. This study systematically assesses their effectiveness
+    and efficiency, showing that performance depends strongly on the type of graph and identifying the best choice for each case.
   short: Electronics
+  doi: 10.3390/electronics11233866
 moro2022uwb:
   rank: Q1
-  tldr: Machine learning models that detect people from ultra-wideband radio signals without line of sight.
+  tldr: Can a radar tell whether a breathing person is hidden behind an obstacle? A measurement campaign with ultra-wideband radar in realistic settings (different obstacles, distances, and radar positions)
+    compares many machine learning models on accuracy and on how well they transfer to new environments.
   short: Sensors
+  doi: 10.3390/s22041656
 frisoni2021eventgraph:
   rank: Q1
-  tldr: Unsupervised representation and similarity learning of event graphs extracted from biomedical literature.
+  tldr: Biomedical events extracted from papers are graphs, but few methods can compare them. DDEGK learns vector representations of event graphs without labels, by measuring how each graph diverges from
+    a small set of anchor graphs through cross-graph attention; the vectors support classification, clustering, and sentence similarity on nine datasets.
   short: Sensors
+  doi: 10.3390/s22010003
 frisoni2021survey:
   rank: Q1
-  tldr: A survey of event extraction, with a focus on the biomedical literature.
+  tldr: 'A survey of event extraction, the task of recognizing in text who did what to whom, with a focus on the biomedical literature: tasks, datasets, methods, and open challenges.'
   short: IEEE Access
+  doi: 10.1109/ACCESS.2021.3130956
 frisoni2026mom:
   demo:
     label: Play against the model
     event: Notte dei Ricercatori 2026
     url: http://137.204.107.40:37342/
-  tldr: A sparse mixture-of-experts chess language model that routes each game to experts specialized on individual players.
+  tldr: A chess language model built from grandmaster-specific experts, first trained separately on each master's games and then stitched together. At every move of a game, a router decides which experts
+    to use, so the model can play in the style of one master or blend several.
   kind: Preprint
   short: arXiv
 wang2025keir:
-  tldr: Post-proceedings of the 2nd Workshop on Knowledge-Enhanced Information Retrieval (KEIR @ ECIR 2025), Springer LNCS.
+  tldr: 'Edited post-proceedings of the second KEIR workshop (ECIR 2025, Lucca): full and invited papers on search and retrieval systems enhanced with external knowledge.'
   kind: Book
   kind_label: Edited book
   short: LNCS 16086
+  doi: 10.1007/978-3-032-02899-0
 frisoni2021phenomena:
-  tldr: Unsupervised learning of interpretable and statistically significant knowledge to explain phenomena described in text.
+  tldr: Extended book chapter on POIROT, a descriptive text mining methodology that explains a phenomenon from a document collection, evaluated by learning the voice of patients from short social posts.
   kind: Book
   kind_label: Book chapter
   short: Book chapter
+  doi: 10.1007/978-3-030-83014-4_14

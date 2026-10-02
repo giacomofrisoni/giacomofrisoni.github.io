@@ -361,6 +361,19 @@ def ams_search_params() -> dict:
     }
 
 
+AMS_PERSON = "Frisoni=3AGiacomo=3A=3A"   # EPrints id of "Frisoni, Giacomo" in the relatore/correlatore view
+
+
+def _level(*texts) -> str | None:
+    """Master's or Bachelor's, from the thesis type code (THELM/THEL...) or the degree course label."""
+    t = " ".join(str(x) for x in texts if x).lower()
+    if re.search(r"thelm|magistral|\[lm-|\blm-|ciclo unico|master", t):
+        return "M.S."
+    if re.search(r"thel|triennal|\[l-|\bl-dm|laurea\b|bachelor", t):
+        return "B.S."
+    return None
+
+
 def _ams_item(e: dict) -> dict:
     def name(c):
         if isinstance(c, dict):
@@ -370,80 +383,72 @@ def _ams_item(e: dict) -> dict:
         return str(c)
     creators = e.get("creators") or e.get("creators_name") or []
     date = str(e.get("discussion_date") or e.get("date") or "")
-    degree = " ".join(str(e.get(k, "")) for k in ("type", "livello", "cds", "corso") if e.get(k))
-    blob = json.dumps(e, ensure_ascii=False).lower()
-    if re.search(r"magistral|\blm-|master|ciclo unico", blob):
-        level = "M.S."
-    elif re.search(r"triennal|\bl-\d|l-dm|bachelor|laurea", blob):
-        level = "B.S."
-    else:
-        level = None
+    title = e.get("title")
     return {
         "author": "; ".join(name(c) for c in creators) if isinstance(creators, list) else name(creators),
-        "title": (e.get("title") or "").strip() if isinstance(e.get("title"), str) else str(e.get("title")),
+        "title": (title if isinstance(title, str) else str(title or "")).strip(),
         "date": date[:10],
         "year": int(date[:4]) if date[:4].isdigit() else None,
-        "degree": degree.strip() or None,
-        "level": level,
-        "url": e.get("uri") or (f"{AMS_BASE}/id/eprint/{e['eprintid']}" if e.get("eprintid") else None),
+        "level": _level(e.get("thesistype"), e.get("citation"), e.get("cds")) or _level(json.dumps(e, ensure_ascii=False)),
+        "url": e.get("uri") or (f"{AMS_BASE}/id/eprint/{e['eprintid']}/" if e.get("eprintid") else None),
     }
 
 
-def collect_ams() -> dict | None:
-    url = f"{AMS_BASE}/cgi/search/archive/advanced"
-    try:
-        r = get(url, params=ams_search_params(), timeout=60)
-    except Exception as e:
-        log(f"AMS Laurea skipped: {e}")
-        return None
-    soup = BeautifulSoup(r.text, "html.parser")
-    text = soup.get_text(" ", strip=True)
-    count = None
-    for pat in (r"(?:Displaying|Visualizza\w*|Mostra\w*)[^0-9]{0,40}\d+\s*(?:-|to|a)\s*\d+\s*(?:of|di)\s*(\d+)",
-                r"(\d+)\s+(?:risultati|results)\b", r"(?:of|di)\s+(\d+)\s+(?:risultati|results)"):
-        m = re.search(pat, text, re.I)
-        if m:
-            count = int(m.group(1))
-            break
+def _ams_from_view_html(html_text: str) -> list[dict]:
+    """Parse the public 'Relatore e Correlatore' browse page: one citation per thesis, e.g.
+    'Rossi, Mario (2024) Title. [Laurea magistrale], Università di Bologna, Corso di Studio in ... [LM-DM270]'"""
+    soup = BeautifulSoup(html_text, "html.parser")
+    items = []
+    for a in soup.find_all("a", href=re.compile(r"amslaurea\.unibo\.it/(id/eprint/)?\d+/?$|^/(id/eprint/)?\d+/?$")):
+        block = a.find_parent(["p", "li", "div"]) or a.parent
+        text = block.get_text(" ", strip=True)
+        m = re.match(r"(.+?)\s*\((\d{4})\)", text)
+        if not m:
+            continue
+        items.append({
+            "author": m.group(1).strip(),
+            "title": a.get_text(" ", strip=True).rstrip("."),
+            "year": int(m.group(2)),
+            "level": _level(text),
+            "url": urljoin(AMS_BASE + "/", a["href"]),
+        })
+    seen, out = set(), []
+    for it in items:  # a citation can contain more than one link
+        if it["url"] not in seen:
+            seen.add(it["url"]); out.append(it)
+    return out
 
+
+def collect_ams() -> dict | None:
+    """Theses where Giacomo Frisoni is relatore or correlatore. Three routes, most reliable first:
+    1. EPrints export of the browse view as JSON (structured: type, course, date);
+    2. the same browse view as HTML;
+    3. the advanced search used in the CV."""
     items: list[dict] = []
-    # 1) Preferred: EPrints JSON export of the very same search.
-    exp = soup.find("input", {"name": "exp"})
-    form = exp.find_parent("form") if exp else None
-    if exp and form:
-        params = {i.get("name"): i.get("value", "") for i in form.find_all("input") if i.get("name")}
-        params.update({"output": "JSON", "_action_export": "1"})
-        action = urljoin(r.url, form.get("action") or url)
-        try:
-            js = get(action, params=params, timeout=60).json()
-            items = [_ams_item(e) for e in js]
-        except Exception as e:
-            log(f"AMS JSON export failed ({e}); falling back to HTML pages")
-    # 2) Fallback: scrape the result pages.
+    tried = []
+    exp = f"{AMS_BASE}/cgi/exportview/relatore/{AMS_PERSON}/JSON/{AMS_PERSON}.js"
+    try:
+        js = get(exp, timeout=60).json()
+        items = [_ams_item(e) for e in js if isinstance(e, dict)]
+        tried.append(f"export JSON: {len(items)}")
+    except Exception as e:
+        tried.append(f"export JSON failed ({e})")
     if not items:
-        offset = 0
-        while True:
-            page = soup if offset == 0 else BeautifulSoup(
-                get(url, params={**ams_search_params(), "search_offset": offset}, timeout=60).text,
-                "html.parser")
-            rows = page.select("tr.ep_search_result, div.ep_search_result")
-            for row in rows:
-                a = row.find("a", href=re.compile(r"/\d+/?$|eprint"))
-                t = row.get_text(" ", strip=True)
-                ym = re.search(r"\((\d{4})\)", t)
-                items.append({
-                    "author": t.split("(")[0].strip().rstrip(","),
-                    "title": a.get_text(" ", strip=True) if a else t,
-                    "year": int(ym.group(1)) if ym else None,
-                    "url": urljoin(AMS_BASE, a["href"]) if a else None,
-                })
-            if len(rows) < 20 or offset > 400:
-                break
-            offset += 20
-            time.sleep(1)
-    count = max(count or 0, len(items)) or None
-    if not count:
-        log("AMS Laurea: no results parsed, keeping previous data")
+        try:
+            items = _ams_from_view_html(get(f"{AMS_BASE}/view/relatore/{AMS_PERSON}.html", timeout=60).text)
+            tried.append(f"view HTML: {len(items)}")
+        except Exception as e:
+            tried.append(f"view HTML failed ({e})")
+    if not items:
+        try:
+            r = get(f"{AMS_BASE}/cgi/search/archive/advanced", params=ams_search_params(), timeout=60)
+            items = _ams_from_view_html(r.text)
+            tried.append(f"search HTML: {len(items)}")
+        except Exception as e:
+            tried.append(f"search failed ({e})")
+    log("AMS Laurea: " + "; ".join(tried))
+    if not items:
+        log("AMS Laurea: nothing parsed, keeping previous data")
         return None
     by_year: dict[str, int] = {}
     by_level: dict[str, dict[str, int]] = {"M.S.": {}, "B.S.": {}, "unknown": {}}
@@ -453,10 +458,11 @@ def collect_ams() -> dict | None:
             by_year[y] = by_year.get(y, 0) + 1
             lv = it.get("level") or "unknown"
             by_level[lv][y] = by_level[lv].get(y, 0) + 1
-    log(f"AMS Laurea: {count} theses")
-    return {"count": count, "items": items, "per_year": dict(sorted(by_year.items())),
+    items.sort(key=lambda it: (it.get("date") or str(it.get("year") or "")), reverse=True)
+    log(f"AMS Laurea: {len(items)} theses")
+    return {"count": len(items), "items": items, "per_year": dict(sorted(by_year.items())),
             "per_year_level": {k: dict(sorted(v.items())) for k, v in by_level.items()},
-            "search_url": f"{url}?{urlencode(ams_search_params())}"}
+            "search_url": f"{AMS_BASE}/view/relatore/{AMS_PERSON}.html"}
 
 
 # ----------------------------------------------------------------------------
@@ -471,6 +477,8 @@ def main() -> None:
     prev = load_json(DATA / "metrics.json", {})
     feed = load_json(DATA / "citation_feed.json", [])
     history = load_json(DATA / "history.json", [])
+    # the first row (June 8, 2026) held values copied from the CV, not a real daily reading
+    history = [h for h in history if h.get("date") != "2026-06-08"]
     snap = dict(prev)
     new_events: list[dict] = []
 
@@ -490,6 +498,7 @@ def main() -> None:
             snap["theses"] = a
 
     snap.pop("openalex", None)
+    snap.pop("seed", None)
     snap["updated"] = TODAY
     dump_json(DATA / "metrics.json", snap)
 
