@@ -1,4 +1,159 @@
-# Written by bin/update_metrics.py (Google Scholar per-paper citations for al-folio badges).
 metadata:
-  last_updated: '2026-06-08'
-papers: {}
+  last_updated: '2026-10-02'
+papers:
+  BEZlFiAAAAAJ:0EnyYjriUFMC:
+    citations: 3
+    title: 'Subgraph retrieval for biomedical open-domain question answering: Unlocking the knowledge graph embedding power'
+    year: 2022
+  BEZlFiAAAAAJ:2osOgNQ5qMEC:
+    citations: 70
+    title: 'A survey on event extraction for natural language understanding: Riding the biomedical literature wave'
+    year: 2021
+  BEZlFiAAAAAJ:3fE2CSJIrl8C:
+    citations: 0
+    title: 'KEIR@ ECIR 2025: The Second Workshop on Knowledge-Enhanced Information Retrieval'
+    year: 2025
+  BEZlFiAAAAAJ:4DMP91E08xMC:
+    citations: 5
+    title: 'Graph-of-mark: Promote spatial reasoning in multimodal language models with graph-based visual prompting'
+    year: 2026
+  BEZlFiAAAAAJ:4TOpqqG69KYC:
+    citations: 1
+    title: Predicting Protein Functions with Ensemble Deep Learning and Protein Language Models
+    year: 2025
+  BEZlFiAAAAAJ:5nxA0vEk-isC:
+    citations: 18
+    title: 'Unknown claims: Generation of fact-checking training examples from unstructured and structured data'
+    year: 2024
+  BEZlFiAAAAAJ:8k81kl-MbHgC:
+    citations: 2
+    title: A new unsupervised methodology of Descriptive Text Mining for Knowledge Graph Learning
+    year: 2020
+  BEZlFiAAAAAJ:9ZlFYXVOiuMC:
+    citations: 0
+    title: 'Java academic benchmark: Exam-based evaluation of LLMs on object-oriented programming'
+    year: 2026
+  BEZlFiAAAAAJ:9yKSN-GCB0IC:
+    citations: 35
+    title: 'Phenomena explanation from text: Unsupervised learning of interpretable and statistically significant knowledge'
+    year: 2020
+  BEZlFiAAAAAJ:IjCSPb-OGe4C:
+    citations: 28
+    title: Text-to-text extraction and verbalization of biomedical event graphs
+    year: 2022
+  BEZlFiAAAAAJ:KlAtU1dfN6UC:
+    citations: 14
+    title: 'ZeroNER: Fueling zero-shot named entity recognition via entity type descriptions'
+    year: 2025
+  BEZlFiAAAAAJ:LkGwnXOMwfcC:
+    citations: 3
+    title: Abstractive summarization through the prism of decoding strategies
+    year: 2025
+  BEZlFiAAAAAJ:M3ejUd6NZC8C:
+    citations: 1
+    title: 'Mixture of Masters: Sparse Chess Language Models with Player Routing'
+    year: 2026
+  BEZlFiAAAAAJ:MXK_kJrjxJIC:
+    citations: 0
+    title: Progetto e sviluppo di un sistema software per lo studio e la ricerca di malattie rare
+    year: Unknown Year
+  BEZlFiAAAAAJ:Se3iqnhoufwC:
+    citations: 0
+    title: Refining Triplet Sampling for Improved Self-Supervised Representation Learning.
+    year: 2024
+  BEZlFiAAAAAJ:Tyk-4Ss8FVUC:
+    citations: 44
+    title: Comprehensive analysis of knowledge graph embedding techniques benchmarked on link prediction
+    year: 2022
+  BEZlFiAAAAAJ:ULOm3_A8WrAC:
+    citations: 0
+    title: Knowledge-Enhanced Information Retrieval
+    year: 2025
+  BEZlFiAAAAAJ:UeHWp8X0CEIC:
+    citations: 29
+    title: 'Human being detection from UWB NLOS signals: accuracy and generality of advanced machine learning models'
+    year: 2022
+  BEZlFiAAAAAJ:UebtZRa9Y70C:
+    citations: 0
+    title: Knowledge-enhanced natural language processing
+    year: 2024
+  BEZlFiAAAAAJ:W7OEmFMy1HYC:
+    citations: 56
+    title: 'Bioreader: a retrieval-enhanced text-to-text transformer for biomedical literature'
+    year: 2022
+  BEZlFiAAAAAJ:WF5omc3nYNoC:
+    citations: 40
+    title: 'Efficient text-image semantic search: A multi-modal vision-language approach for fashion retrieval'
+    year: 2023
+  BEZlFiAAAAAJ:Y0pCki6q_DkC:
+    citations: 13
+    title: Enhancing biomedical scientific reviews summarization with graph-based factual evidence extracted from papers
+    year: 2022
+  BEZlFiAAAAAJ:YOwf2qJgpHMC:
+    citations: 5
+    title: 'PORTS: Preference-Optimized Retrievers for Tool Selection with Large Language Models'
+    year: 2025
+  BEZlFiAAAAAJ:YsMSGLbcyi4C:
+    citations: 27
+    title: 'Cogito ergo summ: abstractive summarization of biomedical papers via semantic parsing graphs and consistency rewards'
+    year: 2023
+  BEZlFiAAAAAJ:Zph67rFs4hoC:
+    citations: 0
+    title: 'Enhancing Representation Learning for Content-Based Information Retrieval: A Knowledge-Enhanced Geometric Approach'
+    year: 2025
+  BEZlFiAAAAAJ:_FxGoFyzp5QC:
+    citations: 15
+    title: 'Evidence, my dear watson: Abstractive dialogue summarization on learnable relevant utterances'
+    year: 2024
+  BEZlFiAAAAAJ:_kc_bZDykSQC:
+    citations: 0
+    title: Magic Mirror on the Wall, Which Is the Fairest Prompt of All? A Survey on Automatic Prompt Learning
+    year: 2025
+  BEZlFiAAAAAJ:aqlVkmm33-oC:
+    citations: 1
+    title: 'OpenBioNER-v2: A Suite of Lightweight Models for Zero-Shot Medical Named Entity Recognition via Type Descriptions'
+    year: 2026
+  BEZlFiAAAAAJ:d1gkVwhDpl0C:
+    citations: 14
+    title: Towards rare disease knowledge graph learning from social posts of patients
+    year: 2020
+  BEZlFiAAAAAJ:eQOLeE2rZwMC:
+    citations: 73
+    title: Efficient memory-enhanced transformer for long-document summarization in low-resource regimes
+    year: 2023
+  BEZlFiAAAAAJ:hqOjcs7Dif8C:
+    citations: 33
+    title: 'LAWSUIT: a LArge expert-Written SUmmarization dataset of ITalian constitutional court verdicts: L. Ragazzi et al.'
+    year: 2025
+  BEZlFiAAAAAJ:kNdYIx-mwKoC:
+    citations: 15
+    title: 'Openbioner: Lightweight open-domain biomedical named entity recognition through entity type description'
+    year: 2025
+  BEZlFiAAAAAJ:mVmsd5A6BfQC:
+    citations: 0
+    title: 'Comma: A multi-task and multi-lingual dataset of constitutional verdicts'
+    year: 2026
+  BEZlFiAAAAAJ:qjMakFHDy7sC:
+    citations: 26
+    title: Unsupervised event graph representation and similarity learning on biomedical literature
+    year: 2021
+  BEZlFiAAAAAJ:qxL8FJ1GzNcC:
+    citations: 1
+    title: 'FEAST: Retrieval-Augmented Multi-Hierarchical Food Classification for the FoodEx2 System'
+    year: 2025
+  BEZlFiAAAAAJ:roLk4NBRz8UC:
+    citations: 47
+    title: To generate or to retrieve? on the effectiveness of artificial contexts for medical open-domain question answering
+    year: 2024
+  BEZlFiAAAAAJ:u-x6o8ySG0sC:
+    citations: 19
+    title: Unsupervised descriptive text mining for knowledge graph learning
+    year: 2020
+  BEZlFiAAAAAJ:u5HHmVD_uO8C:
+    citations: 37
+    title: 'Learning interpretable and statistically significant knowledge from unlabeled corpora of social text messages: A novel methodology of descriptive text mining'
+    year: 2020
+  BEZlFiAAAAAJ:ufrVoPGSRksC:
+    citations: 7
+    title: Graph-enhanced biomedical abstractive summarization via factual evidence extraction
+    year: 2023
