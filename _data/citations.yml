@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-10-02'
+  last_updated: '2026-10-03'
 papers:
   BEZlFiAAAAAJ:0EnyYjriUFMC:
     citations: 3
@@ -38,7 +38,7 @@ papers:
     title: 'Phenomena explanation from text: Unsupervised learning of interpretable and statistically significant knowledge'
     year: 2020
   BEZlFiAAAAAJ:IjCSPb-OGe4C:
-    citations: 28
+    citations: 27
     title: Text-to-text extraction and verbalization of biomedical event graphs
     year: 2022
   BEZlFiAAAAAJ:KlAtU1dfN6UC:
@@ -50,13 +50,17 @@ papers:
     title: Abstractive summarization through the prism of decoding strategies
     year: 2025
   BEZlFiAAAAAJ:M3ejUd6NZC8C:
-    citations: 1
+    citations: 2
     title: 'Mixture of Masters: Sparse Chess Language Models with Player Routing'
     year: 2026
   BEZlFiAAAAAJ:MXK_kJrjxJIC:
     citations: 0
     title: Progetto e sviluppo di un sistema software per lo studio e la ricerca di malattie rare
     year: Unknown Year
+  BEZlFiAAAAAJ:QIV2ME_5wuYC:
+    citations: 0
+    title: Self-Play Search Distillation for Large Language Model Reasoning
+    year: 2026
   BEZlFiAAAAAJ:Se3iqnhoufwC:
     citations: 0
     title: Refining Triplet Sampling for Improved Self-Supervised Representation Learning.
@@ -118,7 +122,7 @@ papers:
     title: Towards rare disease knowledge graph learning from social posts of patients
     year: 2020
   BEZlFiAAAAAJ:eQOLeE2rZwMC:
-    citations: 73
+    citations: 74
     title: Efficient memory-enhanced transformer for long-document summarization in low-resource regimes
     year: 2023
   BEZlFiAAAAAJ:hqOjcs7Dif8C:

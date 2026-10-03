@@ -1,1 +1,18 @@
-[]
+[
+ {
+  "date": "2026-10-03",
+  "kind": "scholar",
+  "delta": 1,
+  "total": 74,
+  "cited_title": "Efficient memory-enhanced transformer for long-document summarization in low-resource regimes",
+  "url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=5778085345082419902"
+ },
+ {
+  "date": "2026-10-03",
+  "kind": "scholar",
+  "delta": 1,
+  "total": 2,
+  "cited_title": "Mixture of Masters: Sparse Chess Language Models with Player Routing",
+  "url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=8484360953428082781"
+ }
+]
