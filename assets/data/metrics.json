@@ -1,9 +1,9 @@
 {
- "updated": "2026-10-04",
+ "updated": "2026-10-05",
  "scholar": {
   "source": "serpapi",
-  "citations": 685,
-  "citations_recent": 678,
+  "citations": 687,
+  "citations_recent": 680,
   "h_index": 15,
   "i10_index": 20,
   "per_year": {
@@ -13,7 +13,7 @@
    "2023": 109,
    "2024": 135,
    "2025": 184,
-   "2026": 153
+   "2026": 155
   },
   "papers": [
    {
@@ -41,7 +41,7 @@
     "id": "BEZlFiAAAAAJ:roLk4NBRz8UC",
     "title": "To generate or to retrieve? on the effectiveness of artificial contexts for medical open-domain question answering",
     "year": 2024,
-    "citations": 47,
+    "citations": 48,
     "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=15127424734138413088"
    },
    {
@@ -55,7 +55,7 @@
     "id": "BEZlFiAAAAAJ:WF5omc3nYNoC",
     "title": "Efficient text-image semantic search: A multi-modal vision-language approach for fashion retrieval",
     "year": 2023,
-    "citations": 40,
+    "citations": 41,
     "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=5006343822008325251"
    },
    {

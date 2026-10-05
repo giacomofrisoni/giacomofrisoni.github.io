@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-10-04'
+  last_updated: '2026-10-05'
 papers:
   BEZlFiAAAAAJ:0EnyYjriUFMC:
     citations: 3
@@ -86,7 +86,7 @@ papers:
     title: 'Bioreader: a retrieval-enhanced text-to-text transformer for biomedical literature'
     year: 2022
   BEZlFiAAAAAJ:WF5omc3nYNoC:
-    citations: 40
+    citations: 41
     title: 'Efficient text-image semantic search: A multi-modal vision-language approach for fashion retrieval'
     year: 2023
   BEZlFiAAAAAJ:Y0pCki6q_DkC:
@@ -146,7 +146,7 @@ papers:
     title: 'FEAST: Retrieval-Augmented Multi-Hierarchical Food Classification for the FoodEx2 System'
     year: 2025
   BEZlFiAAAAAJ:roLk4NBRz8UC:
-    citations: 47
+    citations: 48
     title: To generate or to retrieve? on the effectiveness of artificial contexts for medical open-domain question answering
     year: 2024
   BEZlFiAAAAAJ:u-x6o8ySG0sC:
