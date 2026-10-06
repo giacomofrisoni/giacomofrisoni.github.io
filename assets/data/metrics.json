@@ -1,9 +1,9 @@
 {
- "updated": "2026-10-05",
+ "updated": "2026-10-06",
  "scholar": {
   "source": "serpapi",
-  "citations": 687,
-  "citations_recent": 680,
+  "citations": 688,
+  "citations_recent": 681,
   "h_index": 15,
   "i10_index": 20,
   "per_year": {
@@ -13,7 +13,7 @@
    "2023": 109,
    "2024": 135,
    "2025": 184,
-   "2026": 155
+   "2026": 156
   },
   "papers": [
    {
@@ -167,7 +167,7 @@
     "id": "BEZlFiAAAAAJ:4DMP91E08xMC",
     "title": "Graph-of-mark: Promote spatial reasoning in multimodal language models with graph-based visual prompting",
     "year": 2026,
-    "citations": 5,
+    "citations": 6,
     "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=1950282884449524942"
    },
    {

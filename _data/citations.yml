@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-10-05'
+  last_updated: '2026-10-06'
 papers:
   BEZlFiAAAAAJ:0EnyYjriUFMC:
     citations: 3
@@ -14,7 +14,7 @@ papers:
     title: 'KEIR@ ECIR 2025: The Second Workshop on Knowledge-Enhanced Information Retrieval'
     year: 2025
   BEZlFiAAAAAJ:4DMP91E08xMC:
-    citations: 5
+    citations: 6
     title: 'Graph-of-mark: Promote spatial reasoning in multimodal language models with graph-based visual prompting'
     year: 2026
   BEZlFiAAAAAJ:4TOpqqG69KYC:
