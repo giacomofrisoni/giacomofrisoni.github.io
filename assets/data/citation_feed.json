@@ -1,5 +1,21 @@
 [
  {
+  "date": "2026-10-10",
+  "kind": "scholar",
+  "delta": 1,
+  "total": 49,
+  "cited_title": "To generate or to retrieve? on the effectiveness of artificial contexts for medical open-domain question answering",
+  "url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=15127424734138413088"
+ },
+ {
+  "date": "2026-10-10",
+  "kind": "scholar",
+  "delta": 1,
+  "total": 16,
+  "cited_title": "Openbioner: Lightweight open-domain biomedical named entity recognition through entity type description",
+  "url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=1101495158261215229"
+ },
+ {
   "date": "2026-10-06",
   "kind": "scholar",
   "delta": 1,

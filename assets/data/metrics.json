@@ -1,10 +1,10 @@
 {
- "updated": "2026-10-09",
+ "updated": "2026-10-10",
  "scholar": {
   "source": "serpapi",
-  "citations": 688,
-  "citations_recent": 681,
-  "h_index": 15,
+  "citations": 690,
+  "citations_recent": 683,
+  "h_index": 16,
   "i10_index": 20,
   "per_year": {
    "2020": 5,
@@ -13,7 +13,7 @@
    "2023": 109,
    "2024": 135,
    "2025": 184,
-   "2026": 156
+   "2026": 158
   },
   "papers": [
    {
@@ -41,7 +41,7 @@
     "id": "BEZlFiAAAAAJ:roLk4NBRz8UC",
     "title": "To generate or to retrieve? on the effectiveness of artificial contexts for medical open-domain question answering",
     "year": 2024,
-    "citations": 48,
+    "citations": 49,
     "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=15127424734138413088"
    },
    {
@@ -125,7 +125,7 @@
     "id": "BEZlFiAAAAAJ:kNdYIx-mwKoC",
     "title": "Openbioner: Lightweight open-domain biomedical named entity recognition through entity type description",
     "year": 2025,
-    "citations": 15,
+    "citations": 16,
     "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=1101495158261215229"
    },
    {

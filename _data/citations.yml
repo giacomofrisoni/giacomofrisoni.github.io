@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-10-09'
+  last_updated: '2026-10-10'
 papers:
   BEZlFiAAAAAJ:0EnyYjriUFMC:
     citations: 3
@@ -130,7 +130,7 @@ papers:
     title: 'LAWSUIT: a LArge expert-Written SUmmarization dataset of ITalian constitutional court verdicts: L. Ragazzi et al.'
     year: 2025
   BEZlFiAAAAAJ:kNdYIx-mwKoC:
-    citations: 15
+    citations: 16
     title: 'Openbioner: Lightweight open-domain biomedical named entity recognition through entity type description'
     year: 2025
   BEZlFiAAAAAJ:mVmsd5A6BfQC:
@@ -146,7 +146,7 @@ papers:
     title: 'FEAST: Retrieval-Augmented Multi-Hierarchical Food Classification for the FoodEx2 System'
     year: 2025
   BEZlFiAAAAAJ:roLk4NBRz8UC:
-    citations: 48
+    citations: 49
     title: To generate or to retrieve? on the effectiveness of artificial contexts for medical open-domain question answering
     year: 2024
   BEZlFiAAAAAJ:u-x6o8ySG0sC:
