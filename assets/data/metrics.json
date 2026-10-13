@@ -1,9 +1,9 @@
 {
- "updated": "2026-10-12",
+ "updated": "2026-10-13",
  "scholar": {
   "source": "serpapi",
-  "citations": 690,
-  "citations_recent": 683,
+  "citations": 691,
+  "citations_recent": 684,
   "h_index": 16,
   "i10_index": 20,
   "per_year": {
@@ -13,7 +13,7 @@
    "2023": 109,
    "2024": 135,
    "2025": 184,
-   "2026": 158
+   "2026": 159
   },
   "papers": [
    {
@@ -227,6 +227,13 @@
     "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=18416000709129380384"
    },
    {
+    "id": "BEZlFiAAAAAJ:ULOm3_A8WrAC",
+    "title": "Knowledge-Enhanced Information Retrieval",
+    "year": 2025,
+    "citations": 1,
+    "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=14842704471646615412"
+   },
+   {
     "id": "BEZlFiAAAAAJ:QIV2ME_5wuYC",
     "title": "Self-Play Search Distillation for Large Language Model Reasoning",
     "year": 2026,
@@ -264,13 +271,6 @@
    {
     "id": "BEZlFiAAAAAJ:_kc_bZDykSQC",
     "title": "Magic Mirror on the Wall, Which Is the Fairest Prompt of All? A Survey on Automatic Prompt Learning",
-    "year": 2025,
-    "citations": 0,
-    "cites_url": null
-   },
-   {
-    "id": "BEZlFiAAAAAJ:ULOm3_A8WrAC",
-    "title": "Knowledge-Enhanced Information Retrieval",
     "year": 2025,
     "citations": 0,
     "cites_url": null

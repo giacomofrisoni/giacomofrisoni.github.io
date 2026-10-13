@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-10-12'
+  last_updated: '2026-10-13'
 papers:
   BEZlFiAAAAAJ:0EnyYjriUFMC:
     citations: 3
@@ -70,7 +70,7 @@ papers:
     title: Comprehensive analysis of knowledge graph embedding techniques benchmarked on link prediction
     year: 2022
   BEZlFiAAAAAJ:ULOm3_A8WrAC:
-    citations: 0
+    citations: 1
     title: Knowledge-Enhanced Information Retrieval
     year: 2025
   BEZlFiAAAAAJ:UeHWp8X0CEIC:
