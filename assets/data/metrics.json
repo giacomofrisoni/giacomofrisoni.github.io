@@ -1,9 +1,9 @@
 {
- "updated": "2026-10-16",
+ "updated": "2026-10-17",
  "scholar": {
   "source": "serpapi",
-  "citations": 691,
-  "citations_recent": 684,
+  "citations": 692,
+  "citations_recent": 685,
   "h_index": 16,
   "i10_index": 20,
   "per_year": {
@@ -13,7 +13,7 @@
    "2023": 109,
    "2024": 135,
    "2025": 184,
-   "2026": 159
+   "2026": 160
   },
   "papers": [
    {
@@ -199,6 +199,13 @@
     "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=15353777171457098820"
    },
    {
+    "id": "BEZlFiAAAAAJ:qxL8FJ1GzNcC",
+    "title": "FEAST: Retrieval-Augmented Multi-Hierarchical Food Classification for the FoodEx2 System",
+    "year": 2025,
+    "citations": 2,
+    "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=1298723057790297129"
+   },
+   {
     "id": "BEZlFiAAAAAJ:8k81kl-MbHgC",
     "title": "A new unsupervised methodology of Descriptive Text Mining for Knowledge Graph Learning",
     "year": 2020,
@@ -211,13 +218,6 @@
     "year": 2026,
     "citations": 1,
     "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=10765250761641308052"
-   },
-   {
-    "id": "BEZlFiAAAAAJ:qxL8FJ1GzNcC",
-    "title": "FEAST: Retrieval-Augmented Multi-Hierarchical Food Classification for the FoodEx2 System",
-    "year": 2025,
-    "citations": 1,
-    "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=1298723057790297129"
    },
    {
     "id": "BEZlFiAAAAAJ:4TOpqqG69KYC",
