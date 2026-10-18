@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-10-17'
+  last_updated: '2026-10-18'
 papers:
   BEZlFiAAAAAJ:0EnyYjriUFMC:
     citations: 3
@@ -94,7 +94,7 @@ papers:
     title: Enhancing biomedical scientific reviews summarization with graph-based factual evidence extracted from papers
     year: 2022
   BEZlFiAAAAAJ:YOwf2qJgpHMC:
-    citations: 5
+    citations: 6
     title: 'PORTS: Preference-Optimized Retrievers for Tool Selection with Large Language Models'
     year: 2025
   BEZlFiAAAAAJ:YsMSGLbcyi4C:
@@ -121,6 +121,10 @@ papers:
     citations: 14
     title: Towards rare disease knowledge graph learning from social posts of patients
     year: 2020
+  BEZlFiAAAAAJ:dhFuZR0502QC:
+    citations: 0
+    title: 'SolBehave: Evaluating the Behavioural Correctness of LLM-Generated Smart Contracts'
+    year: 2026
   BEZlFiAAAAAJ:eQOLeE2rZwMC:
     citations: 74
     title: Efficient memory-enhanced transformer for long-document summarization in low-resource regimes

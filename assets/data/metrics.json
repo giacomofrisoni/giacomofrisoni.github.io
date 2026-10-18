@@ -1,9 +1,9 @@
 {
- "updated": "2026-10-17",
+ "updated": "2026-10-18",
  "scholar": {
   "source": "serpapi",
-  "citations": 692,
-  "citations_recent": 685,
+  "citations": 693,
+  "citations_recent": 686,
   "h_index": 16,
   "i10_index": 20,
   "per_year": {
@@ -13,7 +13,7 @@
    "2023": 109,
    "2024": 135,
    "2025": 184,
-   "2026": 160
+   "2026": 161
   },
   "papers": [
    {
@@ -174,7 +174,7 @@
     "id": "BEZlFiAAAAAJ:YOwf2qJgpHMC",
     "title": "PORTS: Preference-Optimized Retrievers for Tool Selection with Large Language Models",
     "year": 2025,
-    "citations": 5,
+    "citations": 6,
     "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=1705039691917996865"
    },
    {
@@ -232,6 +232,13 @@
     "year": 2025,
     "citations": 1,
     "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=14842704471646615412"
+   },
+   {
+    "id": "BEZlFiAAAAAJ:dhFuZR0502QC",
+    "title": "SolBehave: Evaluating the Behavioural Correctness of LLM-Generated Smart Contracts",
+    "year": 2026,
+    "citations": 0,
+    "cites_url": null
    },
    {
     "id": "BEZlFiAAAAAJ:QIV2ME_5wuYC",
