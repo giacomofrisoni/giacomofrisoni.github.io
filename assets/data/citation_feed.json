@@ -1,5 +1,21 @@
 [
  {
+  "date": "2026-10-19",
+  "kind": "scholar",
+  "delta": 1,
+  "total": 34,
+  "cited_title": "LAWSUIT: a LArge expert-Written SUmmarization dataset of ITalian constitutional court verdicts: L. Ragazzi et al.",
+  "url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=7398198891126219709"
+ },
+ {
+  "date": "2026-10-19",
+  "kind": "scholar",
+  "delta": 2,
+  "total": 8,
+  "cited_title": "PORTS: Preference-Optimized Retrievers for Tool Selection with Large Language Models",
+  "url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=1705039691917996865"
+ },
+ {
   "date": "2026-10-18",
   "kind": "scholar",
   "delta": 1,

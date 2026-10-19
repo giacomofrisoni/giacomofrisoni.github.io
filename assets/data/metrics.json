@@ -1,9 +1,9 @@
 {
- "updated": "2026-10-18",
+ "updated": "2026-10-19",
  "scholar": {
   "source": "serpapi",
-  "citations": 693,
-  "citations_recent": 686,
+  "citations": 696,
+  "citations_recent": 689,
   "h_index": 16,
   "i10_index": 20,
   "per_year": {
@@ -13,7 +13,7 @@
    "2023": 109,
    "2024": 135,
    "2025": 184,
-   "2026": 161
+   "2026": 164
   },
   "papers": [
    {
@@ -76,7 +76,7 @@
     "id": "BEZlFiAAAAAJ:hqOjcs7Dif8C",
     "title": "LAWSUIT: a LArge expert-Written SUmmarization dataset of ITalian constitutional court verdicts: L. Ragazzi et al.",
     "year": 2025,
-    "citations": 33,
+    "citations": 34,
     "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=7398198891126219709"
    },
    {
@@ -157,6 +157,13 @@
     "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=12484658653692666162"
    },
    {
+    "id": "BEZlFiAAAAAJ:YOwf2qJgpHMC",
+    "title": "PORTS: Preference-Optimized Retrievers for Tool Selection with Large Language Models",
+    "year": 2025,
+    "citations": 8,
+    "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=1705039691917996865"
+   },
+   {
     "id": "BEZlFiAAAAAJ:ufrVoPGSRksC",
     "title": "Graph-enhanced biomedical abstractive summarization via factual evidence extraction",
     "year": 2023,
@@ -169,13 +176,6 @@
     "year": 2026,
     "citations": 6,
     "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=1950282884449524942"
-   },
-   {
-    "id": "BEZlFiAAAAAJ:YOwf2qJgpHMC",
-    "title": "PORTS: Preference-Optimized Retrievers for Tool Selection with Large Language Models",
-    "year": 2025,
-    "citations": 6,
-    "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=1705039691917996865"
    },
    {
     "id": "BEZlFiAAAAAJ:M3ejUd6NZC8C",

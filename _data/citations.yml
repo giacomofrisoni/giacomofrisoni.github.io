@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-10-18'
+  last_updated: '2026-10-19'
 papers:
   BEZlFiAAAAAJ:0EnyYjriUFMC:
     citations: 3
@@ -94,7 +94,7 @@ papers:
     title: Enhancing biomedical scientific reviews summarization with graph-based factual evidence extracted from papers
     year: 2022
   BEZlFiAAAAAJ:YOwf2qJgpHMC:
-    citations: 6
+    citations: 8
     title: 'PORTS: Preference-Optimized Retrievers for Tool Selection with Large Language Models'
     year: 2025
   BEZlFiAAAAAJ:YsMSGLbcyi4C:
@@ -130,7 +130,7 @@ papers:
     title: Efficient memory-enhanced transformer for long-document summarization in low-resource regimes
     year: 2023
   BEZlFiAAAAAJ:hqOjcs7Dif8C:
-    citations: 33
+    citations: 34
     title: 'LAWSUIT: a LArge expert-Written SUmmarization dataset of ITalian constitutional court verdicts: L. Ragazzi et al.'
     year: 2025
   BEZlFiAAAAAJ:kNdYIx-mwKoC:
