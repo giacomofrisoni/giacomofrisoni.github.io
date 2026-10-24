@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-10-23'
+  last_updated: '2026-10-24'
 papers:
   BEZlFiAAAAAJ:0EnyYjriUFMC:
     citations: 3
@@ -86,7 +86,7 @@ papers:
     title: 'Bioreader: a retrieval-enhanced text-to-text transformer for biomedical literature'
     year: 2022
   BEZlFiAAAAAJ:WF5omc3nYNoC:
-    citations: 41
+    citations: 40
     title: 'Efficient text-image semantic search: A multi-modal vision-language approach for fashion retrieval'
     year: 2023
   BEZlFiAAAAAJ:Y0pCki6q_DkC:
@@ -126,7 +126,7 @@ papers:
     title: 'SolBehave: Evaluating the Behavioural Correctness of LLM-Generated Smart Contracts'
     year: 2026
   BEZlFiAAAAAJ:eQOLeE2rZwMC:
-    citations: 74
+    citations: 75
     title: Efficient memory-enhanced transformer for long-document summarization in low-resource regimes
     year: 2023
   BEZlFiAAAAAJ:hqOjcs7Dif8C:

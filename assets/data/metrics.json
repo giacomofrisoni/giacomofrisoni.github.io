@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-23",
+ "updated": "2026-10-24",
  "scholar": {
   "source": "serpapi",
   "citations": 697,
@@ -20,7 +20,7 @@
     "id": "BEZlFiAAAAAJ:eQOLeE2rZwMC",
     "title": "Efficient memory-enhanced transformer for long-document summarization in low-resource regimes",
     "year": 2023,
-    "citations": 74,
+    "citations": 75,
     "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=5778085345082419902"
    },
    {
@@ -55,7 +55,7 @@
     "id": "BEZlFiAAAAAJ:WF5omc3nYNoC",
     "title": "Efficient text-image semantic search: A multi-modal vision-language approach for fashion retrieval",
     "year": 2023,
-    "citations": 41,
+    "citations": 40,
     "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=5006343822008325251"
    },
    {
