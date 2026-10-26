@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-10-25'
+  last_updated: '2026-10-26'
 papers:
   BEZlFiAAAAAJ:0EnyYjriUFMC:
     citations: 3
@@ -38,7 +38,7 @@ papers:
     title: 'Phenomena explanation from text: Unsupervised learning of interpretable and statistically significant knowledge'
     year: 2020
   BEZlFiAAAAAJ:IjCSPb-OGe4C:
-    citations: 27
+    citations: 28
     title: Text-to-text extraction and verbalization of biomedical event graphs
     year: 2022
   BEZlFiAAAAAJ:KlAtU1dfN6UC:
@@ -126,7 +126,7 @@ papers:
     title: 'SolBehave: Evaluating the Behavioural Correctness of LLM-Generated Smart Contracts'
     year: 2026
   BEZlFiAAAAAJ:eQOLeE2rZwMC:
-    citations: 75
+    citations: 76
     title: Efficient memory-enhanced transformer for long-document summarization in low-resource regimes
     year: 2023
   BEZlFiAAAAAJ:hqOjcs7Dif8C:

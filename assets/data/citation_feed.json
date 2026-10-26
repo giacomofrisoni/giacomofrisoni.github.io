@@ -1,5 +1,21 @@
 [
  {
+  "date": "2026-10-26",
+  "kind": "scholar",
+  "delta": 1,
+  "total": 76,
+  "cited_title": "Efficient memory-enhanced transformer for long-document summarization in low-resource regimes",
+  "url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=5778085345082419902"
+ },
+ {
+  "date": "2026-10-26",
+  "kind": "scholar",
+  "delta": 1,
+  "total": 28,
+  "cited_title": "Text-to-text extraction and verbalization of biomedical event graphs",
+  "url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=16058617773837068081"
+ },
+ {
   "date": "2026-10-24",
   "kind": "scholar",
   "delta": 1,
