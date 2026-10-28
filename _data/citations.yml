@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-10-27'
+  last_updated: '2026-10-28'
 papers:
   BEZlFiAAAAAJ:0EnyYjriUFMC:
     citations: 3
@@ -25,6 +25,10 @@ papers:
     citations: 18
     title: 'Unknown claims: Generation of fact-checking training examples from unstructured and structured data'
     year: 2024
+  BEZlFiAAAAAJ:7PzlFSSx8tAC:
+    citations: 0
+    title: 'Paint It, Black: Evaluating LLMs for De-Identification of Multimodal Clinical Documents'
+    year: 2026
   BEZlFiAAAAAJ:8k81kl-MbHgC:
     citations: 2
     title: A new unsupervised methodology of Descriptive Text Mining for Knowledge Graph Learning
@@ -42,7 +46,7 @@ papers:
     title: Text-to-text extraction and verbalization of biomedical event graphs
     year: 2022
   BEZlFiAAAAAJ:KlAtU1dfN6UC:
-    citations: 14
+    citations: 15
     title: 'ZeroNER: Fueling zero-shot named entity recognition via entity type descriptions'
     year: 2025
   BEZlFiAAAAAJ:LkGwnXOMwfcC:
@@ -82,11 +86,11 @@ papers:
     title: Knowledge-enhanced natural language processing
     year: 2024
   BEZlFiAAAAAJ:W7OEmFMy1HYC:
-    citations: 56
+    citations: 57
     title: 'Bioreader: a retrieval-enhanced text-to-text transformer for biomedical literature'
     year: 2022
   BEZlFiAAAAAJ:WF5omc3nYNoC:
-    citations: 40
+    citations: 41
     title: 'Efficient text-image semantic search: A multi-modal vision-language approach for fashion retrieval'
     year: 2023
   BEZlFiAAAAAJ:Y0pCki6q_DkC:
@@ -150,7 +154,7 @@ papers:
     title: 'FEAST: Retrieval-Augmented Multi-Hierarchical Food Classification for the FoodEx2 System'
     year: 2025
   BEZlFiAAAAAJ:roLk4NBRz8UC:
-    citations: 49
+    citations: 50
     title: To generate or to retrieve? on the effectiveness of artificial contexts for medical open-domain question answering
     year: 2024
   BEZlFiAAAAAJ:u-x6o8ySG0sC:

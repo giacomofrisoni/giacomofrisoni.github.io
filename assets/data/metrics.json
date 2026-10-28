@@ -1,9 +1,9 @@
 {
- "updated": "2026-10-27",
+ "updated": "2026-10-28",
  "scholar": {
   "source": "serpapi",
-  "citations": 699,
-  "citations_recent": 692,
+  "citations": 703,
+  "citations_recent": 696,
   "h_index": 16,
   "i10_index": 20,
   "per_year": {
@@ -12,8 +12,8 @@
    "2022": 63,
    "2023": 109,
    "2024": 135,
-   "2025": 185,
-   "2026": 166
+   "2025": 183,
+   "2026": 172
   },
   "papers": [
    {
@@ -34,14 +34,14 @@
     "id": "BEZlFiAAAAAJ:W7OEmFMy1HYC",
     "title": "Bioreader: a retrieval-enhanced text-to-text transformer for biomedical literature",
     "year": 2022,
-    "citations": 56,
+    "citations": 57,
     "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=16348134973337191815"
    },
    {
     "id": "BEZlFiAAAAAJ:roLk4NBRz8UC",
     "title": "To generate or to retrieve? on the effectiveness of artificial contexts for medical open-domain question answering",
     "year": 2024,
-    "citations": 49,
+    "citations": 50,
     "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=15127424734138413088"
    },
    {
@@ -55,7 +55,7 @@
     "id": "BEZlFiAAAAAJ:WF5omc3nYNoC",
     "title": "Efficient text-image semantic search: A multi-modal vision-language approach for fashion retrieval",
     "year": 2023,
-    "citations": 40,
+    "citations": 41,
     "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=5006343822008325251"
    },
    {
@@ -129,18 +129,18 @@
     "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=1101495158261215229"
    },
    {
+    "id": "BEZlFiAAAAAJ:KlAtU1dfN6UC",
+    "title": "ZeroNER: Fueling zero-shot named entity recognition via entity type descriptions",
+    "year": 2025,
+    "citations": 15,
+    "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=18149990501186086803"
+   },
+   {
     "id": "BEZlFiAAAAAJ:_FxGoFyzp5QC",
     "title": "Evidence, my dear watson: Abstractive dialogue summarization on learnable relevant utterances",
     "year": 2024,
     "citations": 15,
     "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=3135446177778346330"
-   },
-   {
-    "id": "BEZlFiAAAAAJ:KlAtU1dfN6UC",
-    "title": "ZeroNER: Fueling zero-shot named entity recognition via entity type descriptions",
-    "year": 2025,
-    "citations": 14,
-    "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=18149990501186086803"
    },
    {
     "id": "BEZlFiAAAAAJ:d1gkVwhDpl0C",
@@ -236,6 +236,13 @@
    {
     "id": "BEZlFiAAAAAJ:dhFuZR0502QC",
     "title": "SolBehave: Evaluating the Behavioural Correctness of LLM-Generated Smart Contracts",
+    "year": 2026,
+    "citations": 0,
+    "cites_url": null
+   },
+   {
+    "id": "BEZlFiAAAAAJ:7PzlFSSx8tAC",
+    "title": "Paint It, Black: Evaluating LLMs for De-Identification of Multimodal Clinical Documents",
     "year": 2026,
     "citations": 0,
     "cites_url": null

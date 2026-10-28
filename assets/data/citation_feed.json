@@ -1,5 +1,37 @@
 [
  {
+  "date": "2026-10-28",
+  "kind": "scholar",
+  "delta": 1,
+  "total": 57,
+  "cited_title": "Bioreader: a retrieval-enhanced text-to-text transformer for biomedical literature",
+  "url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=16348134973337191815"
+ },
+ {
+  "date": "2026-10-28",
+  "kind": "scholar",
+  "delta": 1,
+  "total": 50,
+  "cited_title": "To generate or to retrieve? on the effectiveness of artificial contexts for medical open-domain question answering",
+  "url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=15127424734138413088"
+ },
+ {
+  "date": "2026-10-28",
+  "kind": "scholar",
+  "delta": 1,
+  "total": 41,
+  "cited_title": "Efficient text-image semantic search: A multi-modal vision-language approach for fashion retrieval",
+  "url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=5006343822008325251"
+ },
+ {
+  "date": "2026-10-28",
+  "kind": "scholar",
+  "delta": 1,
+  "total": 15,
+  "cited_title": "ZeroNER: Fueling zero-shot named entity recognition via entity type descriptions",
+  "url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=18149990501186086803"
+ },
+ {
   "date": "2026-10-26",
   "kind": "scholar",
   "delta": 1,
