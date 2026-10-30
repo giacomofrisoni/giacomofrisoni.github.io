@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-29",
+ "updated": "2026-10-30",
  "scholar": {
   "source": "serpapi",
   "citations": 703,
@@ -314,8 +314,32 @@
   "user": "BEZlFiAAAAAJ"
  },
  "theses": {
-  "count": 59,
+  "count": 62,
   "items": [
+   {
+    "author": "Ferri, Alice",
+    "title": "On-Device Retrieval-Augmented Generation over Personal Clinical Records",
+    "date": "2026-10-01",
+    "year": 2026,
+    "level": "B.S.",
+    "url": "https://amslaurea.unibo.it/id/eprint/39962"
+   },
+   {
+    "author": "Rava, Giovanni Maria",
+    "title": "Teaching an Auditor to Look Away: A Fine-Tuning Backdoor for Selective Vulnerability Blindness in Code LLMs",
+    "date": "2026-10-01",
+    "year": 2026,
+    "level": "B.S.",
+    "url": "https://amslaurea.unibo.it/id/eprint/39971"
+   },
+   {
+    "author": "Siboni, Pietro",
+    "title": "Language Models for ICD Coding: Benchmarking Generative and Retrieval Approaches on Multimodal Clinical Data",
+    "date": "2026-10-01",
+    "year": 2026,
+    "level": "B.S.",
+    "url": "https://amslaurea.unibo.it/id/eprint/39980"
+   },
    {
     "author": "Mazzacano, Simone",
     "title": "Latent-GEPA: Accelerating Prompt Optimization via Embedding Inversion and Latent Semantic Guidance in Large Language Models",
@@ -796,7 +820,7 @@
    "2023": 18,
    "2024": 12,
    "2025": 9,
-   "2026": 7
+   "2026": 10
   },
   "per_year_level": {
    "M.S.": {
@@ -813,7 +837,7 @@
     "2023": 8,
     "2024": 8,
     "2025": 9,
-    "2026": 1
+    "2026": 4
    },
    "unknown": {}
   },
