@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-10-30'
+  last_updated: '2026-10-31'
 papers:
   BEZlFiAAAAAJ:0EnyYjriUFMC:
     citations: 3
@@ -50,7 +50,7 @@ papers:
     title: 'ZeroNER: Fueling zero-shot named entity recognition via entity type descriptions'
     year: 2025
   BEZlFiAAAAAJ:LkGwnXOMwfcC:
-    citations: 3
+    citations: 4
     title: Abstractive summarization through the prism of decoding strategies
     year: 2025
   BEZlFiAAAAAJ:M3ejUd6NZC8C:
@@ -98,7 +98,7 @@ papers:
     title: Enhancing biomedical scientific reviews summarization with graph-based factual evidence extracted from papers
     year: 2022
   BEZlFiAAAAAJ:YOwf2qJgpHMC:
-    citations: 8
+    citations: 9
     title: 'PORTS: Preference-Optimized Retrievers for Tool Selection with Large Language Models'
     year: 2025
   BEZlFiAAAAAJ:YsMSGLbcyi4C:
@@ -166,6 +166,6 @@ papers:
     title: 'Learning interpretable and statistically significant knowledge from unlabeled corpora of social text messages: A novel methodology of descriptive text mining'
     year: 2020
   BEZlFiAAAAAJ:ufrVoPGSRksC:
-    citations: 7
+    citations: 8
     title: Graph-enhanced biomedical abstractive summarization via factual evidence extraction
     year: 2023

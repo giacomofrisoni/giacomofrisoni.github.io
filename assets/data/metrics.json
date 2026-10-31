@@ -1,9 +1,9 @@
 {
- "updated": "2026-10-30",
+ "updated": "2026-10-31",
  "scholar": {
   "source": "serpapi",
-  "citations": 703,
-  "citations_recent": 696,
+  "citations": 706,
+  "citations_recent": 699,
   "h_index": 16,
   "i10_index": 20,
   "per_year": {
@@ -13,7 +13,7 @@
    "2023": 109,
    "2024": 135,
    "2025": 183,
-   "2026": 172
+   "2026": 175
   },
   "papers": [
    {
@@ -160,14 +160,14 @@
     "id": "BEZlFiAAAAAJ:YOwf2qJgpHMC",
     "title": "PORTS: Preference-Optimized Retrievers for Tool Selection with Large Language Models",
     "year": 2025,
-    "citations": 8,
+    "citations": 9,
     "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=1705039691917996865"
    },
    {
     "id": "BEZlFiAAAAAJ:ufrVoPGSRksC",
     "title": "Graph-enhanced biomedical abstractive summarization via factual evidence extraction",
     "year": 2023,
-    "citations": 7,
+    "citations": 8,
     "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=494963649771594497"
    },
    {
@@ -178,18 +178,18 @@
     "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=1950282884449524942"
    },
    {
+    "id": "BEZlFiAAAAAJ:LkGwnXOMwfcC",
+    "title": "Abstractive summarization through the prism of decoding strategies",
+    "year": 2025,
+    "citations": 4,
+    "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=12068395425077034488"
+   },
+   {
     "id": "BEZlFiAAAAAJ:M3ejUd6NZC8C",
     "title": "Mixture of Masters: Sparse Chess Language Models with Player Routing",
     "year": 2026,
     "citations": 3,
     "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=8484360953428082781"
-   },
-   {
-    "id": "BEZlFiAAAAAJ:LkGwnXOMwfcC",
-    "title": "Abstractive summarization through the prism of decoding strategies",
-    "year": 2025,
-    "citations": 3,
-    "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=12068395425077034488"
    },
    {
     "id": "BEZlFiAAAAAJ:0EnyYjriUFMC",
