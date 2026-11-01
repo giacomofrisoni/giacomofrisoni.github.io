@@ -1,9 +1,9 @@
 {
- "updated": "2026-10-31",
+ "updated": "2026-11-01",
  "scholar": {
   "source": "serpapi",
-  "citations": 706,
-  "citations_recent": 699,
+  "citations": 707,
+  "citations_recent": 700,
   "h_index": 16,
   "i10_index": 20,
   "per_year": {
@@ -48,7 +48,7 @@
     "id": "BEZlFiAAAAAJ:Tyk-4Ss8FVUC",
     "title": "Comprehensive analysis of knowledge graph embedding techniques benchmarked on link prediction",
     "year": 2022,
-    "citations": 44,
+    "citations": 45,
     "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=6155474505421005138"
    },
    {

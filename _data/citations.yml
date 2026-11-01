@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-10-31'
+  last_updated: '2026-11-01'
 papers:
   BEZlFiAAAAAJ:0EnyYjriUFMC:
     citations: 3
@@ -70,7 +70,7 @@ papers:
     title: Refining Triplet Sampling for Improved Self-Supervised Representation Learning.
     year: 2024
   BEZlFiAAAAAJ:Tyk-4Ss8FVUC:
-    citations: 44
+    citations: 45
     title: Comprehensive analysis of knowledge graph embedding techniques benchmarked on link prediction
     year: 2022
   BEZlFiAAAAAJ:ULOm3_A8WrAC:
