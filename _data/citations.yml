@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-11-02'
+  last_updated: '2026-11-03'
 papers:
   BEZlFiAAAAAJ:0EnyYjriUFMC:
     citations: 3
@@ -42,13 +42,17 @@ papers:
     title: 'Phenomena explanation from text: Unsupervised learning of interpretable and statistically significant knowledge'
     year: 2020
   BEZlFiAAAAAJ:IjCSPb-OGe4C:
-    citations: 28
+    citations: 27
     title: Text-to-text extraction and verbalization of biomedical event graphs
     year: 2022
   BEZlFiAAAAAJ:KlAtU1dfN6UC:
     citations: 15
     title: 'ZeroNER: Fueling zero-shot named entity recognition via entity type descriptions'
     year: 2025
+  BEZlFiAAAAAJ:L8Ckcad2t8MC:
+    citations: 0
+    title: Are We Done with UMLS Injection into Language Models for Medical Question Answering?
+    year: 2026
   BEZlFiAAAAAJ:LkGwnXOMwfcC:
     citations: 4
     title: Abstractive summarization through the prism of decoding strategies
@@ -86,7 +90,7 @@ papers:
     title: Knowledge-enhanced natural language processing
     year: 2024
   BEZlFiAAAAAJ:W7OEmFMy1HYC:
-    citations: 57
+    citations: 58
     title: 'Bioreader: a retrieval-enhanced text-to-text transformer for biomedical literature'
     year: 2022
   BEZlFiAAAAAJ:WF5omc3nYNoC:
@@ -126,7 +130,7 @@ papers:
     title: Towards rare disease knowledge graph learning from social posts of patients
     year: 2020
   BEZlFiAAAAAJ:dhFuZR0502QC:
-    citations: 0
+    citations: 1
     title: 'SolBehave: Evaluating the Behavioural Correctness of LLM-Generated Smart Contracts'
     year: 2026
   BEZlFiAAAAAJ:eQOLeE2rZwMC:
@@ -154,7 +158,7 @@ papers:
     title: 'FEAST: Retrieval-Augmented Multi-Hierarchical Food Classification for the FoodEx2 System'
     year: 2025
   BEZlFiAAAAAJ:roLk4NBRz8UC:
-    citations: 50
+    citations: 51
     title: To generate or to retrieve? on the effectiveness of artificial contexts for medical open-domain question answering
     year: 2024
   BEZlFiAAAAAJ:u-x6o8ySG0sC:

@@ -1,5 +1,29 @@
 [
  {
+  "date": "2026-11-03",
+  "kind": "scholar",
+  "delta": 1,
+  "total": 58,
+  "cited_title": "Bioreader: a retrieval-enhanced text-to-text transformer for biomedical literature",
+  "url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=16348134973337191815"
+ },
+ {
+  "date": "2026-11-03",
+  "kind": "scholar",
+  "delta": 1,
+  "total": 51,
+  "cited_title": "To generate or to retrieve? on the effectiveness of artificial contexts for medical open-domain question answering",
+  "url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=15127424734138413088"
+ },
+ {
+  "date": "2026-11-03",
+  "kind": "scholar",
+  "delta": 1,
+  "total": 1,
+  "cited_title": "SolBehave: Evaluating the Behavioural Correctness of LLM-Generated Smart Contracts",
+  "url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=9137845176869504669"
+ },
+ {
   "date": "2026-11-01",
   "kind": "scholar",
   "delta": 1,
