@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-11-04'
+  last_updated: '2026-11-05'
 papers:
   BEZlFiAAAAAJ:0EnyYjriUFMC:
     citations: 3
@@ -46,7 +46,7 @@ papers:
     title: Text-to-text extraction and verbalization of biomedical event graphs
     year: 2022
   BEZlFiAAAAAJ:KlAtU1dfN6UC:
-    citations: 15
+    citations: 16
     title: 'ZeroNER: Fueling zero-shot named entity recognition via entity type descriptions'
     year: 2025
   BEZlFiAAAAAJ:L8Ckcad2t8MC:

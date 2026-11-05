@@ -1,5 +1,13 @@
 [
  {
+  "date": "2026-11-05",
+  "kind": "scholar",
+  "delta": 1,
+  "total": 16,
+  "cited_title": "ZeroNER: Fueling zero-shot named entity recognition via entity type descriptions",
+  "url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=18149990501186086803"
+ },
+ {
   "date": "2026-11-03",
   "kind": "scholar",
   "delta": 1,

@@ -1,9 +1,9 @@
 {
- "updated": "2026-11-04",
+ "updated": "2026-11-05",
  "scholar": {
   "source": "serpapi",
-  "citations": 709,
-  "citations_recent": 702,
+  "citations": 710,
+  "citations_recent": 703,
   "h_index": 16,
   "i10_index": 20,
   "per_year": {
@@ -13,7 +13,7 @@
    "2023": 109,
    "2024": 135,
    "2025": 182,
-   "2026": 178
+   "2026": 179
   },
   "papers": [
    {
@@ -122,18 +122,18 @@
     "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=3153048906263885233"
    },
    {
+    "id": "BEZlFiAAAAAJ:KlAtU1dfN6UC",
+    "title": "ZeroNER: Fueling zero-shot named entity recognition via entity type descriptions",
+    "year": 2025,
+    "citations": 16,
+    "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=18149990501186086803"
+   },
+   {
     "id": "BEZlFiAAAAAJ:kNdYIx-mwKoC",
     "title": "Openbioner: Lightweight open-domain biomedical named entity recognition through entity type description",
     "year": 2025,
     "citations": 16,
     "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=1101495158261215229"
-   },
-   {
-    "id": "BEZlFiAAAAAJ:KlAtU1dfN6UC",
-    "title": "ZeroNER: Fueling zero-shot named entity recognition via entity type descriptions",
-    "year": 2025,
-    "citations": 15,
-    "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=18149990501186086803"
    },
    {
     "id": "BEZlFiAAAAAJ:_FxGoFyzp5QC",
