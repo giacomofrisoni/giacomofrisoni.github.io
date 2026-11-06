@@ -1,5 +1,45 @@
 [
  {
+  "date": "2026-11-06",
+  "kind": "scholar",
+  "delta": 1,
+  "total": 52,
+  "cited_title": "To generate or to retrieve? on the effectiveness of artificial contexts for medical open-domain question answering",
+  "url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=15127424734138413088"
+ },
+ {
+  "date": "2026-11-06",
+  "kind": "scholar",
+  "delta": 1,
+  "total": 46,
+  "cited_title": "Comprehensive analysis of knowledge graph embedding techniques benchmarked on link prediction",
+  "url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=6155474505421005138"
+ },
+ {
+  "date": "2026-11-06",
+  "kind": "scholar",
+  "delta": 1,
+  "total": 36,
+  "cited_title": "Phenomena explanation from text: Unsupervised learning of interpretable and statistically significant knowledge",
+  "url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=13368703362301272393"
+ },
+ {
+  "date": "2026-11-06",
+  "kind": "scholar",
+  "delta": 1,
+  "total": 17,
+  "cited_title": "ZeroNER: Fueling zero-shot named entity recognition via entity type descriptions",
+  "url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=18149990501186086803"
+ },
+ {
+  "date": "2026-11-06",
+  "kind": "scholar",
+  "delta": 1,
+  "total": 3,
+  "cited_title": "FEAST: Retrieval-Augmented Multi-Hierarchical Food Classification for the FoodEx2 System",
+  "url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=1298723057790297129"
+ },
+ {
   "date": "2026-11-05",
   "kind": "scholar",
   "delta": 1,

@@ -1,9 +1,9 @@
 {
- "updated": "2026-11-05",
+ "updated": "2026-11-06",
  "scholar": {
   "source": "serpapi",
-  "citations": 710,
-  "citations_recent": 703,
+  "citations": 715,
+  "citations_recent": 708,
   "h_index": 16,
   "i10_index": 20,
   "per_year": {
@@ -13,7 +13,7 @@
    "2023": 109,
    "2024": 135,
    "2025": 182,
-   "2026": 179
+   "2026": 184
   },
   "papers": [
    {
@@ -41,14 +41,14 @@
     "id": "BEZlFiAAAAAJ:roLk4NBRz8UC",
     "title": "To generate or to retrieve? on the effectiveness of artificial contexts for medical open-domain question answering",
     "year": 2024,
-    "citations": 51,
+    "citations": 52,
     "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=15127424734138413088"
    },
    {
     "id": "BEZlFiAAAAAJ:Tyk-4Ss8FVUC",
     "title": "Comprehensive analysis of knowledge graph embedding techniques benchmarked on link prediction",
     "year": 2022,
-    "citations": 45,
+    "citations": 46,
     "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=6155474505421005138"
    },
    {
@@ -66,18 +66,18 @@
     "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=11001269285526714656"
    },
    {
+    "id": "BEZlFiAAAAAJ:9yKSN-GCB0IC",
+    "title": "Phenomena explanation from text: Unsupervised learning of interpretable and statistically significant knowledge",
+    "year": 2020,
+    "citations": 36,
+    "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=13368703362301272393"
+   },
+   {
     "id": "BEZlFiAAAAAJ:hqOjcs7Dif8C",
     "title": "LAWSUIT: a LArge expert-Written SUmmarization dataset of ITalian constitutional court verdicts: L. Ragazzi et al.",
     "year": 2025,
     "citations": 35,
     "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=7398198891126219709"
-   },
-   {
-    "id": "BEZlFiAAAAAJ:9yKSN-GCB0IC",
-    "title": "Phenomena explanation from text: Unsupervised learning of interpretable and statistically significant knowledge",
-    "year": 2020,
-    "citations": 35,
-    "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=13368703362301272393"
    },
    {
     "id": "BEZlFiAAAAAJ:UeHWp8X0CEIC",
@@ -125,7 +125,7 @@
     "id": "BEZlFiAAAAAJ:KlAtU1dfN6UC",
     "title": "ZeroNER: Fueling zero-shot named entity recognition via entity type descriptions",
     "year": 2025,
-    "citations": 16,
+    "citations": 17,
     "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=18149990501186086803"
    },
    {
@@ -192,18 +192,18 @@
     "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=8484360953428082781"
    },
    {
+    "id": "BEZlFiAAAAAJ:qxL8FJ1GzNcC",
+    "title": "FEAST: Retrieval-Augmented Multi-Hierarchical Food Classification for the FoodEx2 System",
+    "year": 2025,
+    "citations": 3,
+    "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=1298723057790297129"
+   },
+   {
     "id": "BEZlFiAAAAAJ:0EnyYjriUFMC",
     "title": "Subgraph retrieval for biomedical open-domain question answering: Unlocking the knowledge graph embedding power",
     "year": 2022,
     "citations": 3,
     "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=15353777171457098820"
-   },
-   {
-    "id": "BEZlFiAAAAAJ:qxL8FJ1GzNcC",
-    "title": "FEAST: Retrieval-Augmented Multi-Hierarchical Food Classification for the FoodEx2 System",
-    "year": 2025,
-    "citations": 2,
-    "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=1298723057790297129"
    },
    {
     "id": "BEZlFiAAAAAJ:8k81kl-MbHgC",
