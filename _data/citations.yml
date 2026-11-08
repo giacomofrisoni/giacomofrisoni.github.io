@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-11-07'
+  last_updated: '2026-11-08'
 papers:
   BEZlFiAAAAAJ:0EnyYjriUFMC:
     citations: 3
@@ -109,6 +109,10 @@ papers:
     citations: 27
     title: 'Cogito ergo summ: abstractive summarization of biomedical papers via semantic parsing graphs and consistency rewards'
     year: 2023
+  BEZlFiAAAAAJ:ZeXyd9-uunAC:
+    citations: 0
+    title: 'KEIR@ CIKM 2026: The Third Workshop on Knowledge-Enhanced Information Retrieval'
+    year: 2026
   BEZlFiAAAAAJ:Zph67rFs4hoC:
     citations: 0
     title: 'Enhancing Representation Learning for Content-Based Information Retrieval: A Knowledge-Enhanced Geometric Approach'
@@ -158,7 +162,7 @@ papers:
     title: 'FEAST: Retrieval-Augmented Multi-Hierarchical Food Classification for the FoodEx2 System'
     year: 2025
   BEZlFiAAAAAJ:roLk4NBRz8UC:
-    citations: 52
+    citations: 54
     title: To generate or to retrieve? on the effectiveness of artificial contexts for medical open-domain question answering
     year: 2024
   BEZlFiAAAAAJ:u-x6o8ySG0sC:

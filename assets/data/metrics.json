@@ -1,9 +1,9 @@
 {
- "updated": "2026-11-07",
+ "updated": "2026-11-08",
  "scholar": {
   "source": "serpapi",
-  "citations": 715,
-  "citations_recent": 708,
+  "citations": 717,
+  "citations_recent": 710,
   "h_index": 16,
   "i10_index": 20,
   "per_year": {
@@ -13,7 +13,7 @@
    "2023": 109,
    "2024": 135,
    "2025": 182,
-   "2026": 184
+   "2026": 186
   },
   "papers": [
    {
@@ -41,7 +41,7 @@
     "id": "BEZlFiAAAAAJ:roLk4NBRz8UC",
     "title": "To generate or to retrieve? on the effectiveness of artificial contexts for medical open-domain question answering",
     "year": 2024,
-    "citations": 52,
+    "citations": 54,
     "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=15127424734138413088"
    },
    {
@@ -239,6 +239,13 @@
     "year": 2025,
     "citations": 1,
     "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=14842704471646615412"
+   },
+   {
+    "id": "BEZlFiAAAAAJ:ZeXyd9-uunAC",
+    "title": "KEIR@ CIKM 2026: The Third Workshop on Knowledge-Enhanced Information Retrieval",
+    "year": 2026,
+    "citations": 0,
+    "cites_url": null
    },
    {
     "id": "BEZlFiAAAAAJ:L8Ckcad2t8MC",
