@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-11-09'
+  last_updated: '2026-11-10'
 papers:
   BEZlFiAAAAAJ:0EnyYjriUFMC:
     citations: 3
@@ -42,7 +42,7 @@ papers:
     title: 'Phenomena explanation from text: Unsupervised learning of interpretable and statistically significant knowledge'
     year: 2020
   BEZlFiAAAAAJ:IjCSPb-OGe4C:
-    citations: 27
+    citations: 28
     title: Text-to-text extraction and verbalization of biomedical event graphs
     year: 2022
   BEZlFiAAAAAJ:KlAtU1dfN6UC:
@@ -142,7 +142,7 @@ papers:
     title: Efficient memory-enhanced transformer for long-document summarization in low-resource regimes
     year: 2023
   BEZlFiAAAAAJ:hqOjcs7Dif8C:
-    citations: 35
+    citations: 36
     title: 'LAWSUIT: a LArge expert-Written SUmmarization dataset of ITalian constitutional court verdicts: L. Ragazzi et al.'
     year: 2025
   BEZlFiAAAAAJ:kNdYIx-mwKoC:
@@ -150,7 +150,7 @@ papers:
     title: 'Openbioner: Lightweight open-domain biomedical named entity recognition through entity type description'
     year: 2025
   BEZlFiAAAAAJ:mVmsd5A6BfQC:
-    citations: 0
+    citations: 1
     title: 'Comma: A multi-task and multi-lingual dataset of constitutional verdicts'
     year: 2026
   BEZlFiAAAAAJ:qjMakFHDy7sC:

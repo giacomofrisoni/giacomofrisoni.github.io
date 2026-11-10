@@ -1,5 +1,29 @@
 [
  {
+  "date": "2026-11-10",
+  "kind": "scholar",
+  "delta": 1,
+  "total": 36,
+  "cited_title": "LAWSUIT: a LArge expert-Written SUmmarization dataset of ITalian constitutional court verdicts: L. Ragazzi et al.",
+  "url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=7398198891126219709"
+ },
+ {
+  "date": "2026-11-10",
+  "kind": "scholar",
+  "delta": 1,
+  "total": 28,
+  "cited_title": "Text-to-text extraction and verbalization of biomedical event graphs",
+  "url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=16058617773837068081"
+ },
+ {
+  "date": "2026-11-10",
+  "kind": "scholar",
+  "delta": 1,
+  "total": 1,
+  "cited_title": "Comma: A multi-task and multi-lingual dataset of constitutional verdicts",
+  "url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=17223074000875245906"
+ },
+ {
   "date": "2026-11-08",
   "kind": "scholar",
   "delta": 2,

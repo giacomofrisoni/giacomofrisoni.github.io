@@ -1,9 +1,9 @@
 {
- "updated": "2026-11-09",
+ "updated": "2026-11-10",
  "scholar": {
   "source": "serpapi",
-  "citations": 717,
-  "citations_recent": 710,
+  "citations": 720,
+  "citations_recent": 713,
   "h_index": 16,
   "i10_index": 20,
   "per_year": {
@@ -12,8 +12,8 @@
    "2022": 63,
    "2023": 109,
    "2024": 135,
-   "2025": 182,
-   "2026": 186
+   "2025": 183,
+   "2026": 188
   },
   "papers": [
    {
@@ -66,18 +66,18 @@
     "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=11001269285526714656"
    },
    {
+    "id": "BEZlFiAAAAAJ:hqOjcs7Dif8C",
+    "title": "LAWSUIT: a LArge expert-Written SUmmarization dataset of ITalian constitutional court verdicts: L. Ragazzi et al.",
+    "year": 2025,
+    "citations": 36,
+    "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=7398198891126219709"
+   },
+   {
     "id": "BEZlFiAAAAAJ:9yKSN-GCB0IC",
     "title": "Phenomena explanation from text: Unsupervised learning of interpretable and statistically significant knowledge",
     "year": 2020,
     "citations": 36,
     "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=13368703362301272393"
-   },
-   {
-    "id": "BEZlFiAAAAAJ:hqOjcs7Dif8C",
-    "title": "LAWSUIT: a LArge expert-Written SUmmarization dataset of ITalian constitutional court verdicts: L. Ragazzi et al.",
-    "year": 2025,
-    "citations": 35,
-    "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=7398198891126219709"
    },
    {
     "id": "BEZlFiAAAAAJ:UeHWp8X0CEIC",
@@ -87,18 +87,18 @@
     "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=13375847034506796653"
    },
    {
+    "id": "BEZlFiAAAAAJ:IjCSPb-OGe4C",
+    "title": "Text-to-text extraction and verbalization of biomedical event graphs",
+    "year": 2022,
+    "citations": 28,
+    "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=16058617773837068081"
+   },
+   {
     "id": "BEZlFiAAAAAJ:YsMSGLbcyi4C",
     "title": "Cogito ergo summ: abstractive summarization of biomedical papers via semantic parsing graphs and consistency rewards",
     "year": 2023,
     "citations": 27,
     "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=8973031833927907787"
-   },
-   {
-    "id": "BEZlFiAAAAAJ:IjCSPb-OGe4C",
-    "title": "Text-to-text extraction and verbalization of biomedical event graphs",
-    "year": 2022,
-    "citations": 27,
-    "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=16058617773837068081"
    },
    {
     "id": "BEZlFiAAAAAJ:qjMakFHDy7sC",
@@ -220,6 +220,13 @@
     "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=9137845176869504669"
    },
    {
+    "id": "BEZlFiAAAAAJ:mVmsd5A6BfQC",
+    "title": "Comma: A multi-task and multi-lingual dataset of constitutional verdicts",
+    "year": 2026,
+    "citations": 1,
+    "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=17223074000875245906"
+   },
+   {
     "id": "BEZlFiAAAAAJ:aqlVkmm33-oC",
     "title": "OpenBioNER-v2: A Suite of Lightweight Models for Zero-Shot Medical Named Entity Recognition via Type Descriptions",
     "year": 2026,
@@ -271,13 +278,6 @@
    {
     "id": "BEZlFiAAAAAJ:9ZlFYXVOiuMC",
     "title": "Java academic benchmark: Exam-based evaluation of LLMs on object-oriented programming",
-    "year": 2026,
-    "citations": 0,
-    "cites_url": null
-   },
-   {
-    "id": "BEZlFiAAAAAJ:mVmsd5A6BfQC",
-    "title": "Comma: A multi-task and multi-lingual dataset of constitutional verdicts",
     "year": 2026,
     "citations": 0,
     "cites_url": null
