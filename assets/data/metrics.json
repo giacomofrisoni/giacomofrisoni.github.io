@@ -1,9 +1,9 @@
 {
- "updated": "2026-11-13",
+ "updated": "2026-11-14",
  "scholar": {
   "source": "serpapi",
-  "citations": 720,
-  "citations_recent": 713,
+  "citations": 722,
+  "citations_recent": 715,
   "h_index": 16,
   "i10_index": 20,
   "per_year": {
@@ -12,7 +12,7 @@
    "2022": 63,
    "2023": 109,
    "2024": 135,
-   "2025": 183,
+   "2025": 185,
    "2026": 188
   },
   "papers": [
@@ -27,7 +27,7 @@
     "id": "BEZlFiAAAAAJ:2osOgNQ5qMEC",
     "title": "A survey on event extraction for natural language understanding: Riding the biomedical literature wave",
     "year": 2021,
-    "citations": 70,
+    "citations": 72,
     "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=16842054447175266984"
    },
    {

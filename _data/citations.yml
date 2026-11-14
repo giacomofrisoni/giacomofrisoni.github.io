@@ -1,12 +1,12 @@
 metadata:
-  last_updated: '2026-11-13'
+  last_updated: '2026-11-14'
 papers:
   BEZlFiAAAAAJ:0EnyYjriUFMC:
     citations: 3
     title: 'Subgraph retrieval for biomedical open-domain question answering: Unlocking the knowledge graph embedding power'
     year: 2022
   BEZlFiAAAAAJ:2osOgNQ5qMEC:
-    citations: 70
+    citations: 72
     title: 'A survey on event extraction for natural language understanding: Riding the biomedical literature wave'
     year: 2021
   BEZlFiAAAAAJ:3fE2CSJIrl8C:
