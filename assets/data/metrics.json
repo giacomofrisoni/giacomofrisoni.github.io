@@ -1,9 +1,9 @@
 {
- "updated": "2026-11-14",
+ "updated": "2026-11-15",
  "scholar": {
   "source": "serpapi",
-  "citations": 722,
-  "citations_recent": 715,
+  "citations": 723,
+  "citations_recent": 716,
   "h_index": 16,
   "i10_index": 20,
   "per_year": {
@@ -13,7 +13,7 @@
    "2023": 109,
    "2024": 135,
    "2025": 185,
-   "2026": 188
+   "2026": 189
   },
   "papers": [
    {
@@ -48,7 +48,7 @@
     "id": "BEZlFiAAAAAJ:Tyk-4Ss8FVUC",
     "title": "Comprehensive analysis of knowledge graph embedding techniques benchmarked on link prediction",
     "year": 2022,
-    "citations": 46,
+    "citations": 47,
     "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=6155474505421005138"
    },
    {
