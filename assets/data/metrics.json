@@ -1,9 +1,9 @@
 {
- "updated": "2026-11-18",
+ "updated": "2026-11-19",
  "scholar": {
   "source": "serpapi",
-  "citations": 723,
-  "citations_recent": 716,
+  "citations": 722,
+  "citations_recent": 715,
   "h_index": 16,
   "i10_index": 20,
   "per_year": {
@@ -12,7 +12,7 @@
    "2022": 63,
    "2023": 109,
    "2024": 135,
-   "2025": 185,
+   "2025": 184,
    "2026": 189
   },
   "papers": [
@@ -87,18 +87,18 @@
     "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=13375847034506796653"
    },
    {
-    "id": "BEZlFiAAAAAJ:IjCSPb-OGe4C",
-    "title": "Text-to-text extraction and verbalization of biomedical event graphs",
-    "year": 2022,
-    "citations": 28,
-    "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=16058617773837068081"
-   },
-   {
     "id": "BEZlFiAAAAAJ:YsMSGLbcyi4C",
     "title": "Cogito ergo summ: abstractive summarization of biomedical papers via semantic parsing graphs and consistency rewards",
     "year": 2023,
     "citations": 27,
     "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=8973031833927907787"
+   },
+   {
+    "id": "BEZlFiAAAAAJ:IjCSPb-OGe4C",
+    "title": "Text-to-text extraction and verbalization of biomedical event graphs",
+    "year": 2022,
+    "citations": 27,
+    "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=16058617773837068081"
    },
    {
     "id": "BEZlFiAAAAAJ:qjMakFHDy7sC",
