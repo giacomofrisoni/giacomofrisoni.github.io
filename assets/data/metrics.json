@@ -1,9 +1,9 @@
 {
- "updated": "2026-11-19",
+ "updated": "2026-11-20",
  "scholar": {
   "source": "serpapi",
-  "citations": 722,
-  "citations_recent": 715,
+  "citations": 723,
+  "citations_recent": 716,
   "h_index": 16,
   "i10_index": 20,
   "per_year": {
@@ -13,7 +13,7 @@
    "2023": 109,
    "2024": 135,
    "2025": 184,
-   "2026": 189
+   "2026": 190
   },
   "papers": [
    {
@@ -206,6 +206,13 @@
     "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=15353777171457098820"
    },
    {
+    "id": "BEZlFiAAAAAJ:mVmsd5A6BfQC",
+    "title": "Comma: A multi-task and multi-lingual dataset of constitutional verdicts",
+    "year": 2026,
+    "citations": 2,
+    "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=17223074000875245906"
+   },
+   {
     "id": "BEZlFiAAAAAJ:8k81kl-MbHgC",
     "title": "A new unsupervised methodology of Descriptive Text Mining for Knowledge Graph Learning",
     "year": 2020,
@@ -218,13 +225,6 @@
     "year": 2026,
     "citations": 1,
     "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=9137845176869504669"
-   },
-   {
-    "id": "BEZlFiAAAAAJ:mVmsd5A6BfQC",
-    "title": "Comma: A multi-task and multi-lingual dataset of constitutional verdicts",
-    "year": 2026,
-    "citations": 1,
-    "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=17223074000875245906"
    },
    {
     "id": "BEZlFiAAAAAJ:aqlVkmm33-oC",
