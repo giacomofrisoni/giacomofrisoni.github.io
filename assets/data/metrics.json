@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-21",
+ "updated": "2026-11-22",
  "scholar": {
   "source": "serpapi",
-  "citations": 723,
-  "citations_recent": 716,
+  "citations": 725,
+  "citations_recent": 718,
   "h_index": 16,
-  "i10_index": 20,
+  "i10_index": 21,
   "per_year": {
    "2020": 5,
    "2021": 28,
@@ -13,7 +13,7 @@
    "2023": 109,
    "2024": 135,
    "2025": 184,
-   "2026": 190
+   "2026": 192
   },
   "papers": [
    {
@@ -41,7 +41,7 @@
     "id": "BEZlFiAAAAAJ:roLk4NBRz8UC",
     "title": "To generate or to retrieve? on the effectiveness of artificial contexts for medical open-domain question answering",
     "year": 2024,
-    "citations": 54,
+    "citations": 55,
     "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=15127424734138413088"
    },
    {
@@ -160,7 +160,7 @@
     "id": "BEZlFiAAAAAJ:YOwf2qJgpHMC",
     "title": "PORTS: Preference-Optimized Retrievers for Tool Selection with Large Language Models",
     "year": 2025,
-    "citations": 9,
+    "citations": 10,
     "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=1705039691917996865"
    },
    {

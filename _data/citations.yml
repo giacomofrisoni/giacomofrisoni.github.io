@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-11-21'
+  last_updated: '2026-11-22'
 papers:
   BEZlFiAAAAAJ:0EnyYjriUFMC:
     citations: 3
@@ -102,7 +102,7 @@ papers:
     title: Enhancing biomedical scientific reviews summarization with graph-based factual evidence extracted from papers
     year: 2022
   BEZlFiAAAAAJ:YOwf2qJgpHMC:
-    citations: 9
+    citations: 10
     title: 'PORTS: Preference-Optimized Retrievers for Tool Selection with Large Language Models'
     year: 2025
   BEZlFiAAAAAJ:YsMSGLbcyi4C:
@@ -162,7 +162,7 @@ papers:
     title: 'FEAST: Retrieval-Augmented Multi-Hierarchical Food Classification for the FoodEx2 System'
     year: 2025
   BEZlFiAAAAAJ:roLk4NBRz8UC:
-    citations: 54
+    citations: 55
     title: To generate or to retrieve? on the effectiveness of artificial contexts for medical open-domain question answering
     year: 2024
   BEZlFiAAAAAJ:u-x6o8ySG0sC:

@@ -1,5 +1,21 @@
 [
  {
+  "date": "2026-11-22",
+  "kind": "scholar",
+  "delta": 1,
+  "total": 55,
+  "cited_title": "To generate or to retrieve? on the effectiveness of artificial contexts for medical open-domain question answering",
+  "url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=15127424734138413088"
+ },
+ {
+  "date": "2026-11-22",
+  "kind": "scholar",
+  "delta": 1,
+  "total": 10,
+  "cited_title": "PORTS: Preference-Optimized Retrievers for Tool Selection with Large Language Models",
+  "url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=1705039691917996865"
+ },
+ {
   "date": "2026-11-20",
   "kind": "scholar",
   "delta": 1,
