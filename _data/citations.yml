@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-11-26'
+  last_updated: '2026-11-27'
 papers:
   BEZlFiAAAAAJ:0EnyYjriUFMC:
     citations: 3
@@ -42,7 +42,7 @@ papers:
     title: 'Phenomena explanation from text: Unsupervised learning of interpretable and statistically significant knowledge'
     year: 2020
   BEZlFiAAAAAJ:IjCSPb-OGe4C:
-    citations: 27
+    citations: 28
     title: Text-to-text extraction and verbalization of biomedical event graphs
     year: 2022
   BEZlFiAAAAAJ:KlAtU1dfN6UC:
@@ -102,7 +102,7 @@ papers:
     title: Enhancing biomedical scientific reviews summarization with graph-based factual evidence extracted from papers
     year: 2022
   BEZlFiAAAAAJ:YOwf2qJgpHMC:
-    citations: 10
+    citations: 11
     title: 'PORTS: Preference-Optimized Retrievers for Tool Selection with Large Language Models'
     year: 2025
   BEZlFiAAAAAJ:YsMSGLbcyi4C:
@@ -126,7 +126,7 @@ papers:
     title: Magic Mirror on the Wall, Which Is the Fairest Prompt of All? A Survey on Automatic Prompt Learning
     year: 2025
   BEZlFiAAAAAJ:aqlVkmm33-oC:
-    citations: 1
+    citations: 2
     title: 'OpenBioNER-v2: A Suite of Lightweight Models for Zero-Shot Medical Named Entity Recognition via Type Descriptions'
     year: 2026
   BEZlFiAAAAAJ:d1gkVwhDpl0C:
