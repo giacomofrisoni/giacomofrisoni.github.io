@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-11-27'
+  last_updated: '2026-11-28'
 papers:
   BEZlFiAAAAAJ:0EnyYjriUFMC:
     citations: 3
@@ -14,7 +14,7 @@ papers:
     title: 'KEIR@ ECIR 2025: The Second Workshop on Knowledge-Enhanced Information Retrieval'
     year: 2025
   BEZlFiAAAAAJ:4DMP91E08xMC:
-    citations: 6
+    citations: 7
     title: 'Graph-of-mark: Promote spatial reasoning in multimodal language models with graph-based visual prompting'
     year: 2026
   BEZlFiAAAAAJ:4TOpqqG69KYC:
@@ -46,7 +46,7 @@ papers:
     title: Text-to-text extraction and verbalization of biomedical event graphs
     year: 2022
   BEZlFiAAAAAJ:KlAtU1dfN6UC:
-    citations: 17
+    citations: 18
     title: 'ZeroNER: Fueling zero-shot named entity recognition via entity type descriptions'
     year: 2025
   BEZlFiAAAAAJ:L8Ckcad2t8MC:
@@ -74,7 +74,7 @@ papers:
     title: Refining Triplet Sampling for Improved Self-Supervised Representation Learning.
     year: 2024
   BEZlFiAAAAAJ:Tyk-4Ss8FVUC:
-    citations: 47
+    citations: 48
     title: Comprehensive analysis of knowledge graph embedding techniques benchmarked on link prediction
     year: 2022
   BEZlFiAAAAAJ:ULOm3_A8WrAC:
@@ -102,7 +102,7 @@ papers:
     title: Enhancing biomedical scientific reviews summarization with graph-based factual evidence extracted from papers
     year: 2022
   BEZlFiAAAAAJ:YOwf2qJgpHMC:
-    citations: 11
+    citations: 12
     title: 'PORTS: Preference-Optimized Retrievers for Tool Selection with Large Language Models'
     year: 2025
   BEZlFiAAAAAJ:YsMSGLbcyi4C:
@@ -142,7 +142,7 @@ papers:
     title: Efficient memory-enhanced transformer for long-document summarization in low-resource regimes
     year: 2023
   BEZlFiAAAAAJ:hqOjcs7Dif8C:
-    citations: 36
+    citations: 37
     title: 'LAWSUIT: a LArge expert-Written SUmmarization dataset of ITalian constitutional court verdicts: L. Ragazzi et al.'
     year: 2025
   BEZlFiAAAAAJ:kNdYIx-mwKoC:

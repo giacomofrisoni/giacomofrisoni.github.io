@@ -1,5 +1,45 @@
 [
  {
+  "date": "2026-11-28",
+  "kind": "scholar",
+  "delta": 1,
+  "total": 48,
+  "cited_title": "Comprehensive analysis of knowledge graph embedding techniques benchmarked on link prediction",
+  "url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=6155474505421005138"
+ },
+ {
+  "date": "2026-11-28",
+  "kind": "scholar",
+  "delta": 1,
+  "total": 37,
+  "cited_title": "LAWSUIT: a LArge expert-Written SUmmarization dataset of ITalian constitutional court verdicts: L. Ragazzi et al.",
+  "url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=7398198891126219709"
+ },
+ {
+  "date": "2026-11-28",
+  "kind": "scholar",
+  "delta": 1,
+  "total": 18,
+  "cited_title": "ZeroNER: Fueling zero-shot named entity recognition via entity type descriptions",
+  "url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=18149990501186086803"
+ },
+ {
+  "date": "2026-11-28",
+  "kind": "scholar",
+  "delta": 1,
+  "total": 12,
+  "cited_title": "PORTS: Preference-Optimized Retrievers for Tool Selection with Large Language Models",
+  "url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=1705039691917996865"
+ },
+ {
+  "date": "2026-11-28",
+  "kind": "scholar",
+  "delta": 1,
+  "total": 7,
+  "cited_title": "Graph-of-mark: Promote spatial reasoning in multimodal language models with graph-based visual prompting",
+  "url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=1950282884449524942"
+ },
+ {
   "date": "2026-11-27",
   "kind": "scholar",
   "delta": 1,

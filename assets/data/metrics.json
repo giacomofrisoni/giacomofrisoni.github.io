@@ -1,9 +1,9 @@
 {
- "updated": "2026-11-27",
+ "updated": "2026-11-28",
  "scholar": {
   "source": "serpapi",
-  "citations": 728,
-  "citations_recent": 721,
+  "citations": 733,
+  "citations_recent": 726,
   "h_index": 16,
   "i10_index": 21,
   "per_year": {
@@ -13,7 +13,7 @@
    "2023": 109,
    "2024": 135,
    "2025": 185,
-   "2026": 194
+   "2026": 198
   },
   "papers": [
    {
@@ -48,7 +48,7 @@
     "id": "BEZlFiAAAAAJ:Tyk-4Ss8FVUC",
     "title": "Comprehensive analysis of knowledge graph embedding techniques benchmarked on link prediction",
     "year": 2022,
-    "citations": 47,
+    "citations": 48,
     "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=6155474505421005138"
    },
    {
@@ -69,7 +69,7 @@
     "id": "BEZlFiAAAAAJ:hqOjcs7Dif8C",
     "title": "LAWSUIT: a LArge expert-Written SUmmarization dataset of ITalian constitutional court verdicts: L. Ragazzi et al.",
     "year": 2025,
-    "citations": 36,
+    "citations": 37,
     "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=7398198891126219709"
    },
    {
@@ -115,18 +115,18 @@
     "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=5986609856918739586"
    },
    {
+    "id": "BEZlFiAAAAAJ:KlAtU1dfN6UC",
+    "title": "ZeroNER: Fueling zero-shot named entity recognition via entity type descriptions",
+    "year": 2025,
+    "citations": 18,
+    "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=18149990501186086803"
+   },
+   {
     "id": "BEZlFiAAAAAJ:5nxA0vEk-isC",
     "title": "Unknown claims: Generation of fact-checking training examples from unstructured and structured data",
     "year": 2024,
     "citations": 18,
     "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=3153048906263885233"
-   },
-   {
-    "id": "BEZlFiAAAAAJ:KlAtU1dfN6UC",
-    "title": "ZeroNER: Fueling zero-shot named entity recognition via entity type descriptions",
-    "year": 2025,
-    "citations": 17,
-    "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=18149990501186086803"
    },
    {
     "id": "BEZlFiAAAAAJ:kNdYIx-mwKoC",
@@ -160,7 +160,7 @@
     "id": "BEZlFiAAAAAJ:YOwf2qJgpHMC",
     "title": "PORTS: Preference-Optimized Retrievers for Tool Selection with Large Language Models",
     "year": 2025,
-    "citations": 11,
+    "citations": 12,
     "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=1705039691917996865"
    },
    {
@@ -174,7 +174,7 @@
     "id": "BEZlFiAAAAAJ:4DMP91E08xMC",
     "title": "Graph-of-mark: Promote spatial reasoning in multimodal language models with graph-based visual prompting",
     "year": 2026,
-    "citations": 6,
+    "citations": 7,
     "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=1950282884449524942"
    },
    {
